@@ -1,0 +1,2 @@
+class EvergreenController < ApplicationController
+end
