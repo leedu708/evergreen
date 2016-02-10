@@ -5,11 +5,27 @@ evergreen.factory('userService',
     var userService = {};
 
     userService.users = [];
-    // userService.current_user = {};
 
     userService.setUsers = function(users) {
       userService.users = users;
-      // userService.current_user = users[0];
+      // ensures promotion and demotion are visually changed in the view without refresh
+      userService.users.sort(function(a, b) {
+        if (a.id > b.id) {
+          return 1;
+        } else if (a.id < b.id) {
+          return -1;
+        } else {
+          return 0
+        };
+      });
+    };
+
+    userService.promoteReader = function(id) {
+      userService.users[id].user_type = "curator";
+    };
+
+    userService.demoteCurator = function(id) {
+      userService.users[id].user_type = "reader";
     };
 
     userService.getReaders = function() {

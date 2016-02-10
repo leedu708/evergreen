@@ -2,8 +2,12 @@ evergreen.controller('AdminCtrl',
   ['$scope', 'Restangular', 'users', 'userService',
   function($scope, Restangular, users, userService) {
 
-    $scope.setUsers = function(allUsers) {
-      userService.setUsers(allUsers);
+    $scope.init = function() {
+      userService.setUsers(users);
+      $scope.setUsers();
+    };
+
+    $scope.setUsers = function() {
       $scope.readers = userService.getReaders();
       $scope.curators = userService.getCurators();
       $scope.admins = userService.getAdmins();
@@ -13,7 +17,8 @@ evergreen.controller('AdminCtrl',
       obj = {};
       obj["user_type"] = "curator"
       Restangular.one('admin/users', reader.id).patch( obj )
-        .then(function() {
+        .then(function(response) {
+          userService.promoteReader(response.id - 1);
           $scope.setUsers();
         });
     };
@@ -22,11 +27,12 @@ evergreen.controller('AdminCtrl',
       obj = {};
       obj["user_type"] = "reader"
       Restangular.one('admin/users', curator.id).patch( obj )
-        .then(function() {
+        .then(function(response) {
+          userService.demoteCurator(response.id - 1);
           $scope.setUsers();
         });
     };
 
-    $scope.setUsers(users);
+    $scope.init();
 
   }]);
