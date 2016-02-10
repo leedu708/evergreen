@@ -11,10 +11,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160210153323) do
+ActiveRecord::Schema.define(version: 20160210221349) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "collections", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description", null: false
+    t.integer  "sector_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "resources", force: :cascade do |t|
+    t.string   "title",                         null: false
+    t.string   "url",                           null: false
+    t.text     "description",                   null: false
+    t.string   "media_type",    default: ""
+    t.integer  "upvotes",       default: 0,     null: false
+    t.boolean  "synthesis",     default: false, null: false
+    t.integer  "owner_id"
+    t.integer  "collection_id"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+
+  create_table "sectors", force: :cascade do |t|
+    t.string   "title",      null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.datetime "created_at",                                null: false
