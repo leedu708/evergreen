@@ -11,15 +11,41 @@ var evergreen = angular.module('evergreen', ['ui.router', 'restangular'])
     });
 
     // Routing
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/home');
 
     $stateProvider
 
-      .state('evergreen', {
-        url: '',
-        templateUrl: '/templates/index.html',
+      .state('home', {
+        url: '/home',
+        templateUrl: '/templates/nav/home.html',
         controller: function($scope) {
           $scope.test = "hello, world!";
+        }
+      })
+
+      .state('about', {
+        url: '/about',
+        templateUrl: '/templates/nav/about.html'
+      })
+
+      .state('contact', {
+        url: '/contact-us',
+        templateUrl: '/templates/nav/contact.html'
+      })
+
+      .state('mission', {
+        url: '/mission',
+        templateUrl: '/templates/nav/mission.html'
+      })
+
+      .state('admin', {
+        url: '/admin',
+        templateUrl: '/templates/admin/dashboard.html',
+        controller: 'AdminCtrl',
+        resolve: {
+          users: ['Restangular', function(Restangular) {
+            return Restangular.all('admin/users').getList();
+          }]
         }
       })
 

@@ -1,0 +1,82 @@
+<div class='container'>
+  <div class='row'>
+
+    <!-- ALL ADMINS -->
+    <div class='col-md-4'>
+
+      <table class='table table-bordered table-striped text-center'>
+        <caption>All Admins</caption>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr ng-repeat="admin in admins">
+            <td>{{ admin.id }}</td>
+            <td>{{ admin.email }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+
+    <!-- ALL CURATORS -->
+    <div class='col-md-4'>
+
+      <table class='table table-bordered table-striped text-center'>
+        <caption>All Curators</caption>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Email</th>
+            <th>Make Reader?</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr ng-repeat="curator in curators">
+            <td>{{ curator.id }}</td>
+            <td>{{ curator.email }}</td>
+            <td>
+              <a class='btn btn-primary' ng-click="demoteCurator(curator)">
+                Demote
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+
+    <!-- ALL READERS -->
+    <div class='col-md-4'>
+
+      <table class='table table-bordered table-striped text-center'>
+        <caption>All Readers</caption>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Email</th>
+            <th>Make Curator?</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr ng-repeat="reader in readers">
+            <td>{{ reader.id }}</td>
+            <td>{{ reader.email }}</td>
+            <td>
+              <a class='btn btn-primary' ng-click="promoteReader(reader)">
+                Promote
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>

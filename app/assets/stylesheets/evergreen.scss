@@ -26,6 +26,15 @@
   line-height: 50px;
 }
 
+// flash
+.alert {
+  margin-bottom: 0 !important;
+  display: inline-block !important;
+  position: fixed;
+  width: 100%;
+  text-align: center;
+}
+
 // other
 .pointer {
   cursor: pointer;

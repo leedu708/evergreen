@@ -11,48 +11,62 @@
 <%= nav_bar :static => :top, :responsive => :true, :brand => "Evergreen", brand_link: "#" do %>
 
   <%= menu_group do %>
-    <%= menu_item "Home", root_path %>
-    <%= menu_item "About" %>
-    <%= menu_item "Contact Us" %>
-    <%= menu_item "Mission" %>
+    <li>
+      <a ui-sref="home">Home</a>
+    </li>
+    <li>
+      <a ui-sref="about">About</a>
+    </li>
+    <li>
+      <a ui-sref="contact">Contact Us</a>
+    </li>
+    <li>
+      <a ui-sref="mission">Mission</a>
+    </li>
   <% end %>
 
   <% if current_user %>
     <%= menu_group :pull => :right do %>
-      <%= drop_down "Welcome, #{current_user.email}" do %>
-        <%= menu_item "Edit Information" %>
-        <%= menu_item "Logout", destroy_user_session_path, :method => :delete %>
-      <% end %>
+      <li class="dropdown">
+        <a class="dropdown-toggle pointer" data-toggle="dropdown">Welcome, <%= "#{current_user.email}" %><b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <% if current_user.user_type == "admin" %>
+            <li>
+              <a ui-sref='admin'>Admin Dashboard</a>
+            </li>
+          <% end %>
+          <%= menu_item "Edit Information", edit_user_registration_path %>
+          <%= menu_item "Logout", destroy_user_session_path, :method => :delete %>
+        </ul>
+      </li>
     <% end %>
 
   <% else %>
     <%= menu_group pull: :right do %>
-      <%= drop_down "Log In" do %>
-        <%= form_for(:user, :url => session_path(:user)) do |f| -%>
-          <div class="nav-login-wrapper">
-            <div class="field form-group">
-            <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: "Email" %>
-            </div>
+      <li class="dropdown">
+        <a class="dropdown-toggle pointer" data-toggle="dropdown">Log In<b class="caret"></b></a>
+        <ul class="dropdown-menu">      
+          <%= form_for(:user, :url => session_path(:user)) do |f| -%>
+            <div class="nav-login-wrapper">
+              <div class="field form-group">
+              <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: "Email" %>
+              </div>
 
-            <div class="field form-group">
-              <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: "Password" %>
-            </div>
+              <div class="field form-group">
+                <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: "Password" %>
+              </div>
 
-            <div class="field form-group rmb-margin text-center">
-              <%= f.check_box :remember_me %>
-              <%= f.label :remember_me %>
-            </div>
+              <div>
+                <%= f.submit "Log in", class: 'btn btn-success col-xs-12 log-in' %>
+              </div>
 
-            <div>
-              <%= f.submit "Log in", class: 'btn btn-success col-xs-12 log-in' %>
+              <div>
+                <%= link_to "Sign Up!", new_user_registration_path, class: 'btn btn-primary col-xs-12 log-in' %>
+              </div>
             </div>
-
-            <div>
-              <%= link_to "Sign Up!", new_user_registration_path, class: 'btn btn-primary col-xs-12 log-in' %>
-            </div>
-          </div>
-        <% end -%>
-      <% end %>
+          <% end -%>
+        </ul>
+      </li>
     <% end %>
   <% end %>
 
