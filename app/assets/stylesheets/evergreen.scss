@@ -1,3 +1,4 @@
+// navigation bar
 .navbar {
   margin-bottom: 0px !important;
 }
@@ -7,12 +8,9 @@
   height: 400px;
 }
 
-.dropdown-menu {
-  min-width: 220px !important;
-}
-
 .nav-login-wrapper {
   margin: 10px 10px 0 10px;
+  min-width: 220px !important;
 }
 
 .rmb-margin {
@@ -23,6 +21,12 @@
   margin-bottom: 10px;
 }
 
+// center navbar fa icons
+.navbar .fa {
+  line-height: 50px;
+}
+
+// other
 .pointer {
   cursor: pointer;
 }

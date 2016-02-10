@@ -19,8 +19,10 @@
 
   <% if current_user %>
     <%= menu_group :pull => :right do %>
-      <%= menu_text "Welcome, #{current_user.email}" %>
-      <%= menu_item "logout", destroy_user_session_path, :method => :delete %>
+      <%= drop_down "Welcome, #{current_user.email}" do %>
+        <%= menu_item "Edit Information" %>
+        <%= menu_item "Logout", destroy_user_session_path, :method => :delete %>
+      <% end %>
     <% end %>
 
   <% else %>
