@@ -8,7 +8,53 @@
 </head>
 <body>
 
-<%= bootstrap_flash %>
+<%= nav_bar :static => :top, :responsive => :true, :brand => "Evergreen", brand_link: "#" do %>
+
+  <%= menu_group do %>
+    <%= menu_item "Home", root_path %>
+    <%= menu_item "About" %>
+    <%= menu_item "Contact Us" %>
+    <%= menu_item "Mission" %>
+  <% end %>
+
+  <% if current_user %>
+    <%= menu_group :pull => :right do %>
+      <%= menu_text "Welcome, #{current_user.email}" %>
+      <%= menu_item "logout", destroy_user_session_path, :method => :delete %>
+    <% end %>
+
+  <% else %>
+    <%= menu_group pull: :right do %>
+      <%= drop_down "Log In" do %>
+        <%= form_for(:user, :url => session_path(:user)) do |f| -%>
+          <div class="nav-login-wrapper">
+            <div class="field form-group">
+            <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: "Email" %>
+            </div>
+
+            <div class="field form-group">
+              <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: "Password" %>
+            </div>
+
+            <div class="field form-group rmb-margin text-center">
+              <%= f.check_box :remember_me %>
+              <%= f.label :remember_me %>
+            </div>
+
+            <div>
+              <%= f.submit "Log in", class: 'btn btn-success col-xs-12 log-in' %>
+            </div>
+
+            <div>
+              <%= link_to "Sign Up!", new_user_registration_path, class: 'btn btn-primary col-xs-12 log-in' %>
+            </div>
+          </div>
+        <% end -%>
+      <% end %>
+    <% end %>
+  <% end %>
+
+<% end %>
 
 <%= yield %>
 
