@@ -1,1 +1,23 @@
-<h1>SECTORS</h1>
+<h1 class='page-header'>Sectors</h1>
+
+<div class='row'>
+  <div class='col-md-12'>
+
+    <table class='table table-bordered table-striped text-center'>
+      <thead>
+        <tr>
+          <th>Sector Name</th>
+          <th>Number of Collections</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr ng-repeat="sector in sectors">
+          <td>{{ sector.title }}</td>
+          <td>{{ sector.collections.length }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>

@@ -43,15 +43,9 @@ var evergreen = angular.module('evergreen', ['ui.router', 'restangular'])
         url: '/admin',
         views: {
           '': {
-            templateUrl: '/templates/admin/main.html',
-            controller: 'AdminCtrl',
-            resolve: {
-              users: ['Restangular', function(Restangular) {
-                return Restangular.all('admin/users').getList();
-              }]
+            templateUrl: '/templates/admin/main.html'
             }
           }
-        }
       })
 
       .state('admin.dashboard', {
@@ -72,13 +66,23 @@ var evergreen = angular.module('evergreen', ['ui.router', 'restangular'])
       .state('admin.dashboard.users', {
         url: '/users',
         templateUrl: '/templates/admin/dashboard/users.html',
-        controller: function($scope) { console.log("USERS") }
+        controller: 'UserCtrl',
+        resolve: {
+          users: ['Restangular', function(Restangular) {
+            return Restangular.all('admin/users').getList();
+          }]
+        }
       })
 
       .state('admin.dashboard.sectors', {
         url: '/sectors',
         templateUrl: '/templates/admin/dashboard/sectors.html',
-        controller: function($scope) { console.log("SECTORS") }
+        controller: 'SectorCtrl',
+        resolve: {
+          sectors: ['Restangular', function(Restangular) {
+            return Restangular.all('sectors').getList();
+          }]
+        }
       })
 
       .state('admin.dashboard.collections', {

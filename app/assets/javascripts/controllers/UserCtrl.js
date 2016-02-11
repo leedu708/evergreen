@@ -1,4 +1,4 @@
-evergreen.controller('AdminCtrl',
+evergreen.controller('UserCtrl',
   ['$scope', 'Restangular', 'users', 'userService',
   function($scope, Restangular, users, userService) {
 
