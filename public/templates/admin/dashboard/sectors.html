@@ -6,15 +6,19 @@
     <table class='table table-bordered table-striped text-center'>
       <thead>
         <tr>
+          <th>ID</th>
           <th>Sector Name</th>
           <th>Number of Collections</th>
+          <th>Number of Resources</th>
         </tr>
       </thead>
 
       <tbody>
         <tr ng-repeat="sector in sectors">
+          <td>{{ sector.id }}</td>
           <td>{{ sector.title }}</td>
           <td>{{ sector.collections.length }}</td>
+          <td>{{ sector.totalResources }}</td>
         </tr>
       </tbody>
     </table>

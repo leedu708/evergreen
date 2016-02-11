@@ -52,13 +52,11 @@ var evergreen = angular.module('evergreen', ['ui.router', 'restangular'])
         url: '/dashboard',
         views: {
           'sidebar': {
-            templateUrl: '/templates/admin/sidebar.html',
-            controller: function($scope) { console.log("SIDEBAR") }
+            templateUrl: '/templates/admin/sidebar.html'
           },
 
           'dashboard': {
             templateUrl: '/templates/admin/dashboard.html',
-            controller: function($scope) { console.log("DASHBOARD") }
           }
         }
       })

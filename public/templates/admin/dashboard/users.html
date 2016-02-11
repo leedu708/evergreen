@@ -5,8 +5,8 @@
   <!-- ALL ADMINS -->
   <div class='col-md-4'>
 
-    <table class='table table-bordered table-striped text-center'>
-      <caption>Admins</caption>
+    <table class='table table-bordered table-striped table-condensed text-center'>
+      <caption>Admins <span class="badge">{{ admins.length }}</span></caption>
       <thead>
         <tr>
           <th>ID</th>
@@ -27,13 +27,13 @@
   <!-- ALL CURATORS -->
   <div class='col-md-4'>
 
-    <table class='table table-bordered table-striped text-center'>
-      <caption>Curators</caption>
+    <table class='table table-bordered table-striped table-condensed text-center'>
+      <caption>Curators <span class="badge">{{ curators.length }}</span></caption>
       <thead>
         <tr>
           <th>ID</th>
           <th>Email</th>
-          <th>Make Reader?</th>
+          <th>Demote?</th>
         </tr>
       </thead>
 
@@ -42,7 +42,7 @@
           <td>{{ curator.id }}</td>
           <td>{{ curator.email }}</td>
           <td>
-            <a class='btn btn-danger' ng-click="demoteCurator(curator)">
+            <a class='btn btn-sm btn-danger' ng-click="demoteCurator(curator)">
               Demote
             </a>
           </td>
@@ -55,13 +55,13 @@
   <!-- ALL READERS -->
   <div class='col-md-4'>
 
-    <table class='table table-bordered table-striped text-center'>
-      <caption>Readers</caption>
+    <table class='table table-bordered table-striped table-condensed text-center'>
+      <caption>Readers <span class="badge">{{ readers.length }}</span></caption>
       <thead>
         <tr>
           <th>ID</th>
           <th>Email</th>
-          <th>Make Curator?</th>
+          <th>Promote?</th>
         </tr>
       </thead>
 
@@ -70,7 +70,7 @@
           <td>{{ reader.id }}</td>
           <td>{{ reader.email }}</td>
           <td>
-            <a class='btn btn-primary' ng-click="promoteReader(reader)">
+            <a class='btn btn-sm btn-primary' ng-click="promoteReader(reader)">
               Promote
             </a>
           </td>
