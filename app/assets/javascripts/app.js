@@ -106,7 +106,7 @@ var evergreen = angular.module('evergreen', ['ui.router', 'restangular'])
       .state('admin.dashboard.collections', {
         url: '/collections',
         templateUrl: '/templates/admin/dashboard/collections.html',
-        controller: function($scope) { console.log("COLLECTIONS") },
+        controller: 'CollectionCtrl',
         resolve: {
           collections: ['Restangular', function(Restangular) {
             return Restangular.all('collections').getList();
@@ -117,7 +117,7 @@ var evergreen = angular.module('evergreen', ['ui.router', 'restangular'])
       .state('admin.dashboard.resources', {
         url: '/resources',
         templateUrl: '/templates/admin/dashboard/resources.html',
-        controller: function($scope) { console.log("RESOURCES") },
+        controller: 'ResourceCtrl',
         resolve: {
           resources: ['Restangular', function(Restangular) {
             return Restangular.all('resources').getList();

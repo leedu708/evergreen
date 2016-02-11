@@ -1,1 +1,29 @@
 <h1 class='page-header'>Collections</h1>
+
+<div class='row'>
+  <div class='col-md-12'>
+
+    <table class='table table-bordered table-striped text-center'>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Collection Name</th>
+          <th>Collection Description</th>
+          <th>Total Resources</th>
+          <th>Synthesis IDs</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr ng-repeat="collection in collections">
+          <td>{{ collection.id }}</td>
+          <td>{{ collection.title }}</td>
+          <td>{{ collection.description }}</td>
+          <td>{{ collection.resources.length }}</td>
+          <td>{{ collection.synthesis }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>

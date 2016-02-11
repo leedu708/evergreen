@@ -1,1 +1,31 @@
 <h1 class='page-header'>Resources</h1>
+
+<div class='row'>
+  <div class='col-md-12'>
+
+    <table class='table table-bordered table-striped text-center'>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Upvotes</th>
+          <th>Resource Title</th>
+          <th>Resource Description</th>
+          <th>Resource Owner</th>
+          <th>Collection</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr ng-repeat="resource in resources" ng-class="{'success': resource.synthesis}">
+          <td>{{ resource.id }}</td>
+          <td>{{ resource.upvotes }}</td>
+          <td>{{ resource.title }}</td>
+          <td>{{ resource.description }}</td>
+          <td>{{ resource.owner.email }}</td>
+          <td>{{ resource.collection.title }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>

@@ -14,7 +14,7 @@ evergreen.factory('resourceService',
         } else if (a.upvotes > b.upvotes) {
           return -1;
         } else {
-          return 0
+          return 0;
         };
       });
     };
@@ -25,6 +25,10 @@ evergreen.factory('resourceService',
         output.push(resourceService.resources[i]);
       };
       return output;
+    };
+
+    resourceService.getResources = function() {
+      return this.resources;
     };
 
     return resourceService;
