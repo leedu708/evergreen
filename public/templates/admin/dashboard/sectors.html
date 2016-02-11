@@ -10,6 +10,7 @@
           <th>Sector Name</th>
           <th>Number of Collections</th>
           <th>Number of Resources</th>
+          <th>Remove Sector?</th>
         </tr>
       </thead>
 
@@ -19,9 +20,27 @@
           <td>{{ sector.title }}</td>
           <td>{{ sector.collections.length }}</td>
           <td>{{ sector.totalResources }}</td>
+          <td><span class='btn btn-danger btn-sm' ng-click='destroySector(sector)'>Delete</span></td>
         </tr>
       </tbody>
     </table>
 
+  </div>
+</div>
+
+<div class='row'>
+  <div class='col-md-12'>
+    <div ng-if="!addSectorForm">
+      <span class='btn btn-primary' ng-click='toggleAddForm()'>Add a new sector</span>
+    </div>
+
+    <div ng-if="addSectorForm">
+      <form class='form-inline'>
+        <div class='form-group'>
+          <input type='text' class='form-control' placeholder='Sector Name...' ng-model='sector.title'>
+        </div>
+        <button type='submit' class='btn btn-primary' ng-click='createSector(sector)'>Add Sector</button>
+      </form>
+    </div>
   </div>
 </div>

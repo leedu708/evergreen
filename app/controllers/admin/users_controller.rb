@@ -1,6 +1,6 @@
 class Admin::UsersController < AdminController
 
-  before_action :require_admin_user
+  before_action :require_admin
 
   def index
 
@@ -33,7 +33,7 @@ class Admin::UsersController < AdminController
     params.require(:user).permit(:user_type)
   end
 
-  def require_admin_user
+  def require_admin
 
     # anon user returns nil
     if current_user

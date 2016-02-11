@@ -24,7 +24,17 @@ evergreen.factory('sectorService',
         sum += collection.resources.length;
       });
       return sum;
-    }
+    };
+
+    sectorService.addSector = function(sector) {
+      sectorService.sectors.push(sector);
+    };
+
+    sectorService.remove = function(removed) {
+      this.sectors = this.sectors.filter( function(sector) {
+        return sector.title !== removed.title
+      });
+    };
 
     sectorService.getSectors = function() {
       return this.sectors;

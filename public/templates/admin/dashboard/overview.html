@@ -78,19 +78,19 @@
 </div>
 
 <!-- Top 3 Resources -->
-<h1 class='page-header'>Top 3 Resources</h1>
+<h3 class='page-header'>Top 3 Resources</h3>
 <div class='row'>
 
   <div class='col-md-4' ng-repeat="resource in topThree">
     <div class='panel panel-default'>
       <div class='panel-heading'>
-        <div class='panel-text-md text-center'>{{ resource.title }}</div>
+        <div class='panel-text-md text-center'><b>{{ resource.title }}</b></div>
       </div>
 
       <div class='panel-body'>
         <div class='row'>
           <div class='col-xs-8'>
-            Description: {{ resource.description }}
+            <b>Description:</b> {{ resource.description }}
           </div>
 
           <div class='col-xs-4 text-right'>
@@ -101,7 +101,7 @@
       </div>
 
       <div class='panel-footer'>
-        <div>Owner: {{ resource.owner.email }}</div>
+        <div><b>Owner:</b> {{ resource.owner.email }}</div>
       </div>
     </div>
   </div>
