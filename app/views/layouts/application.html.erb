@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<%= nav_bar :static => :top, :responsive => :true, :brand => "Evergreen", brand_link: root_url do %>
+<%= nav_bar :fixed => :top, :responsive => :true, :brand => "Evergreen", brand_link: root_url do %>
 
   <%= menu_group do %>
     <li>
@@ -32,7 +32,7 @@
         <ul class="dropdown-menu">
           <% if current_user.user_type == "admin" %>
             <li>
-              <a ui-sref='admin'>Admin Dashboard</a>
+              <a ui-sref='admin.dashboard.users'>Admin Dashboard</a>
             </li>
           <% end %>
           <% if current_user.user_type == "admin" || current_user.user_type == "curator" %>
@@ -76,6 +76,8 @@
   <% end %>
 
 <% end %>
+
+<div class="navbar-spacer"></div>
 
 <%= yield %>
 

@@ -38,15 +38,59 @@ var evergreen = angular.module('evergreen', ['ui.router', 'restangular'])
         templateUrl: '/templates/nav/mission.html'
       })
 
+      // ADMIN DASHBOARD
       .state('admin', {
         url: '/admin',
-        templateUrl: '/templates/admin/dashboard.html',
-        controller: 'AdminCtrl',
-        resolve: {
-          users: ['Restangular', function(Restangular) {
-            return Restangular.all('admin/users').getList();
-          }]
+        views: {
+          '': {
+            templateUrl: '/templates/admin/main.html',
+            controller: 'AdminCtrl',
+            resolve: {
+              users: ['Restangular', function(Restangular) {
+                return Restangular.all('admin/users').getList();
+              }]
+            }
+          }
         }
+      })
+
+      .state('admin.dashboard', {
+        url: '/dashboard',
+        views: {
+          'sidebar': {
+            templateUrl: '/templates/admin/sidebar.html',
+            controller: function($scope) { console.log("SIDEBAR") }
+          },
+
+          'dashboard': {
+            templateUrl: '/templates/admin/dashboard.html',
+            controller: function($scope) { console.log("DASHBOARD") }
+          }
+        }
+      })
+
+      .state('admin.dashboard.users', {
+        url: '/users',
+        templateUrl: '/templates/admin/dashboard/users.html',
+        controller: function($scope) { console.log("USERS") }
+      })
+
+      .state('admin.dashboard.sectors', {
+        url: '/sectors',
+        templateUrl: '/templates/admin/dashboard/sectors.html',
+        controller: function($scope) { console.log("SECTORS") }
+      })
+
+      .state('admin.dashboard.collections', {
+        url: '/collections',
+        templateUrl: '/templates/admin/dashboard/collections.html',
+        controller: function($scope) { console.log("COLLECTIONS") }
+      })
+
+      .state('admin.dashboard.resources', {
+        url: '/resources',
+        templateUrl: '/templates/admin/dashboard/resources.html',
+        controller: function($scope) { console.log("RESOURCES") }
       })
 
   }])

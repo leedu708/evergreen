@@ -55,8 +55,8 @@ end
 puts 'Collections Created'
 
 User.all.each do |user|
-  rand(MULTIPLIER).times do
-    collection_id = rand(Collection.all.length - 1) + 1
+  (rand(MULTIPLIER) + 1).times do
+    collection_id = rand(Collection.all.length) + 1
     user.resources.create(:title => Faker::Lorem.sentence(2, true, 3).chomp('.'),
                           :url => Faker::Internet.url('test.com'),
                           :description => Faker::Lorem.sentence(4, true, 7),

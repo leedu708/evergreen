@@ -1,3 +1,33 @@
+// side bar and dashboard
+.admin-wrapper {
+  padding-left: 150px;
+}
+
+.sidebar-wrapper {
+  margin-left: -150px;
+  left: 150px;
+  width: 150px;
+  background: #000;
+  color: #FFF;
+  position: fixed;
+  height: 100%;
+  overflow-y: auto;
+  z-index: 10;
+}
+
+.dashboard-wrapper {
+  width: 100%;
+}
+
+.sidebar-nav {
+  position: absolute;
+  top: 0;
+  width: 150px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
 // user panel
 table th {
   text-align: center;
