@@ -7,6 +7,7 @@ evergreen.factory('resourceService',
 
     resourceService.setResources = function(resources) {
       resourceService.resources = resources;
+      // sorts resources by upvotes
       resourceService.resources.sort(function(a, b) {
         if (a.upvotes < b.upvotes) {
           return 1;

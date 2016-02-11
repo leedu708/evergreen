@@ -62,7 +62,7 @@ var evergreen = angular.module('evergreen', ['ui.router', 'restangular'])
       })
 
       .state('admin.dashboard.overview', {
-        url: '/users',
+        url: '/overview',
         templateUrl: '/templates/admin/dashboard/overview.html',
         controller: 'OverviewCtrl',
         resolve: {
