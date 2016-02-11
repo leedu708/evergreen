@@ -61,6 +61,26 @@ var evergreen = angular.module('evergreen', ['ui.router', 'restangular'])
         }
       })
 
+      .state('admin.dashboard.overview', {
+        url: '/users',
+        templateUrl: '/templates/admin/dashboard/overview.html',
+        controller: 'OverviewCtrl',
+        resolve: {
+          users: ['Restangular', function(Restangular) {
+            return Restangular.all('admin/users').getList();
+          }],
+          sectors: ['Restangular', function(Restangular) {
+            return Restangular.all('sectors').getList();
+          }],
+          collections: ['Restangular', function(Restangular) {
+            return Restangular.all('collections').getList();
+          }],
+          resources: ['Restangular', function(Restangular) {
+            return Restangular.all('resources').getList();
+          }]
+        }
+      })
+
       .state('admin.dashboard.users', {
         url: '/users',
         templateUrl: '/templates/admin/dashboard/users.html',

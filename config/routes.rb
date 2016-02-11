@@ -8,6 +8,8 @@ Rails.application.routes.draw do
       resources :users, :only => [:index, :update]
     end
     resources :sectors, :only => [:index]
+    resources :collections, :only => [:index]
+    resources :resources, :only => [:index]
   end
 
 end

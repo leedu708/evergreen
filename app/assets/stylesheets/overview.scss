@@ -1,0 +1,28 @@
+.panel-text-lg {
+  font-size: 40px;
+}
+
+.panel-text-md {
+  font-size: 20px;
+}
+
+.panel-green {
+  border-color: #5CB85C;
+  background-color: #5CB85C;
+}
+
+.panel-yellow {
+  border-color: #FFE600;
+  background-color: #FFE600;
+}
+
+.panel-orange {
+  border-color: #F0AD4E;
+  background-color: #F0AD4E;
+}
+
+.panel-green,
+.panel-orange,
+.panel-yellow {
+  color: #FFF;
+}

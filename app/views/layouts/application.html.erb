@@ -32,7 +32,7 @@
         <ul class="dropdown-menu">
           <% if current_user.user_type == "admin" %>
             <li>
-              <a ui-sref='admin.dashboard.users'>Admin Dashboard</a>
+              <a ui-sref='admin.dashboard.overview'>Admin Dashboard</a>
             </li>
           <% end %>
           <% if current_user.user_type == "admin" || current_user.user_type == "curator" %>

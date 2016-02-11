@@ -32,4 +32,4 @@ evergreen.factory('sectorService',
 
     return sectorService;
 
-  }])
+  }]);

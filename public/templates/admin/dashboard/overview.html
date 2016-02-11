@@ -1,0 +1,109 @@
+<h1 class='page-header'>Overview</h1>
+
+<!-- Overview of Totals -->
+<div class='row'>
+
+  <!-- User Count -->
+  <div class='col-md-3'>
+    <div class='panel panel-primary'>
+      <div class='panel-heading'>
+        <div class='row'>
+          <div class='col-xs-3'>
+            <i class='fa fa-users fa-5x'></i>
+          </div>
+
+          <div class='col-xs-9 text-right'>
+            <div class='panel-text-lg'>{{ totalUsers }}</div>
+            <div class='panel-text-md'>Users</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sector Count -->
+  <div class='col-md-3'>
+    <div class='panel panel-green'>
+      <div class='panel-heading'>
+        <div class='row'>
+          <div class='col-xs-3'>
+            <i class='fa fa-book fa-5x'></i>
+          </div>
+
+          <div class='col-xs-9 text-right'>
+            <div class='panel-text-lg'>{{ totalSectors }}</div>
+            <div class='panel-text-md'>Sectors</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Collection Count -->
+  <div class='col-md-3'>
+    <div class='panel panel-yellow'>
+      <div class='panel-heading'>
+        <div class='row'>
+          <div class='col-xs-3'>
+            <i class='fa fa-bookmark fa-5x'></i>
+          </div>
+
+          <div class='col-xs-9 text-right'>
+            <div class='panel-text-lg'>{{ totalCollections }}</div>
+            <div class='panel-text-md'>Collections</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Resource Count -->
+  <div class='col-md-3'>
+    <div class='panel panel-orange'>
+      <div class='panel-heading'>
+        <div class='row'>
+          <div class='col-xs-3'>
+            <i class='fa fa-external-link fa-5x'></i>
+          </div>
+
+          <div class='col-xs-9 text-right'>
+            <div class='panel-text-lg'>{{ totalResources }}</div>
+            <div class='panel-text-md'>Resources</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Top 3 Resources -->
+<h1 class='page-header'>Top 3 Resources</h1>
+<div class='row'>
+
+  <div class='col-md-4' ng-repeat="resource in topThree">
+    <div class='panel panel-default'>
+      <div class='panel-heading'>
+        <div class='panel-text-md text-center'>{{ resource.title }}</div>
+      </div>
+
+      <div class='panel-body'>
+        <div class='row'>
+          <div class='col-xs-8'>
+            Description: {{ resource.description }}
+          </div>
+
+          <div class='col-xs-4 text-right'>
+            <span class='panel-text-lg'>{{ resource.upvotes }}</span>
+            &nbsp;&nbsp;<i class='fa fa-thumbs-o-up fa-2x'></i>
+          </div>
+        </div>
+      </div>
+
+      <div class='panel-footer'>
+        <div>Owner: {{ resource.owner.email }}</div>
+      </div>
+    </div>
+  </div>
+
+</div>
