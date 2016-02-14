@@ -11,27 +11,27 @@
 <%= nav_bar :fixed => :top, :responsive => :true, :brand => "Evergreen", brand_link: root_url do %>
 
   <%= menu_group do %>
-    <li>
-      <a ui-sref-active='active' ui-sref="home">Home</a>
+    <li ui-sref-active='active'>
+      <a ui-sref="home">Home</a>
     </li>
-    <li>
-      <a ui-sref-active='active' ui-sref="about">About</a>
+    <li ui-sref-active='active'>
+      <a ui-sref="about">About</a>
     </li>
-    <li>
-      <a ui-sref-active='active' ui-sref="contact">Contact Us</a>
+    <li ui-sref-active='active'>
+      <a ui-sref="contact">Contact Us</a>
     </li>
-    <li>
-      <a ui-sref-active='active' ui-sref="mission">Mission</a>
+    <li ui-sref-active='active'>
+      <a ui-sref="mission">Mission</a>
     </li>
   <% end %>
 
   <% if current_user %>
     <%= menu_group :pull => :right do %>
       <li class="dropdown">
-        <a class="dropdown-toggle pointer" data-toggle="dropdown">Welcome, <%= "#{current_user.email}" %><b class="caret"></b></a>
+        <a class="dropdown-toggle pointer" data-toggle="dropdown">Welcome, <%= "#{current_user.username}" %><b class="caret"></b></a>
         <ul class="dropdown-menu">
           <% if current_user.user_type == "admin" %>
-            <li>
+            <li ui-sref-active='active'>
               <a ui-sref='admin.dashboard.overview'>Admin Dashboard</a>
             </li>
           <% end %>
