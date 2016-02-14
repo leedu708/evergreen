@@ -1,6 +1,13 @@
 <img src="assets/banner_placeholder.png" class="banner">
 <div class='row'>
-  <div class='col-xs-12'>
-    
+  <div id="all-sector-wrapper" class='col-xs-10 col-xs-offset-1'>
+   <h2>Sectors:</h2>
+   <!-- <pre>{{sectors}}</pre> -->
+   <div class="sector-wrapper col-xs-4" ng-repeat="sector in sectors">
+   	<h3>{{sector.title | uppercase}}</h3>
+   	<ul ng-repeat="collection in sector.collections">
+   		<li><a ui-sref="collection({ collection_id: collection.id })">{{collection.title}}</a></li>
+   	</ul>
+   </div>
   </div>
 </div>

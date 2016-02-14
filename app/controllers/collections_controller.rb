@@ -12,6 +12,13 @@ class CollectionsController < ApplicationController
 
   end
 
+
+  def show
+  	binding.pry
+  	fails
+  end
+
+
   def create
 
     @collection = Collection.new(collection_params)

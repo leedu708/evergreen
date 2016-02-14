@@ -19,8 +19,11 @@ var evergreen = angular.module('evergreen', ['ui.router', 'restangular'])
       .state('home', {
         url: '/home',
         templateUrl: '/templates/nav/home.html',
-        controller: function($scope) {
-          $scope.test = "hello, world!";
+       	controller: 'SectorCtrl',
+       	resolve: {
+          sectors: ['Restangular', function(Restangular) {
+            return Restangular.all('sectors').getList();
+          }]
         }
       })
 
@@ -37,6 +40,20 @@ var evergreen = angular.module('evergreen', ['ui.router', 'restangular'])
       .state('mission', {
         url: '/mission',
         templateUrl: '/templates/nav/mission.html'
+      })
+
+      .state('collection', {
+        url: '/collection/:collection_id',
+        templateUrl: '/templates/nav/collection.html',
+        controller: 'CollectionCtrl',
+        resolve: {
+          collections: ['Restangular', function(Restangular) {
+            return Restangular.all('collections').getList();
+          }],
+          sectors: ['Restangular', function(Restangular) {
+            return Restangular.all('sectors').getList();
+          }]
+        }
       })
 
       // ADMIN DASHBOARD
