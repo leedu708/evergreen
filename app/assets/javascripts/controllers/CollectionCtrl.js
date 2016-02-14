@@ -1,11 +1,15 @@
 evergreen.controller('CollectionCtrl',
-  ['$scope', 'Restangular', 'collections', 'sectors', 'collectionService',
-  function($scope, Restangular, collections, sectors, collectionService) {
+  ['$scope', 'Restangular', 'collections', 'sectors', 'collectionService', '$stateParams',
+  function($scope, Restangular, collections, sectors, collectionService, $stateParams) {
+
+  	// Instantiate thisCollection to be used below
+  	$scope.thisCollection = '';
 
     $scope.init = function() {
       collectionService.setCollections(collections);
       $scope.sectors = sectors;
       $scope.setCollectionVars();
+      $scope.thisCollection();
     };
 
     // admin vars
@@ -20,6 +24,16 @@ evergreen.controller('CollectionCtrl',
         collection["synthesis"] = synIDs.join(", ");
       });
     };
+
+    $scope.thisCollection = function() {
+    	if ($stateParams.collection_id) {
+    		angular.forEach($scope.collections, function(collection) {
+    			if (collection.id == $stateParams.collection_id) {
+    				$scope.thisCollection = collection;
+    			}
+    		});
+    	}
+    }
 
     $scope.createCollection = function(collection) {
       Restangular.all('collections').post(collection)
