@@ -107,3 +107,19 @@
   </div>
 
 </div>
+
+<!-- Top 3 Contributors -->
+<h3 class='page-header'>Top 3 Contributors</h3>
+<div class='row'>
+  <ul>
+    <li ng-repeat='contributor in topContributors'>{{ contributor.username }}: {{ contributor.resources.length }} resources</li>
+  </ul>
+</div>
+
+<!-- Top 3 Prolific -->
+<h3 class='page-header'>Top 3 Most Prolific Contributors</h3>
+<div class='row'>
+  <ul>
+    <li ng-repeat='user in top3Prolific'>{{ user.username }}: {{ user.totalUpvotes }} total upvotes</li>
+  </ul>
+</div>
