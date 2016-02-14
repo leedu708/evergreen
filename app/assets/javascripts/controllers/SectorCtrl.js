@@ -9,7 +9,9 @@ evergreen.controller('SectorCtrl',
 
     $scope.setSectorVars = function() {
       $scope.addSectorForm = false;
+      $scope.editSectorForm = {};
       $scope.sector = {};
+      $scope.editSector = {};
       $scope.sectors = sectorService.getSectors();
       angular.forEach($scope.sectors, function(sector) {
         totalResources = sectorService.getTotalResources(sector);
@@ -20,7 +22,7 @@ evergreen.controller('SectorCtrl',
     $scope.createSector = function(sector) {
       Restangular.all('sectors').post(sector)
         .then( function(response) {
-          sectorService.addSector(response)
+          sectorService.addSector(response);
           $scope.setSectorVars();
         }, function() {
           $scope.setSectorVars();
@@ -34,8 +36,25 @@ evergreen.controller('SectorCtrl',
       });
     };
 
+    $scope.updateSector = function(sector) {
+      Restangular.one('sectors', sector.id).patch( sector )
+        .then(function(response) {
+          sectorService.remove(sector);
+          sectorService.addSector(response);
+          sectorService.sortSectors();
+          $scope.setSectorVars();
+        }, function() {
+          $scope.setSectorVars();
+        });
+    };
+
     $scope.toggleAddForm = function() {
       $scope.addSectorForm = !$scope.addSectorForm;
+    };
+
+    $scope.toggleEditForm = function(sector) {
+      $scope.editSectorForm[sector.id] = true;
+      $scope.editSector = sector;
     };
 
     $scope.init();

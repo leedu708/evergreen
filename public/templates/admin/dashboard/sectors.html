@@ -11,16 +11,32 @@
           <th>Number of Collections</th>
           <th>Number of Resources</th>
           <th>Remove Sector?</th>
+          <th>Edit Sector?</th>
         </tr>
       </thead>
 
       <tbody>
         <tr ng-repeat="sector in sectors">
           <td>{{ sector.id }}</td>
-          <td>{{ sector.title }}</td>
+          <td ng-if='!editSectorForm[sector.id]'>{{ sector.title }}</td>
+
+          <!-- EDIT SECTOR FORM -->
+          <td ng-if='editSectorForm[sector.id]'>
+            <form>
+              <div class='form-group'>
+                <input type='text' class='form-control' placeholder='Sector Name...' ng-model='editSector.title'>
+              </div>
+            </form>
+          </td>
+
           <td>{{ sector.collections.length }}</td>
           <td>{{ sector.totalResources }}</td>
           <td><span class='btn btn-danger btn-sm' ng-click='destroySector(sector)'>Delete</span></td>
+          <td>
+            <span class='btn btn-warning btn-sm' ng-click='toggleEditForm(sector)' ng-if='!editSectorForm[sector.id]'>Edit</span>
+
+            <span class='btn btn-success btn-sm' ng-click='updateSector(editSector)' ng-if='editSectorForm[sector.id]'>Update Sector</span>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -28,6 +44,7 @@
   </div>
 </div>
 
+<!-- ADD SECTOR FORM -->
 <div class='row'>
   <div class='col-md-12'>
     <div ng-if="!addSectorForm">

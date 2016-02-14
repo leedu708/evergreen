@@ -35,6 +35,26 @@ class SectorsController < ApplicationController
 
   end
 
+  def update
+
+    @sector = Sector.find_by_id(params[:id])
+
+    if @sector.update(sector_params)
+      respond_to do |format|
+        format.json { render json: @sector.to_json(
+          :include => [{ :collections => {
+                         :include => { :resources => {
+                         :include => :owner }}
+            }}]), :status => 201 }
+      end
+    else
+      respond_to do |format|
+        format.json { render nothing: true, :status => 422 }
+      end
+    end
+
+  end
+
   def destroy
 
     @sector = Sector.find_by_id(params[:id])
