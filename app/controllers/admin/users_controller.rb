@@ -11,6 +11,15 @@ class Admin::UsersController < AdminController
 
   end
 
+  def show
+
+    @user = User.find_by_id(params[:id])
+    respond_to do |format|
+      format.json { render json: @user.to_json, :status => 200 }
+    end
+
+  end
+
   def update
 
     @user = User.find_by_id(params[:id])
@@ -31,19 +40,6 @@ class Admin::UsersController < AdminController
 
   def user_params
     params.require(:user).permit(:user_type)
-  end
-
-  def require_admin
-
-    # anon user returns nil
-    unless current_user && current_user.user_type == "admin"
-      flash[:danger] = "Unauthorized Access!"
-      respond_to do |format|
-        format.js { render :nothing => :true, :status => 401 }
-        format.html { redirect_to root_path }
-      end
-    end
-
   end
 
 end

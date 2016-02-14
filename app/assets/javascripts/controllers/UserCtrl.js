@@ -3,7 +3,6 @@ evergreen.controller('UserCtrl',
   function($scope, Restangular, users, userService) {
 
     $scope.init = function() {
-      $scope.current_user = users[0];
       userService.setUsers(users);
       $scope.setUsers();
     };

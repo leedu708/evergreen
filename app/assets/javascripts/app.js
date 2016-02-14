@@ -15,6 +15,7 @@ var evergreen = angular.module('evergreen', ['ui.router', 'restangular'])
 
     $stateProvider
 
+      // Reader Flow
       .state('home', {
         url: '/home',
         templateUrl: '/templates/nav/home.html',
@@ -57,6 +58,12 @@ var evergreen = angular.module('evergreen', ['ui.router', 'restangular'])
 
           'dashboard': {
             templateUrl: '/templates/admin/dashboard.html',
+            resolve: {
+              // there may be a better way to do this, but forcing the client to attempt to grab the user index means that rails only allows admins to enter the administrative dashboard
+              users: ['Restangular', function(Restangular) {
+                return Restangular.all('admin/users').getList();
+              }]
+            }
           }
         }
       })
