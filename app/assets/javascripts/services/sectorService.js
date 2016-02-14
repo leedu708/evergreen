@@ -7,15 +7,7 @@ evergreen.factory('sectorService',
 
     sectorService.setSectors = function(sectors) {
       sectorService.sectors = sectors;
-      sectorService.sectors.sort(function(a, b) {
-        if (a.id > b.id) {
-          return 1;
-        } else if (a.id < b.id) {
-          return -1;
-        } else {
-          return 0
-        };
-      });
+      this.sortSectors();
     };
 
     sectorService.getTotalResources = function(sector) {
@@ -33,6 +25,18 @@ evergreen.factory('sectorService',
     sectorService.remove = function(removed) {
       this.sectors = this.sectors.filter( function(sector) {
         return sector.title !== removed.title;
+      });
+    };
+
+    sectorService.sortSectors = function() {
+      sectorService.sectors.sort(function(a, b) {
+        if (a.id > b.id) {
+          return 1;
+        } else if (a.id < b.id) {
+          return -1;
+        } else {
+          return 0;
+        };
       });
     };
 

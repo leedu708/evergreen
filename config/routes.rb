@@ -7,8 +7,8 @@ Rails.application.routes.draw do
     namespace :admin do
       resources :users, :only => [:index, :show, :update]
     end
-    resources :sectors, :only => [:index, :create, :destroy]
-    resources :collections, :only => [:index, :create, :destroy, :update]
+    resources :sectors, :only => [:index, :create, :update, :destroy]
+    resources :collections, :only => [:index, :create, :update, :destroy]
     resources :resources, :only => [:index]
   end
 
