@@ -18,7 +18,7 @@
       <tbody>
         <tr ng-repeat="resource in resources" ng-class="{'success': resource.synthesis}">
           <td>{{ resource.id }}</td>
-          <td>{{ resource.upvotes }}</td>
+          <td>{{ resource.upvotes }} <i class='fa fa-thumbs-o-up fa-1x'></i></td>
           <td>{{ resource.title }}</td>
           <td>{{ resource.description }}</td>
           <td>{{ resource.owner.email }}</td>

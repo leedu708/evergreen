@@ -36,17 +36,7 @@ class Admin::UsersController < AdminController
   def require_admin
 
     # anon user returns nil
-    if current_user
-      # if user is logged in
-      unless current_user.user_type == "admin"
-        flash[:danger] = "Unauthorized Access!"
-        respond_to do |format|
-          format.js { render :nothing => :true, :status => 401 }
-          format.html { redirect_to root_path }
-        end
-      end
-
-    else
+    unless current_user && current_user.user_type == "admin"
       flash[:danger] = "Unauthorized Access!"
       respond_to do |format|
         format.js { render :nothing => :true, :status => 401 }

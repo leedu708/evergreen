@@ -34,6 +34,16 @@ evergreen.factory('collectionService',
       return output;
     };
 
+    collectionService.addCollection = function(collection) {
+      collectionService.collections.push(collection);
+    };
+
+    collectionService.remove = function(removed) {
+      this.collections = this.collections.filter( function(collection) {
+        return collection.title !== removed.title;
+      });
+    };
+
     collectionService.getCollections = function() {
       return this.collections;
     };

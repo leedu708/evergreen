@@ -45,7 +45,7 @@ end
 puts 'Sectors Created'
 
 Sector.all.each do |sector|
-  (rand(MULTIPLIER / 2) + 2).times do
+  (rand(MULTIPLIER / 3) + 2).times do
     sector.collections.create(:title => Faker::Company.buzzword,
                               :description => Faker::Lorem.sentence(3, true, 6),
                               :created_at => rand(Time.now - sector.created_at).seconds.ago)
@@ -55,13 +55,15 @@ end
 puts 'Collections Created'
 
 User.all.each do |user|
-  (rand(MULTIPLIER) + 1).times do
+  (rand(MULTIPLIER) + 2).times do
     collection_id = rand(Collection.all.length) + 1
+    random_synthesis = [true, false, false, false, false, false, false].sample
     user.resources.create(:title => Faker::Lorem.sentence(2, true, 3).chomp('.'),
                           :url => Faker::Internet.url('test.com'),
                           :description => Faker::Lorem.sentence(4, true, 7),
                           :upvotes => rand(49) + 1,
                           :collection_id => collection_id,
+                          :synthesis => random_synthesis,
                           :created_at => rand(Time.now - user.created_at).seconds.ago)
   end
 end

@@ -32,7 +32,7 @@ evergreen.factory('sectorService',
 
     sectorService.remove = function(removed) {
       this.sectors = this.sectors.filter( function(sector) {
-        return sector.title !== removed.title
+        return sector.title !== removed.title;
       });
     };
 
