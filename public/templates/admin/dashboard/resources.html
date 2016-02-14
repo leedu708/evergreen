@@ -6,23 +6,54 @@
     <table class='table table-bordered table-striped text-center'>
       <thead>
         <tr>
-          <th>ID</th>
-          <th>Upvotes</th>
-          <th>Resource Title</th>
-          <th>Resource Description</th>
-          <th>Resource Owner</th>
-          <th>Collection</th>
+          <th class='pointer' ng-click="toggleSort('id')">
+            ID
+            <i ng-class="sortIcon('id')"></i>
+          </th>
+
+          <th class='pointer' ng-click="toggleSort('upvotes')">
+            Upvotes
+            <i ng-class="sortIcon('upvotes')"></i>
+          </th>
+
+          <th class='pointer' ng-click="toggleSort('title')">
+            Resource Title
+            <i ng-class="sortIcon('title')"></i>
+          </th>
+
+          <th>
+            Resource Description
+          </th>
+
+          <th class='pointer' ng-click="toggleSort('owner.username')">
+            Resource Owner
+            <i ng-class="sortIcon('owner.username')"></i>
+          </th>
+
+          <th class='pointer' ng-click="toggleSort('collection.title')">
+            Collection
+            <i ng-class="sortIcon('collection.title')"></i>
+          </th>
+
+          <th>
+            Source
+          </th>
         </tr>
       </thead>
 
       <tbody>
-        <tr ng-repeat="resource in resources" ng-class="{'success': resource.synthesis}">
+        <tr ng-repeat="resource in resources | orderBy:sort:sortDescending" ng-class="{'success': resource.synthesis}">
           <td>{{ resource.id }}</td>
           <td>{{ resource.upvotes }} <i class='fa fa-thumbs-o-up fa-1x'></i></td>
           <td>{{ resource.title }}</td>
           <td>{{ resource.description }}</td>
           <td>{{ resource.owner.username }}</td>
           <td>{{ resource.collection.title }}</td>
+          <td>
+            <a href="{{ resource.url }}">
+              Link
+            </a>
+          </td>
         </tr>
       </tbody>
     </table>

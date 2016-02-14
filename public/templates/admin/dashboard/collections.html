@@ -6,18 +6,33 @@
     <table class='table table-bordered table-striped text-center'>
       <thead>
         <tr>
-          <th>ID</th>
-          <th>Collection Name</th>
+          <th class='pointer' ng-click="toggleSort('id')">
+            ID
+            <i ng-class="sortIcon('id')"></i>
+          </th>
+
+          <th class='pointer' ng-click="toggleSort('title')">
+            Collection Name
+            <i ng-class="sortIcon('title')"></i>
+          </th>
+
           <th>Collection Description</th>
-          <th>Total Resources</th>
+
+          <th class='pointer' ng-click="toggleSort('resources.length')">
+            Total Resources
+            <i ng-class="sortIcon('resources.length')"></i>
+          </th>
+
           <th>Synthesis IDs</th>
+
           <th>Remove Collection?</th>
+
           <th>Edit Collection?</th>
         </tr>
       </thead>
 
       <tbody>
-        <tr ng-repeat="collection in collections">
+        <tr ng-repeat="collection in collections | orderBy:sort:sortDescending">
           <td>{{ collection.id }}</td>
           <td>{{ collection.title }}</td>
           <td>{{ collection.description }}</td>

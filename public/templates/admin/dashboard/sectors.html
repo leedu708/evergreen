@@ -6,17 +6,34 @@
     <table class='table table-bordered table-striped text-center'>
       <thead>
         <tr>
-          <th>ID</th>
-          <th>Sector Name</th>
-          <th>Number of Collections</th>
-          <th>Number of Resources</th>
+          <th class='pointer' ng-click="toggleSort('id')">
+            ID
+            <i ng-class="sortIcon('id')"></i>
+          </th>
+
+          <th class='pointer' ng-click="toggleSort('title')">
+            Sector Name
+            <i ng-class="sortIcon('title')"></i>
+          </th>
+
+          <th class='pointer' ng-click="toggleSort('collections.length')">
+            Number of Collections
+            <i ng-class="sortIcon('collections.length')"></i>
+          </th>
+
+          <th class='pointer' ng-click="toggleSort('totalResources')">
+            Number of Resources
+            <i ng-class="sortIcon('totalResources')"></i>
+          </th>
+
           <th>Remove Sector?</th>
+
           <th>Edit Sector?</th>
         </tr>
       </thead>
 
       <tbody>
-        <tr ng-repeat="sector in sectors">
+        <tr ng-repeat="sector in sectors | orderBy:sort:sortDescending">
           <td>{{ sector.id }}</td>
           <td ng-if='!editSectorForm[sector.id]'>{{ sector.title }}</td>
 

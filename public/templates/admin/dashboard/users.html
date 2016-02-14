@@ -9,13 +9,20 @@
       <caption>Admins <span class="badge">{{ admins.length }}</span></caption>
       <thead>
         <tr>
-          <th>ID</th>
-          <th>Username</th>
+          <th class='pointer' ng-click="toggleSort('id')">
+            ID
+            <i ng-class="sortIcon('id')"></i>
+          </th>
+
+          <th class='pointer' ng-click="toggleSort('username')">
+            Username
+            <i ng-class="sortIcon('username')"></i>
+          </th>
         </tr>
       </thead>
 
       <tbody>
-        <tr ng-repeat="admin in admins">
+        <tr ng-repeat="admin in admins | orderBy:sort:sortDescending">
           <td>{{ admin.id }}</td>
           <td>{{ admin.username }}</td>
         </tr>
@@ -31,14 +38,22 @@
       <caption>Curators <span class="badge">{{ curators.length }}</span></caption>
       <thead>
         <tr>
-          <th>ID</th>
-          <th>Username</th>
+          <th class='pointer' ng-click="toggleSort('id')">
+            ID
+            <i ng-class="sortIcon('id')"></i>
+          </th>
+
+          <th class='pointer' ng-click="toggleSort('username')">
+            Username
+            <i ng-class="sortIcon('username')"></i>
+          </th>
+
           <th>Demote?</th>
         </tr>
       </thead>
 
       <tbody>
-        <tr ng-repeat="curator in curators">
+        <tr ng-repeat="curator in curators | orderBy:sort:sortDescending">
           <td>{{ curator.id }}</td>
           <td>{{ curator.username }}</td>
           <td>
@@ -59,14 +74,22 @@
       <caption>Readers <span class="badge">{{ readers.length }}</span></caption>
       <thead>
         <tr>
-          <th>ID</th>
-          <th>Username</th>
+          <th class='pointer' ng-click="toggleSort('id')">
+            ID
+            <i ng-class="sortIcon('id')"></i>
+          </th>
+
+          <th class='pointer' ng-click="toggleSort('username')">
+            Username
+            <i ng-class="sortIcon('username')"></i>
+          </th>
+
           <th>Promote?</th>
         </tr>
       </thead>
 
       <tbody>
-        <tr ng-repeat="reader in readers">
+        <tr ng-repeat="reader in readers | orderBy:sort:sortDescending">
           <td>{{ reader.id }}</td>
           <td>{{ reader.username }}</td>
           <td>
