@@ -40,6 +40,7 @@
       <form>
         <div class='form-group'>
           <select class='form-control' ng-model='collection.sector_id'>
+            <option value="" disabled selected>Choose a sector...</option>
             <option ng-repeat="sector in sectors" value='{{ sector.id }}'>{{ sector.title }}</option>
           </select>
         </div>
@@ -54,7 +55,7 @@
         </div>
 
         <button type='submit' class='btn btn-primary' ng-click='createCollection(collection)'>Add Collection</button>
-      </form>
+      </form><br />
     </div>
   </div>
 </div>

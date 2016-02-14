@@ -16,6 +16,7 @@ MULTIPLIER = 8
 puts 'Old records destroyed'
 
 User.create(:email => "admin@test.com",
+            :username => "adminTester",
             :password => "password",
             :password_confirmation => "password",
             :user_type => "admin")
@@ -23,6 +24,7 @@ User.create(:email => "admin@test.com",
 puts 'Created test admin [:email => admin@test.com, :password => password]'
 
 User.create(:email => "curator@test.com",
+            :username => "curatorTester",
             :password => "password",
             :password_confirmation => "password",
             :user_type => "curator")
@@ -31,6 +33,7 @@ puts 'Created test curator [:email => curator@test.com, :password => password]'
 
 (2 * MULTIPLIER).times do
   User.create(:email => Faker::Internet.email,
+              :username => Faker::Internet.user_name,
               :password => "password",
               :password_confirmation => "password",
               :user_type => "curator")
@@ -71,6 +74,7 @@ end
 puts 'Resources Created'
 
 User.create(:email => "reader@test.com",
+            :username => "readerTester",
             :password => "password",
             :password_confirmation => "password",
             :user_type => "reader")
@@ -79,6 +83,7 @@ puts 'Created test reader [:email => reader@test.com, :password => password]'
 
 (3 * MULTIPLIER).times do
   User.create(:email => Faker::Internet.email,
+              :username => Faker::Internet.user_name,
               :password => "password",
               :password_confirmation => "password",
               :user_type => "reader")
