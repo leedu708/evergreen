@@ -29,6 +29,23 @@ class CollectionsController < ApplicationController
 
   end
 
+  def update
+
+    @collection = Collection.find_by_id(params[:id])
+
+    if @collection.update(collection_params)
+      respond_to do |format|
+        format.json { render json: @collection.to_json(
+          :include => [{ :resources => {:include => :owner}}]), :status => 200 }
+      end
+    else
+      respond_to do |format|
+        format.json { render nothing: true, :status => 422 }
+      end
+    end
+
+  end
+
   def destroy
 
     @collection = Collection.find_by_id(params[:id])

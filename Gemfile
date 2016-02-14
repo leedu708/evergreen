@@ -41,7 +41,6 @@ gem 'angular_rails_csrf'
 gem 'binding_of_caller'
 gem 'devise'
 gem 'twitter-bootstrap-rails'
-gem 'therubyracer'
 
 
 group :development, :test do

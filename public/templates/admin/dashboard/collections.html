@@ -12,6 +12,7 @@
           <th>Total Resources</th>
           <th>Synthesis IDs</th>
           <th>Remove Collection?</th>
+          <th>Edit Collection?</th>
         </tr>
       </thead>
 
@@ -23,6 +24,7 @@
           <td>{{ collection.resources.length }}</td>
           <td>{{ collection.synthesis }}</td>
           <td><span class='btn btn-danger btn-sm' ng-click='destroyCollection(collection)'>Delete</span></td>
+          <td><span class='btn btn-warning btn-sm' ng-click='toggleEditForm(collection)'>Edit</span></td>
         </tr>
       </tbody>
     </table>
@@ -31,6 +33,7 @@
 </div>
 
 <div class='row'>
+  <!-- ADD COLLECTION FORM -->
   <div class='col-md-4'>
     <div ng-if="!addCollectionForm">
       <span class='btn btn-primary' ng-click='toggleAddForm()'>Add a new collection</span>
@@ -55,6 +58,24 @@
         </div>
 
         <button type='submit' class='btn btn-primary' ng-click='createCollection(collection)'>Add Collection</button>
+      </form><br />
+    </div>
+  </div>
+
+  <!-- EDIT COLLECTION FORM -->
+  <div class='col-md-4 col-md-offset-4'>
+    <div ng-if="editCollectionForm">
+      <form>
+        <div class='form-group'>
+          <input type='text' class='form-control' placeholder='Collection Name...' ng-model='editCollection.title'>
+        </div>
+
+        <div class='form-group'>
+          <textarea class='form-control' placeholder='Collection Description...' rows='3' ng-model='editCollection.description'>
+          </textarea>
+        </div>
+
+        <button type='submit' class='btn btn-primary' ng-click='updateCollection(editCollection)'>Edit Collection</button>
       </form><br />
     </div>
   </div>

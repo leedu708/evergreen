@@ -11,7 +11,9 @@ evergreen.controller('CollectionCtrl',
     // admin vars
     $scope.setCollectionVars = function() {
       $scope.addCollectionForm = false;
+      $scope.editCollectionForm = false;
       $scope.collection = {};
+      $scope.editCollection = {};
       $scope.collections = collectionService.getCollections();
       angular.forEach($scope.collections, function(collection) {
         synIDs = collectionService.getSynthesisIDs(collection);
@@ -37,8 +39,25 @@ evergreen.controller('CollectionCtrl',
       });
     };
 
+    $scope.updateCollection = function(collection) {
+      Restangular.one('collections', collection.id).patch( collection )
+        .then(function(response) {
+          collectionService.remove(collection);
+          collectionService.addCollection(response);
+          collectionService.sortCollections();
+          $scope.setCollectionVars();
+        }, function() {
+          $scope.setCollectionVars();
+        });
+    }
+
     $scope.toggleAddForm = function() {
       $scope.addCollectionForm = !$scope.addCollectionForm;
+    };
+
+    $scope.toggleEditForm = function(collection) {
+      $scope.editCollectionForm = !$scope.editCollectionForm;
+      $scope.editCollection = collection;
     };
 
     $scope.init();
