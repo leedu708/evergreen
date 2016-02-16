@@ -155,6 +155,6 @@ var evergreen = angular.module('evergreen', ['ui.router', 'restangular'])
   }])
 
 evergreen.run(['$rootScope',
-  function($rootScope) {
-    $rootScope.$on('$stateChangeError', console.log.bind(console));
-  }]);
+	function($rootScope) {
+		$rootScope.$on('$stateChangeError', console.log.bind(console));
+	}]);

@@ -40,6 +40,9 @@ gem 'binding_of_caller'
 gem 'devise'
 gem 'twitter-bootstrap-rails'
 
+# Want this on Prod to show the way it works
+gem 'faker'
+
 # gem 'therubyracer'
 
 
@@ -59,7 +62,6 @@ group :development do
   gem 'better_errors'
   gem 'guard-rspec', require: false
   gem 'web-console', '~> 2.0'
-  gem 'faker'
 end
 
 group :production do
