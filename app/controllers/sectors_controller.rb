@@ -1,6 +1,6 @@
 class SectorsController < ApplicationController
 
-  before_action :require_admin, :only => [:create, :destroy]
+  before_action :require_admin, :only => [:create, :update, :destroy]
 
   def index
 
@@ -27,7 +27,7 @@ class SectorsController < ApplicationController
                           :include => { :collections => {
                           :include => { :resources => {
                           :include => :owner }}
-            }}}}]), :status => 200 }
+            }}}}]), :status => 201 }
       end
     else
       respond_to do |format|

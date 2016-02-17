@@ -8,7 +8,7 @@ Rails.application.routes.draw do
       resources :users, :only => [:index, :show, :update]
     end
     resources :sectors, :only => [:index, :create, :update, :destroy]
-    resources :categories, :only => [:index]
+    resources :categories, :only => [:index, :create, :update, :destroy]
     resources :collections, :only => [:index, :create, :update, :destroy]
     resources :resources, :only => [:index]
   end

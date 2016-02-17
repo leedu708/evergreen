@@ -18,6 +18,16 @@ evergreen.factory('categoryService',
       return sum;
     };
 
+    categoryService.addCategory = function(category) {
+      categoryService.categories.push(category);
+    };
+
+    categoryService.remove = function(removed) {
+      this.categories = this.categories.filter( function(category) {
+        return category.id !== removed.id;
+      });
+    };
+
     categoryService.sortCategories = function() {
       categoryService.categories.sort(function(a, b) {
         if (a.id > b.id) {

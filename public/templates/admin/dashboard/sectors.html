@@ -54,7 +54,11 @@
           <td>{{ sector.categories.length }}</td>
           <td>{{ sector.totalCollections }}</td>
           <td>{{ sector.totalResources }}</td>
-          <td><span class='btn btn-danger btn-sm' ng-click='destroySector(sector)'>Delete</span></td>
+          <td>
+            <span class='btn btn-danger btn-sm' ng-click='destroySector(sector)'>
+              Delete
+            </span>
+          </td>
           <td>
             <span class='btn btn-warning btn-sm' ng-click='toggleEditForm(sector)' ng-if='!editSectorForm[sector.id]'>Edit</span>
 
@@ -71,7 +75,9 @@
 <div class='row'>
   <div class='col-md-12'>
     <div ng-if="!addSectorForm">
-      <span class='btn btn-primary' ng-click='toggleAddForm()'>Add a new sector</span>
+      <span class='btn btn-primary' ng-click='toggleAddForm()'>
+        Add a new sector
+      </span>
     </div>
 
     <div ng-if="addSectorForm">
@@ -79,7 +85,7 @@
         <div class='form-group'>
           <input type='text' class='form-control' placeholder='Sector Name...' ng-model='sector.title'>
         </div>
-        <button type='submit' class='btn btn-primary' ng-click='createSector(sector)'>Add Sector</button>
+        <button type='submit' class='btn btn-success' ng-click='createSector(sector)'>Add Sector</button>
       </form>
     </div>
   </div>

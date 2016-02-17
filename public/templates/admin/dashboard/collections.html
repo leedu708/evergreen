@@ -38,8 +38,17 @@
           <td>{{ collection.description }}</td>
           <td>{{ collection.resources.length }}</td>
           <td>{{ collection.synthesis }}</td>
-          <td><span class='btn btn-danger btn-sm' ng-click='destroyCollection(collection)'>Delete</span></td>
-          <td><span class='btn btn-warning btn-sm' ng-click='toggleEditForm(collection)'>Edit</span></td>
+          <td>
+            <span class='btn btn-danger btn-sm' ng-click='destroyCollection(collection)'>
+              Delete
+            </span>
+          </td>
+
+          <td>
+            <span class='btn btn-warning btn-sm' ng-click='toggleEditForm(collection)'>
+              Edit
+            </span>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -72,7 +81,7 @@
           </textarea>
         </div>
 
-        <button type='submit' class='btn btn-primary' ng-click='createCollection(collection)'>Add Collection</button>
+        <button type='submit' class='btn btn-success' ng-click='createCollection(collection)'>Add Collection</button>
       </form><br />
     </div>
   </div>
@@ -95,7 +104,7 @@
           </textarea>
         </div>
 
-        <button type='submit' class='btn btn-primary' ng-click='updateCollection(editCollection)'>Edit Collection</button>
+        <button type='submit' class='btn btn-success' ng-click='updateCollection(editCollection)'>Edit Collection</button>
       </form><br />
     </div>
   </div>

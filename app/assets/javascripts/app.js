@@ -137,6 +137,9 @@ var evergreen = angular.module('evergreen', ['ui.router', 'restangular'])
         resolve: {
           categories: ['Restangular', function(Restangular) {
             return Restangular.all('categories').getList();
+          }],
+          sectors: ['Restangular', function(Restangular) {
+            return Restangular.all('sectors').getList();
           }]
         }
       })
