@@ -14,8 +14,9 @@ evergreen.controller('SectorCtrl',
       $scope.editSector = {};
       $scope.sectors = sectorService.getSectors();
       angular.forEach($scope.sectors, function(sector) {
-        totalResources = sectorService.getTotalResources(sector);
-        sector["totalResources"] = totalResources;
+        totalVars = sectorService.getTotalVars(sector);
+        sector["totalCollections"] = totalVars[0];
+        sector["totalResources"] = totalVars[1];
       });
     };
 

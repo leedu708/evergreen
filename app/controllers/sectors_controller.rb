@@ -7,10 +7,11 @@ class SectorsController < ApplicationController
     @sectors = Sector.all
     respond_to do |format|
       format.json { render json: @sectors.to_json(
-        :include => [{ :collections => {
-                       :include => { :resources => {
-                       :include => :owner }}
-          }}]), :status => 200 }
+        :include => [ { :categories => {
+                        :include => { :collections => {
+                        :include => { :resources => {
+                        :include => :owner }}
+          }}}}]), :status => 200 }
     end
 
   end
@@ -22,10 +23,11 @@ class SectorsController < ApplicationController
     if @sector.save
       respond_to do |format|
         format.json { render json: @sector.to_json(
-          :include => [{ :collections => {
-                         :include => { :resources => {
-                         :include => :owner }}
-            }}]), :status => 201 }
+          :include => [ { :categories => {
+                          :include => { :collections => {
+                          :include => { :resources => {
+                          :include => :owner }}
+            }}}}]), :status => 200 }
       end
     else
       respond_to do |format|
@@ -42,10 +44,11 @@ class SectorsController < ApplicationController
     if @sector.update(sector_params)
       respond_to do |format|
         format.json { render json: @sector.to_json(
-          :include => [{ :collections => {
-                         :include => { :resources => {
-                         :include => :owner }}
-            }}]), :status => 201 }
+          :include => [ { :categories => {
+                          :include => { :collections => {
+                          :include => { :resources => {
+                          :include => :owner }}
+            }}}}]), :status => 200 }
       end
     else
       respond_to do |format|

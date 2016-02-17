@@ -1,6 +1,6 @@
 evergreen.controller('OverviewCtrl',
-  ['$scope', 'Restangular', 'users', 'sectors', 'collections', 'resources', 'resourceService', 'userService',
-  function($scope, Restangular, users, sectors, collections, resources, resourceService, userService) {
+  ['$scope', 'Restangular', 'users', 'sectors', 'categories', 'collections', 'resources', 'resourceService', 'userService',
+  function($scope, Restangular, users, sectors, categories, collections, resources, resourceService, userService) {
 
     $scope.init = function() {
       userService.setUsers(users);
@@ -11,6 +11,7 @@ evergreen.controller('OverviewCtrl',
     $scope.setOverviewVars = function() {
       $scope.totalUsers = users.length;
       $scope.totalSectors = sectors.length;
+      $scope.totalCategories = categories.length;
       $scope.totalCollections = collections.length;
       $scope.totalResources = resources.length;
       $scope.topThree = resourceService.getTopResources(3);

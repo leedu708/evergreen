@@ -6,6 +6,11 @@
   font-size: 20px;
 }
 
+.panel-red{
+  border-color: #FF1919;
+  background-color: #FF1919;
+}
+
 .panel-green {
   border-color: #5CB85C;
   background-color: #5CB85C;
@@ -17,12 +22,13 @@
 }
 
 .panel-orange {
-  border-color: #F0AD4E;
-  background-color: #F0AD4E;
+  border-color: #FFA500;
+  background-color: #FFA500;
 }
 
 .panel-green,
 .panel-orange,
-.panel-yellow {
+.panel-yellow,
+.panel-red {
   color: #FFF;
 }

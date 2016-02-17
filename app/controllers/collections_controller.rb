@@ -7,7 +7,7 @@ class CollectionsController < ApplicationController
     @collections = Collection.all
     respond_to do |format|
       format.json { render json: @collections.to_json(
-        :include => [{ :resources => {:include => :owner}}]), :status => 200 }
+        :include => [ { :resources => { :include => :owner }}]), :status => 200 }
     end
 
   end
@@ -25,7 +25,24 @@ class CollectionsController < ApplicationController
     if @collection.save
       respond_to do |format|
         format.json { render json: @collection.to_json(
-          :include => [{ :resources => {:include => :owner}}]), :status => 200 }
+          :include => [ { :resources => { :include => :owner }}]), :status => 200 }
+      end
+    else
+      respond_to do |format|
+        format.json { render nothing: true, :status => 422 }
+      end
+    end
+
+  end
+
+  def update
+
+    @collection = Collection.find_by_id(params[:id])
+
+    if @collection.update(collection_params)
+      respond_to do |format|
+        format.json { render json: @collection.to_json(
+          :include => [ { :resources => { :include => :owner }}]), :status => 200 }
       end
     else
       respond_to do |format|
@@ -54,7 +71,7 @@ class CollectionsController < ApplicationController
   private
 
   def collection_params
-    params.require(:collection).permit(:title, :description, :sector_id)
+    params.require(:collection).permit(:title, :description, :category_id)
   end
 
 end

@@ -1,13 +1,13 @@
 evergreen.controller('CollectionCtrl',
-  ['$scope', 'Restangular', 'collections', 'sectors', 'collectionService', '$stateParams',
-  function($scope, Restangular, collections, sectors, collectionService, $stateParams) {
+  ['$scope', 'Restangular', 'collections', 'categories', 'collectionService', '$stateParams',
+  function($scope, Restangular, collections, categories, collectionService, $stateParams) {
 
   	// Instantiate thisCollection to be used below
   	$scope.thisCollection = '';
 
     $scope.init = function() {
       collectionService.setCollections(collections);
-      $scope.sectors = sectors;
+      $scope.categories = categories;
       $scope.setCollectionVars();
       $scope.thisCollection();
     };
@@ -63,7 +63,7 @@ evergreen.controller('CollectionCtrl',
         }, function() {
           $scope.setCollectionVars();
         });
-    }
+    };
 
     $scope.toggleAddForm = function() {
       $scope.addCollectionForm = !$scope.addCollectionForm;

@@ -4,7 +4,7 @@
 <div class='row'>
 
   <!-- User Count -->
-  <div class='col-md-3'>
+  <div class='col-md-12'>
     <div class='panel panel-primary'>
       <div class='panel-heading'>
         <div class='row'>
@@ -21,6 +21,9 @@
     </div>
   </div>
 
+</div>
+
+<div class='row'>
   <!-- Sector Count -->
   <div class='col-md-3'>
     <div class='panel panel-green'>
@@ -39,9 +42,27 @@
     </div>
   </div>
 
+  <!-- Category Count -->
+  <div class='col-md-3'>
+    <div class='panel panel-red'>
+      <div class='panel-heading'>
+        <div class='row'>
+          <div class='col-xs-3'>
+            <i class='fa fa-archive fa-5x'></i>
+          </div>
+
+          <div class='col-xs-9 text-right'>
+            <div class='panel-text-lg'>{{ totalCategories }}</div>
+            <div class='panel-text-md'>Categories</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Collection Count -->
   <div class='col-md-3'>
-    <div class='panel panel-yellow'>
+    <div class='panel panel-orange'>
       <div class='panel-heading'>
         <div class='row'>
           <div class='col-xs-3'>
@@ -59,7 +80,7 @@
 
   <!-- Resource Count -->
   <div class='col-md-3'>
-    <div class='panel panel-orange'>
+    <div class='panel panel-yellow'>
       <div class='panel-heading'>
         <div class='row'>
           <div class='col-xs-3'>
@@ -111,15 +132,15 @@
 <!-- Top 3 Contributors -->
 <h3 class='page-header'>Top 3 Contributors</h3>
 <div class='row'>
-  <ul>
-    <li ng-repeat='contributor in topContributors'>{{ contributor.username }}: {{ contributor.resources.length }} resources</li>
+  <ul class='list-group'>
+    <li class='list-group-item' ng-repeat='contributor in topContributors'>{{ contributor.username }}: {{ contributor.resources.length }} resources</li>
   </ul>
 </div>
 
 <!-- Top 3 Prolific -->
 <h3 class='page-header'>Top 3 Most Prolific Contributors</h3>
 <div class='row'>
-  <ul>
-    <li ng-repeat='user in top3Prolific'>{{ user.username }}: {{ user.totalUpvotes }} total upvotes</li>
+  <ul class='list-group'>
+    <li class='list-group-item' ng-repeat='user in top3Prolific'>{{ user.username }}: {{ user.totalUpvotes }} total upvotes</li>
   </ul>
 </div>

@@ -10,12 +10,16 @@ evergreen.factory('sectorService',
       this.sortSectors();
     };
 
-    sectorService.getTotalResources = function(sector) {
-      var sum = 0;
-      angular.forEach(sector.collections, function(collection) {
-        sum += collection.resources.length;
+    sectorService.getTotalVars = function(sector) {
+      var resourceSum = 0;
+      var collectionSum = 0;
+      angular.forEach(sector.categories, function(category) {
+        collectionSum += category.collections.length;
+        angular.forEach(category.collections, function(collection) {
+          resourceSum += collection.resources.length;
+        });
       });
-      return sum;
+      return [collectionSum,resourceSum];
     };
 
     sectorService.addSector = function(sector) {
@@ -24,7 +28,7 @@ evergreen.factory('sectorService',
 
     sectorService.remove = function(removed) {
       this.sectors = this.sectors.filter( function(sector) {
-        return sector.title !== removed.title;
+        return sector.id !== removed.id;
       });
     };
 

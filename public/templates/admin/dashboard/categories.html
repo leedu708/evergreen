@@ -1,0 +1,48 @@
+<h1 class='page-header'>Categories</h1>
+
+<div class='row'>
+  <div class='col-md-12'>
+
+    <table class='table table-bordered table-striped text-center'>
+      <thead>
+        <tr>
+          <th class='pointer' ng-click="toggleSort('id')">
+            ID
+            <i ng-class="sortIcon('id')"></i>
+          </th>
+
+          <th class='pointer' ng-click="toggleSort('title')">
+            Category Title
+            <i ng-class="sortIcon('title')"></i>
+          </th>
+
+          <th class='pointer' ng-click="toggleSort('collections.length')">
+            Number of Collections
+            <i ng-class="sortIcon('collections.length')"></i>
+          </th>
+
+          <th class='pointer' ng-click="toggleSort('totalResources')">
+            Number of Resources
+            <i ng-class="sortIcon('totalResources')"></i>
+          </th>
+
+          <th>Remove Category?</th>
+
+          <th>Edit Category?</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr ng-repeat="category in categories | orderBy:sort:sortDescending">
+          <td>{{ category.id }}</td>
+          <td>{{ category.title }}</td>
+          <td>{{ category.collections.length }}</td>
+          <td>{{ category.totalResources }}</td>
+          <td>Delete</td>
+          <td>Edit</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>

@@ -8,6 +8,7 @@
 
 User.delete_all
 Sector.delete_all
+Category.delete_all
 Collection.delete_all
 Resource.delete_all
 
@@ -49,9 +50,17 @@ puts 'Sectors Created'
 
 Sector.all.each do |sector|
   (rand(MULTIPLIER / 3) + 2).times do
-    sector.collections.create(:title => Faker::Company.buzzword,
-                              :description => Faker::Lorem.sentence(3, true, 6),
-                              :created_at => rand(Time.now - sector.created_at).seconds.ago)
+    sector.categories.create(:title => Faker::Company.buzzword)
+  end
+end
+
+puts 'Categories Created'
+
+Category.all.each do |category|
+  (rand(MULTIPLIER / 3) + 2).times do
+    category.collections.create(:title => Faker::Company.buzzword,
+                                :description => Faker::Lorem.sentence(3, true, 6),
+                                :created_at => rand(Time.now - category.created_at).seconds.ago)
   end
 end
 

@@ -96,6 +96,9 @@ var evergreen = angular.module('evergreen', ['ui.router', 'restangular'])
           sectors: ['Restangular', function(Restangular) {
             return Restangular.all('sectors').getList();
           }],
+          categories: ['Restangular', function(Restangular) {
+            return Restangular.all('categories').getList();
+          }],
           collections: ['Restangular', function(Restangular) {
             return Restangular.all('collections').getList();
           }],
@@ -127,6 +130,17 @@ var evergreen = angular.module('evergreen', ['ui.router', 'restangular'])
         }
       })
 
+      .state('admin.dashboard.categories', {
+        url: '/categories',
+        templateUrl: '/templates/admin/dashboard/categories.html',
+        controller: 'CategoryCtrl',
+        resolve: {
+          categories: ['Restangular', function(Restangular) {
+            return Restangular.all('categories').getList();
+          }]
+        }
+      })
+
       .state('admin.dashboard.collections', {
         url: '/collections',
         templateUrl: '/templates/admin/dashboard/collections.html',
@@ -135,8 +149,8 @@ var evergreen = angular.module('evergreen', ['ui.router', 'restangular'])
           collections: ['Restangular', function(Restangular) {
             return Restangular.all('collections').getList();
           }],
-          sectors: ['Restangular', function(Restangular) {
-            return Restangular.all('sectors').getList();
+          categories: ['Restangular', function(Restangular) {
+            return Restangular.all('categories').getList();
           }]
         }
       })
