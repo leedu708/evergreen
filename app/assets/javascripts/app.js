@@ -59,7 +59,23 @@ var evergreen = angular.module('evergreen', ['ui.router', 'restangular'])
       .state('addResource', {
         url: '/resource/create',
         templateUrl: '/templates/resources/create.html',
-        controller: 'addResourceCtrl'
+        controller: 'addResourceCtrl',
+        resolve: {
+          // grabs current_user and checks if user type is an admin or curator
+          // locks user out if not admin/curator
+          current_user: ['Restangular', '$q', function(Restangular, $q) {
+            return Restangular.one('users').get()
+              .then( function(response) {
+                if (response.user_type === "reader") {
+                  return $q.reject("Not Authorized");
+                };
+                return response;
+              });
+          }],
+          collections: ['Restangular', function(Restangular) {
+            return Restangular.all('collections').getList();
+          }]
+        }
       })
 
       // ADMIN DASHBOARD
@@ -84,10 +100,9 @@ var evergreen = angular.module('evergreen', ['ui.router', 'restangular'])
             resolve: {
               // grabs current_user and checks if user type is an admin
               // if user isn't an admin, he/she is locked out of the dashboard
-              user: ['Restangular', '$q', function(Restangular, $q) {
+              current_user: ['Restangular', '$q', function(Restangular, $q) {
                 return Restangular.one('users').get()
                   .then( function(response) {
-                    console.log(response);
                     if (response.user_type !== "admin") {
                       return $q.reject("Not Authorized");
                     };

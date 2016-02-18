@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resources :sectors, :only => [:index, :create, :update, :destroy]
     resources :categories, :only => [:index, :create, :update, :destroy]
     resources :collections, :only => [:index, :create, :update, :destroy]
-    resources :resources, :only => [:index]
+    resources :resources, :only => [:index, :create]
   end
 
 end

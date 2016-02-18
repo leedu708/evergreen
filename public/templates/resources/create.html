@@ -9,30 +9,33 @@
           <form>
             <div class='form-group'>
               <label for='collection_id'>Collection</label>
-              <select class='form-control' id='collection_id' ng-model>
+              <select class='form-control' id='collection_id' ng-model="addResource.collection_id">
+                <option ng-repeat="collection in collections" value="{{ collection.id }}">{{ collection.title }}</option>
               </select>
             </div>
 
             <div class='form-group'>
               <label for='title'>Resource Name</label>
-              <input type='text' class='form-control' id='title' ng-model>
+              <input type='text' class='form-control' id='title' ng-model="addResource.title">
             </div>
 
             <div class='form-group'>
               <label for='description'>Resource Description</label>
-              <textarea class='form-control' id='description' rows='3' ng-model></textarea>
+              <textarea class='form-control' id='description' rows='3' ng-model="addResource.description"></textarea>
             </div>
 
             <div class='form-group'>
               <label for='url'>Resource Url</label>
-              <input type='text' class='form-control' id='url' ng-model>
+              <input type='text' class='form-control' id='url' ng-model="addResource.url">
             </div>
 
-            <div class='form-group'>
+<!--             <div class='form-group'>
               <label for='media_type'>Media Type</label>
               <select class='form-control' id='media_type' ng-model>
               </select>
-            </div>
+            </div> -->
+
+            <button type='submit' class='btn btn-success' ng-click='createResource(addResource)'>Add Resource</button>
           </form>
         </div>
       </div>
