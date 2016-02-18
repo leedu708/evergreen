@@ -56,6 +56,12 @@ var evergreen = angular.module('evergreen', ['ui.router', 'restangular'])
         }
       })
 
+      .state('addResource', {
+        url: '/resource/create',
+        templateUrl: '/templates/resources/create.html',
+        controller: 'addResourceCtrl'
+      })
+
       // ADMIN DASHBOARD
       .state('admin', {
         url: '/admin',
@@ -76,9 +82,16 @@ var evergreen = angular.module('evergreen', ['ui.router', 'restangular'])
           'dashboard': {
             templateUrl: '/templates/admin/dashboard.html',
             resolve: {
-              // there may be a better way to do this, but forcing the client to attempt to grab the user index means that rails only allows admins to enter the administrative dashboard
-              users: ['Restangular', function(Restangular) {
-                return Restangular.all('admin/users').getList();
+              // grabs current_user and checks if user type is an admin
+              // if user isn't an admin, he/she is locked out of the dashboard
+              user: ['Restangular', '$q', function(Restangular, $q) {
+                return Restangular.one('users').get()
+                  .then( function(response) {
+                    console.log(response);
+                    if (response.user_type !== "admin") {
+                      return $q.reject("Not Authorized");
+                    };
+                  });
               }]
             }
           }
