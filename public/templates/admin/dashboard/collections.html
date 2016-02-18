@@ -66,22 +66,22 @@
     <div ng-if="addCollectionForm">
       <form>
         <div class='form-group'>
-          <select class='form-control' ng-model='collection.category_id'>
+          <select class='form-control' ng-model='addCollection.category_id'>
             <option value="" disabled selected>Choose a category...</option>
             <option ng-repeat="category in categories" value='{{ category.id }}'>{{ category.title }}</option>
           </select>
         </div>
 
         <div class='form-group'>
-          <input type='text' class='form-control' placeholder='Collection Name...' ng-model='collection.title'>
+          <input type='text' class='form-control' placeholder='Collection Name...' ng-model='addCollection.title'>
         </div>
 
         <div class='form-group'>
-          <textarea class='form-control' placeholder='Collection Description...' rows='3' ng-model='collection.description'>
+          <textarea class='form-control' placeholder='Collection Description...' rows='3' ng-model='addCollection.description'>
           </textarea>
         </div>
 
-        <button type='submit' class='btn btn-success' ng-click='createCollection(collection)'>Add Collection</button>
+        <button type='submit' class='btn btn-success' ng-click='createCollection(addCollection)'>Add Collection</button>
       </form><br />
     </div>
   </div>

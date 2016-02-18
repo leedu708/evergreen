@@ -11,13 +11,10 @@ evergreen.controller('CategoryCtrl',
     $scope.setCategoryVars = function() {
       $scope.addCategoryForm = false;
       $scope.editCategoryForm = false;
-      $scope.category = {};
+      $scope.addCategory = {};
       $scope.editCategory = {};
       $scope.categories = categoryService.getCategories();
-      angular.forEach($scope.categories, function(category) {
-        totalResources = categoryService.getTotalResources(category);
-        category["totalResources"] = totalResources;
-      });
+      $scope.setTotals();
     };
 
     $scope.createCategory = function(category) {
@@ -47,6 +44,13 @@ evergreen.controller('CategoryCtrl',
         }, function() {
           $scope.setCategoryVars();
         });
+    };
+
+    $scope.setTotals = function() {
+      angular.forEach($scope.categories, function(category) {
+        totalResources = categoryService.getTotalResources(category);
+        category["totalResources"] = totalResources;
+      });
     };
 
     $scope.toggleAddForm = function() {

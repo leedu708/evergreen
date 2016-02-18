@@ -67,17 +67,17 @@
     <div ng-if="addCategoryForm">
       <form class='form-inline'>
         <div class='form-group'>
-          <select class='form-control' ng-model='category.sector_id'>
+          <select class='form-control' ng-model='addCategory.sector_id'>
             <option value="" disabled selected>Choose a sector...</option>
             <option ng-repeat="sector in sectors" value='{{ sector.id }}'>{{ sector.title }}</option>
           </select>
         </div>
 
         <div class='form-group'>
-          <input type='text' class='form-control' placeholder='Category Name...' ng-model='category.title'>
+          <input type='text' class='form-control' placeholder='Category Name...' ng-model='addCategory.title'>
         </div>
 
-        <button type='submit' class='btn btn-success' ng-click='createCategory(category)'>Add Category</button>
+        <button type='submit' class='btn btn-success' ng-click='createCategory(addCategory)'>Add Category</button>
       </form>
     </div>
   </div>
