@@ -16,13 +16,10 @@ evergreen.controller('CollectionCtrl',
     $scope.setCollectionVars = function() {
       $scope.addCollectionForm = false;
       $scope.editCollectionForm = false;
-      $scope.collection = {};
+      $scope.addCollection = {};
       $scope.editCollection = {};
       $scope.collections = collectionService.getCollections();
-      angular.forEach($scope.collections, function(collection) {
-        synIDs = collectionService.getSynthesisIDs(collection);
-        collection["synthesis"] = synIDs.join(", ");
-      });
+      $scope.setSynthesis();
     };
 
     $scope.thisCollection = function() {
@@ -63,6 +60,13 @@ evergreen.controller('CollectionCtrl',
         }, function() {
           $scope.setCollectionVars();
         });
+    };
+
+    $scope.setSynthesis = function() {
+      angular.forEach($scope.collections, function(collection) {
+        synIDs = collectionService.getSynthesisIDs(collection);
+        collection["synthesis"] = synIDs.join(", ");
+      });
     };
 
     $scope.toggleAddForm = function() {

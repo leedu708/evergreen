@@ -56,6 +56,28 @@ var evergreen = angular.module('evergreen', ['ui.router', 'restangular'])
         }
       })
 
+      .state('addResource', {
+        url: '/resource/create',
+        templateUrl: '/templates/resources/create.html',
+        controller: 'addResourceCtrl',
+        resolve: {
+          // grabs current_user and checks if user type is an admin or curator
+          // locks user out if not admin/curator
+          current_user: ['Restangular', '$q', function(Restangular, $q) {
+            return Restangular.one('users').get()
+              .then( function(response) {
+                if (response.user_type === "reader") {
+                  return $q.reject("Not Authorized");
+                };
+                return response;
+              });
+          }],
+          collections: ['Restangular', function(Restangular) {
+            return Restangular.all('collections').getList();
+          }]
+        }
+      })
+
       // ADMIN DASHBOARD
       .state('admin', {
         url: '/admin',
@@ -76,9 +98,15 @@ var evergreen = angular.module('evergreen', ['ui.router', 'restangular'])
           'dashboard': {
             templateUrl: '/templates/admin/dashboard.html',
             resolve: {
-              // there may be a better way to do this, but forcing the client to attempt to grab the user index means that rails only allows admins to enter the administrative dashboard
-              users: ['Restangular', function(Restangular) {
-                return Restangular.all('admin/users').getList();
+              // grabs current_user and checks if user type is an admin
+              // if user isn't an admin, he/she is locked out of the dashboard
+              current_user: ['Restangular', '$q', function(Restangular, $q) {
+                return Restangular.one('users').get()
+                  .then( function(response) {
+                    if (response.user_type !== "admin") {
+                      return $q.reject("Not Authorized");
+                    };
+                  });
               }]
             }
           }
@@ -95,12 +123,6 @@ var evergreen = angular.module('evergreen', ['ui.router', 'restangular'])
           }],
           sectors: ['Restangular', function(Restangular) {
             return Restangular.all('sectors').getList();
-          }],
-          categories: ['Restangular', function(Restangular) {
-            return Restangular.all('categories').getList();
-          }],
-          collections: ['Restangular', function(Restangular) {
-            return Restangular.all('collections').getList();
           }],
           resources: ['Restangular', function(Restangular) {
             return Restangular.all('resources').getList();

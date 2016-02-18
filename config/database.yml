@@ -82,5 +82,5 @@ production:
   <<: *default
   adapter: postgresql
   database: evergreen_production
-  username: evergreen
+  username: dustin
   password: <%= ENV['EVERGREEN_DATABASE_PASSWORD'] %>

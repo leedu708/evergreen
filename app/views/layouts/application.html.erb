@@ -36,8 +36,8 @@
             </li>
           <% end %>
           <% if current_user.user_type == "admin" || current_user.user_type == "curator" %>
-            <li>
-              <a>Add Resource</a>
+            <li ui-sref-active='active'>
+              <a ui-sref="addResource">Add Resource</a>
             </li>
           <% end %>
           <%= menu_item "Edit Information", edit_user_registration_path %>
