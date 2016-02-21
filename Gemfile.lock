@@ -53,6 +53,10 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    angular-rails-templates (1.0.0)
+      railties (>= 4.2, < 6)
+      sprockets (~> 3.0)
+      tilt
     angular_rails_csrf (1.0.4)
       rails (>= 3, < 5)
     angularjs-rails (1.4.8)
@@ -293,6 +297,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  angular-rails-templates
   angular_rails_csrf
   angularjs-rails
   better_errors

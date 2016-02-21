@@ -35,6 +35,7 @@ gem "figaro"
 # Angular gems
 gem 'angularjs-rails'
 gem 'angular_rails_csrf'
+gem 'angular-rails-templates'
 
 gem 'binding_of_caller'
 gem 'devise'
