@@ -56,7 +56,7 @@
                 <td>{{ resource.owner.username }}</td>
                 <td>{{ resource.collection.title }}</td>
                 <td>
-                  <span class='btn btn-danger btn-sm' ng-click='destroyResource(resource)'>
+                  <span class='btn btn-danger btn-sm' ng-click='destroyResource(resource, resource.owner.id)'>
                     Delete
                   </span>
                 </td>
