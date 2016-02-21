@@ -7,6 +7,17 @@ evergreen.controller('ResourceCtrl',
       $scope.setResourceVars();
     };
 
+    $scope.setResourceVars = function() {
+      $scope.resources = resourceService.getResources();
+    };
+
+    $scope.destroyResource = function(resource) {
+      resource.remove().then( function() {
+        resourceService.remove(resource);
+        $scope.setResourceVars();
+      });
+    };
+
     $scope.toggleSort = function(column) {
       if (column === $scope.sort) {
         $scope.sortDescending ^= true;
@@ -22,10 +33,6 @@ evergreen.controller('ResourceCtrl',
           ? 'fa fa-chevron-up fa-1x'
           : 'fa fa-chevron-down fa-1x';
       };
-    };
-
-    $scope.setResourceVars = function() {
-      $scope.resources = resourceService.getResources();
     };
 
     $scope.init();

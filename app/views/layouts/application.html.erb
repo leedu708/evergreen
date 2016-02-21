@@ -41,7 +41,7 @@
             </li>
 
             <li ui-sref-active='active'>
-              <a>View Your Resources</a>
+              <a ui-sref="userResources({user_id: <%= current_user.id %>})">View Your Resources</a>
             </li>
           <% end %>
           <%= menu_item "Edit Information", edit_user_registration_path %>

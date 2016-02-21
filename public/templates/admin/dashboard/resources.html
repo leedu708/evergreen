@@ -35,9 +35,7 @@
             <i ng-class="sortIcon('collection.title')"></i>
           </th>
 
-          <th>
-            Source
-          </th>
+          <th>Remove Resource?</th>
         </tr>
       </thead>
 
@@ -45,14 +43,18 @@
         <tr ng-repeat="resource in resources | orderBy:sort:sortDescending" ng-class="{'success': resource.synthesis}">
           <td>{{ resource.id }}</td>
           <td>{{ resource.upvotes }} <i class='fa fa-thumbs-o-up fa-1x'></i></td>
-          <td>{{ resource.title }}</td>
+          <td>
+            <a href="{{ resource.url }}">
+              {{ resource.title }}
+            </a>
+          </td>
           <td>{{ resource.description }}</td>
           <td>{{ resource.owner.username }}</td>
           <td>{{ resource.collection.title }}</td>
           <td>
-            <a href="{{ resource.url }}">
-              Link
-            </a>
+            <span class='btn btn-danger btn-sm' ng-click='destroyResource(resource)'>
+              Delete
+            </span>
           </td>
         </tr>
       </tbody>

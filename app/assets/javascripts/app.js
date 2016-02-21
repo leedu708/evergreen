@@ -58,7 +58,7 @@ var evergreen = angular.module('evergreen', ['ui.router', 'restangular', 'templa
 
       .state('addResource', {
         url: '/resource/create',
-        templateUrl: '/templates/resources/create.html',
+        templateUrl: '/templates/users/resources/create.html',
         controller: 'addResourceCtrl',
         resolve: {
           // grabs current_user and checks if user type is an admin or curator
@@ -74,6 +74,17 @@ var evergreen = angular.module('evergreen', ['ui.router', 'restangular', 'templa
           }],
           collections: ['Restangular', function(Restangular) {
             return Restangular.all('collections').getList();
+          }]
+        }
+      })
+
+      .state('userResources', {
+        url: '/user/:user_id/resources',
+        templateUrl: '/templates/users/resources/index.html',
+        controller: 'ResourceCtrl',
+        resolve: {
+          resources: ['Restangular', '$stateParams', function(Restangular, $stateParams) {
+            return Restangular.one("users", $stateParams["user_id"]).all("resources").getList();
           }]
         }
       })

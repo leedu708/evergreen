@@ -27,6 +27,12 @@ evergreen.factory('resourceService',
       return output;
     };
 
+    resourceService.remove = function(removed) {
+      this.resources = this.resources.filter( function(resource) {
+        return resource.id !== removed.id;
+      });
+    };
+
     resourceService.getResources = function() {
       return this.resources;
     };

@@ -55,7 +55,11 @@
       <tbody>
         <tr ng-repeat="curator in curators | orderBy:sort:sortDescending">
           <td>{{ curator.id }}</td>
-          <td>{{ curator.username }}</td>
+          <td>
+            <a ui-sref="userResources({user_id: {{curator.id}}})">
+              {{ curator.username }}
+            </a>
+          </td>
           <td>
             <a class='btn btn-sm btn-danger' ng-click="demoteCurator(curator)">
               Demote
