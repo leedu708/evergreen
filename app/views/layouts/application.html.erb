@@ -39,6 +39,10 @@
             <li ui-sref-active='active'>
               <a ui-sref="addResource">Add Resource</a>
             </li>
+
+            <li ui-sref-active='active'>
+              <a>View Your Resources</a>
+            </li>
           <% end %>
           <%= menu_item "Edit Information", edit_user_registration_path %>
           <%= menu_item "Logout", destroy_user_session_path, :method => :delete %>
