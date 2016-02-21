@@ -49,7 +49,11 @@
             </a>
           </td>
           <td>{{ resource.description }}</td>
-          <td>{{ resource.owner.username }}</td>
+          <td>
+            <a ui-sref="userResources({user_id: {{resource.owner.id}}})">
+              {{ resource.owner.username }}
+            </a>
+          </td>
           <td>{{ resource.collection.title }}</td>
           <td>
             <span class='btn btn-danger btn-sm' ng-click='destroyResource(resource)'>

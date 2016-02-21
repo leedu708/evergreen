@@ -1,7 +1,7 @@
 class ResourcesController < ApplicationController
 
   before_action :require_curator, :only => [:create, :destroy]
-  before_action :require_owner, :only => [:index]
+  before_action :require_owner, :only => [:index, :destroy]
 
   def index
 

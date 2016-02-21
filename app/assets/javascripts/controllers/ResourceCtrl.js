@@ -1,6 +1,6 @@
 evergreen.controller('ResourceCtrl',
-  ['$scope', 'Restangular', 'resources', 'resourceService',
-  function($scope, Restangular, resources, resourceService) {
+  ['$scope', '$stateParams', 'Restangular', 'resources', 'resourceService',
+  function($scope, $stateParams, Restangular, resources, resourceService) {
 
     $scope.init = function() {
       resourceService.setResources(resources);
@@ -12,7 +12,9 @@ evergreen.controller('ResourceCtrl',
     };
 
     $scope.destroyResource = function(resource) {
-      resource.remove().then( function() {
+      Restangular.one('users', $stateParams["user_id"])
+                 .one("resources", resource.id)
+                 .remove().then( function() {
         resourceService.remove(resource);
         $scope.setResourceVars();
       });
