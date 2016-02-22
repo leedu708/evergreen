@@ -12,7 +12,7 @@ evergreen.controller('addResourceCtrl',
       resource["owner_id"] = $scope.current_user.id;
       Restangular.all('resources').post(resource)
         .then( function(response) {
-          $location.path( "/collection/" + response.collection_id );
+          $location.path( "/user/" + $scope.current_user.id + "/resources" );
         });
     };
 

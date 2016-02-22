@@ -24,7 +24,11 @@
       <tbody>
         <tr ng-repeat="admin in admins | orderBy:sort:sortDescending">
           <td>{{ admin.id }}</td>
-          <td>{{ admin.username }}</td>
+          <td>
+            <a ui-sref="userResources({user_id: {{admin.id}}})">
+              {{ admin.username }}
+            </a>
+          </td>
         </tr>
       </tbody>
     </table>
