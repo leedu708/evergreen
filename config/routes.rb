@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   scope 'api' do
     namespace :admin do
       resources :users, :only => [:index, :show, :update]
+      resources :site_info, :only => [:index, :update]
     end
     resources :users, :only => [:index] do
       resources :resources, :only => [:index, :destroy]

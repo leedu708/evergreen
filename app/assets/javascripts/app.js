@@ -29,17 +29,35 @@ var evergreen = angular.module('evergreen', ['ui.router', 'restangular', 'templa
 
       .state('about', {
         url: '/about',
-        templateUrl: '/templates/nav/about.html'
+        templateUrl: '/templates/nav/about.html',
+        controller: 'InfoCtrl',
+        resolve: {
+          siteInfo: ['Restangular', function(Restangular) {
+            return Restangular.one('admin/site_info').get()
+          }]
+        }
       })
 
       .state('contact', {
         url: '/contact-us',
-        templateUrl: '/templates/nav/contact.html'
+        templateUrl: '/templates/nav/contact.html',
+        controller: 'InfoCtrl',
+        resolve: {
+          siteInfo: ['Restangular', function(Restangular) {
+            return Restangular.one('admin/site_info').get()
+          }]
+        }
       })
 
       .state('mission', {
         url: '/mission',
-        templateUrl: '/templates/nav/mission.html'
+        templateUrl: '/templates/nav/mission.html',
+        controller: 'InfoCtrl',
+        resolve: {
+          siteInfo: ['Restangular', function(Restangular) {
+            return Restangular.one('admin/site_info').get()
+          }]
+        }
       })
 
       .state('collection', {
@@ -137,6 +155,17 @@ var evergreen = angular.module('evergreen', ['ui.router', 'restangular', 'templa
           }],
           resources: ['Restangular', function(Restangular) {
             return Restangular.all('resources').getList();
+          }]
+        }
+      })
+
+      .state('admin.dashboard.siteInfo', {
+        url: '/siteInfo',
+        templateUrl: '/templates/admin/dashboard/siteInfo.html',
+        controller: 'InfoCtrl',
+        resolve: {
+          siteInfo: ['Restangular', function(Restangular) {
+            return Restangular.one('admin/site_info').get()
           }]
         }
       })

@@ -1,0 +1,50 @@
+<h1 class="page-header">Edit Site Information</h1>
+
+<!-- VIEW CURRENT SITE INFO -->
+<div class='row' ng-if="!editInfoForm">
+
+  <div class='col-md-12'>
+    <h3><b>About</b></h3>
+    <p>{{ info.about }}</p><br />
+  </div>
+
+  <div class='col-md-12'>
+    <h3><b>Contact</b></h3>
+    <p>{{ info.contact }}</p><br />
+  </div>
+
+  <div class='col-md-12'>
+    <h3><b>Mission</b></h3>
+    <p>{{ info.mission }}</p><br />
+  </div>
+
+  <span class='btn btn-primary pull-right' ng-click='toggleEditForm(info)'>
+    Edit Information
+  </span>
+
+</div>
+
+<!-- EDIT SITE INFO FORM -->
+<div class='row' ng-if="editInfoForm">
+
+  <div class='col-md-12' id="edit-info">
+    <form>
+      <div class='form-group'>
+        <label for='about'>About</label>
+        <textarea class='form-control' id='about' rows='7' ng-model="editInfo.about"></textarea>
+      </div>
+
+      <div class='form-group'>
+        <label for='contact'>Contact</label>
+        <textarea class='form-control' id='contact' rows='7' ng-model="editInfo.contact"></textarea>
+      </div>
+
+      <div class='form-group'>
+        <label for='mission'>Mission</label>
+        <textarea class='form-control' id='mission' rows='7' ng-model="editInfo.mission"></textarea>
+      </div>
+
+      <button type='submit' class='btn btn-success pull-right' ng-click='updateInfo(editInfo)'>Update Information</button>
+    </form>
+  </div>
+</div>

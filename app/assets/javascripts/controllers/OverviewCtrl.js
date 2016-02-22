@@ -10,14 +10,14 @@ evergreen.controller('OverviewCtrl',
     };
 
     $scope.setOverviewVars = function() {
-      $scope.totalUsers = users.length;
-      $scope.totalSectors = sectors.length;
-      $scope.totalCategories = $scope.getTotalCategories();
+      $scope.topContributors  = userService.getTopContributors(3);
+      $scope.top3Prolific     = userService.getMostProlific(3);
+      $scope.topThree         = resourceService.getTopResources(3);
+      $scope.totalCategories  = $scope.getTotalCategories();
       $scope.totalCollections = $scope.getTotalCollections();
-      $scope.totalResources = resources.length;
-      $scope.topThree = resourceService.getTopResources(3);
-      $scope.topContributors = userService.getTopContributors(3);
-      $scope.top3Prolific = userService.getMostProlific(3);
+      $scope.totalResources   = resources.length;
+      $scope.totalSectors     = sectors.length;
+      $scope.totalUsers       = users.length;
     };
 
     $scope.getTotalCategories = function() {

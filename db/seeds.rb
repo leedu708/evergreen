@@ -6,6 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+SiteInfo.delete_all
 User.delete_all
 Sector.delete_all
 Category.delete_all
@@ -15,6 +16,10 @@ Resource.delete_all
 MULTIPLIER = 8
 
 puts 'Old records destroyed'
+
+SiteInfo.create()
+
+puts 'Default site info set'
 
 User.create(:email => "admin@test.com",
             :username => "adminTester",
