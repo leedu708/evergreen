@@ -1,6 +1,6 @@
 evergreen.controller('CollectionCtrl',
-  ['$scope', 'Restangular', 'collections', 'categories', 'collectionService', '$stateParams',
-  function($scope, Restangular, collections, categories, collectionService, $stateParams) {
+  ['$scope', 'Restangular', 'collections', 'categories', 'collectionService', '$stateParams', 'flashService',
+  function($scope, Restangular, collections, categories, collectionService, $stateParams, flashService) {
 
   	// Instantiate thisCollection to be used below
   	$scope.thisCollection = '';
@@ -38,8 +38,10 @@ evergreen.controller('CollectionCtrl',
           console.log(response);
           collectionService.addCollection(response)
           $scope.setCollectionVars();
+          flashService.updateFlash('Collection', 'create', true);
         }, function() {
           $scope.setCollectionVars();
+          flashService.updateFlash('Collection', 'create', false);
         });
     };
 
@@ -47,7 +49,8 @@ evergreen.controller('CollectionCtrl',
       collection.remove().then( function() {
         collectionService.remove(collection);
         $scope.setCollectionVars();
-      });
+        flashService.updateFlash('Collection', 'destroy', true);
+      }, flashService.updateFlash('Collection', 'destroy', false));
     };
 
     $scope.updateCollection = function(collection) {
@@ -57,8 +60,10 @@ evergreen.controller('CollectionCtrl',
           collectionService.addCollection(response);
           collectionService.sortCollections();
           $scope.setCollectionVars();
+          flashService.updateFlash('Collection', 'update', true);
         }, function() {
           $scope.setCollectionVars();
+          flashService.updateFlash('Collection', 'update', false);
         });
     };
 

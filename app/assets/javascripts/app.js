@@ -1,4 +1,4 @@
-var evergreen = angular.module('evergreen', ['ui.router', 'restangular', 'templates'])
+var evergreen = angular.module('evergreen', ['ui.router', 'restangular', 'templates', 'ngAnimate', 'ngSanitize'])
 
 .config( ['$stateProvider', '$urlRouterProvider', 'RestangularProvider',
   function($stateProvider, $urlRouterProvider, RestangularProvider) {

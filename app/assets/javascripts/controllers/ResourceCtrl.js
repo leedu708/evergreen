@@ -1,6 +1,6 @@
 evergreen.controller('ResourceCtrl',
-  ['$scope', 'Restangular', 'resources', 'resourceService',
-  function($scope, Restangular, resources, resourceService) {
+  ['$scope', 'Restangular', 'resources', 'resourceService', 'flashService',
+  function($scope, Restangular, resources, resourceService, flashService) {
 
     $scope.init = function() {
       resourceService.setResources(resources);
@@ -17,6 +17,7 @@ evergreen.controller('ResourceCtrl',
                  .remove().then( function() {
         resourceService.remove(resource);
         $scope.setResourceVars();
+        flashService.updateFlash('Resource', 'destroy', true);
       });
     };
 

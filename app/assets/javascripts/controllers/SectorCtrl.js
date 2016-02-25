@@ -1,6 +1,6 @@
 evergreen.controller('SectorCtrl',
-  ['$scope', 'Restangular', 'sectors', 'sectorService',
-  function($scope, Restangular, sectors, sectorService) {
+  ['$scope', 'Restangular', 'sectors', 'sectorService', 'flashService',
+  function($scope, Restangular, sectors, sectorService, flashService) {
 
     $scope.init = function() {
       sectorService.setSectors(sectors);
@@ -21,8 +21,10 @@ evergreen.controller('SectorCtrl',
         .then( function(response) {
           sectorService.addSector(response);
           $scope.setSectorVars();
+          flashService.updateFlash('Sector', 'create', true);
         }, function() {
           $scope.setSectorVars();
+          flashService.updateFlash('Sector', 'create', false);
         });
     };
 
@@ -30,7 +32,8 @@ evergreen.controller('SectorCtrl',
       sector.remove().then( function() {
         sectorService.remove(sector);
         $scope.setSectorVars();
-      });
+        flashService.updateFlash('Sector', 'destroy', true);
+      }, flashService.updateFlash('Sector', 'destroy', false));
     };
 
     $scope.updateSector = function(sector) {
@@ -40,8 +43,10 @@ evergreen.controller('SectorCtrl',
           sectorService.addSector(response);
           sectorService.sortSectors();
           $scope.setSectorVars();
+          flashService.updateFlash('Sector', 'update', true);
         }, function() {
           $scope.setSectorVars();
+          flashService.updateFlash('Sector', 'update', false);
         });
     };
 

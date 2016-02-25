@@ -18,6 +18,9 @@
 //= require angular-rails-templates
 //= require angular-ui-router
 
+//= require angular-sanitize
+//= require angular-animate
+
 //= require restangular
 //= require underscore
 

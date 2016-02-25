@@ -1,6 +1,6 @@
 evergreen.controller('UserCtrl',
-  ['$scope', 'Restangular', 'users', 'userService',
-  function($scope, Restangular, users, userService) {
+  ['$scope', 'Restangular', 'users', 'userService', 'flashService',
+  function($scope, Restangular, users, userService, flashService) {
 
     $scope.init = function() {
       userService.setUsers(users);
@@ -20,7 +20,8 @@ evergreen.controller('UserCtrl',
         .then(function(response) {
           userService.promoteReader(response.id - 1);
           $scope.setUsers();
-        });
+          flashService.updateFlash('Reader', 'promote', true);
+        }, flashService.updateFlash('Reader', 'promote', false));
     };
 
     $scope.demoteCurator = function(curator) {
@@ -30,7 +31,8 @@ evergreen.controller('UserCtrl',
         .then(function(response) {
           userService.demoteCurator(response.id - 1);
           $scope.setUsers();
-        });
+          flashService.updateFlash('Curator', 'demote', true);
+        }, flashService.updateFlash('Curator', 'demote', false));
     };
 
     $scope.toggleSort = function(column) {

@@ -1,6 +1,6 @@
 evergreen.controller('CategoryCtrl',
-  ['$scope', 'Restangular', 'categories', 'sectors', 'categoryService',
-  function($scope, Restangular, categories, sectors, categoryService) {
+  ['$scope', 'Restangular', 'categories', 'sectors', 'categoryService', 'flashService',
+  function($scope, Restangular, categories, sectors, categoryService, flashService) {
 
     $scope.init = function() {
       categoryService.setCategories(categories);
@@ -22,8 +22,10 @@ evergreen.controller('CategoryCtrl',
         .then( function(response) {
           categoryService.addCategory(response);
           $scope.setCategoryVars();
+          flashService.updateFlash('Category', 'create', true);
         }, function() {
           $scope.setCategoryVars();
+          flashService.updateFlash('Category', 'create', false);
         });
     };
 
@@ -31,7 +33,8 @@ evergreen.controller('CategoryCtrl',
       category.remove().then( function() {
         categoryService.remove(category);
         $scope.setCategoryVars();
-      });
+        flashService.updateFlash('Category', 'destroy', true);
+      }, flashService.updateFlash('Category', 'destroy', false));
     };
 
     $scope.updateCategory = function(category) {
@@ -41,8 +44,10 @@ evergreen.controller('CategoryCtrl',
           categoryService.addCategory(category);
           categoryService.sortCategories();
           $scope.setCategoryVars();
+          flashService.updateFlash('Category', 'update', true);
         }, function() {
           $scope.setCategoryVars();
+          flashService.updateFlash('Category', 'update', false);
         });
     };
 
