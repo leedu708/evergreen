@@ -1,0 +1,28 @@
+<div class='container-fluid'>
+  <div class='row'>
+
+    <!-- SECTOR TITLES -->
+    <div class='col-md-10 col-md-offset-1 text-center'>
+      <h1 class='page-header'>{{ sectorName | capitalize:true }}</h1>
+    </div>
+  </div>
+
+  <div class='row'>
+
+    <!-- CATEGORY TITLES -->
+    <div class='col-md-3 col-md-offset-2' ng-repeat='category in categories'>
+      <h2 class='text-center'>{{ category.title | capitalize:true }}</h2>
+
+      <!-- COLLECTION TITLES -->
+      <ul>
+        <li ng-repeat='collection in category.collections'>
+          <h4>
+            <a ui-sref='collection({collection_id: collection.id})'>
+              {{ collection.title | capitalize:true }}
+            </a>
+          </h4>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

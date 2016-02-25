@@ -60,16 +60,24 @@ var evergreen = angular.module('evergreen', ['ui.router', 'restangular', 'templa
         }
       })
 
+      .state('sector', {
+        url: '/sector/:sector_id',
+        templateUrl: '/templates/nav/sector.html',
+        controller: 'showSectorCtrl',
+        resolve: {
+          sector: ['Restangular', '$stateParams', function(Restangular, $stateParams) {
+            return Restangular.one('sectors', $stateParams["sector_id"]).get();
+          }]
+        }
+      })
+
       .state('collection', {
         url: '/collection/:collection_id',
         templateUrl: '/templates/nav/collection.html',
-        controller: 'CollectionCtrl',
+        controller: 'showCollectionCtrl',
         resolve: {
-          collections: ['Restangular', function(Restangular) {
-            return Restangular.all('collections').getList();
-          }],
-          sectors: ['Restangular', function(Restangular) {
-            return Restangular.all('sectors').getList();
+          resources: ['Restangular', '$stateParams', function(Restangular, $stateParams) {
+            return Restangular.one("collections", $stateParams["collection_id"]).all("resources").getList();
           }]
         }
       })

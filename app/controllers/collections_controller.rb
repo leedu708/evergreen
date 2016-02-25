@@ -12,12 +12,6 @@ class CollectionsController < ApplicationController
 
   end
 
-
-  def show
-  	# Silence is golden
-  end
-
-
   def create
 
     @collection = Collection.new(collection_params)

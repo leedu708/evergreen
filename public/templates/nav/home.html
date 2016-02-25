@@ -4,10 +4,11 @@
    <h2>Sectors:</h2>
    <!-- <pre>{{sectors}}</pre> -->
    <div class="sector-wrapper col-xs-4" ng-repeat="sector in sectors">
-   	<h3>{{sector.title | uppercase}}</h3>
-   	<ul ng-repeat="collection in sector.collections">
-   		<li><a ui-sref="collection({ collection_id: collection.id })">{{collection.title}}</a></li>
-   	</ul>
+   	<h3>
+      <a ui-sref='sector({sector_id: sector.id})'>
+        {{sector.title | uppercase}}
+      </a>
+    </h3>
    </div>
   </div>
 </div>

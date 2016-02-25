@@ -16,6 +16,18 @@ class SectorsController < ApplicationController
 
   end
 
+  def show
+
+    @sector = Sector.find_by_id(params[:id])
+    respond_to do |format|
+      format.json { render json: @sector.to_json(
+        :include => [ { :categories => {
+                        :include => [:collections]
+          }}]), :status => 200 }
+    end
+
+  end
+
   def create
 
     @sector = Sector.new(sector_params)

@@ -1,26 +1,47 @@
 <div class='row'>
-	<div id="all-sector-wrapper" class='col-xs-10 col-xs-offset-1'>
-		<h2>{{thisCollection.title}}:</h2>
-		<p>{{thisCollection.description}}</p>
+	<div id="all-sector-wrapper" class='col-md-6 col-md-offset-3'>
+		<div class='navbar-spacer'></div>
+		<h2>{{ collectionName | capitalize:true }}:</h2>
+		<p>{{ collectionDesc | capitalize}}</p>
 		
 		<table class="table table-hover table-bordered">
 			<thead>
 				<tr>
-					<th>Type</th>
-					<th>Title</th>
-					<th>Upvotes</th>
-					<th>Owner</th>
-					<th>Created At</th>
+					<!-- <th>Type</th> -->
+					<th class='pointer' ng-click="toggleSort('title')">
+						Title
+						<i ng-class="sortIcon('title')"></i>
+					</th>
+
+					<th class='pointer' ng-click="toggleSort('upvotes')">
+						Upvotes
+						<i ng-class="sortIcon('upvotes')"></i>
+					</th>
+
+					<th class='pointer' ng-click="toggleSort('owner.username')">
+						Owner
+						<i ng-class="sortIcon('owner.username')"></i>
+					</th>
+
+					<th class='pointer' ng-click="toggleSort('created_at')">
+						Date Added
+						<i ng-class="sortIcon('created_at')"></i>
+					</th>
 				</tr>
 			</thead>
 		
 			<tbody>
-				<tr ng-repeat="resource in thisCollection.resources">
-					<td>{{resource.media_type ? resource.media_type : 'N/A'}}</td>
-					<td><a href="{{resource.url}}" target="_blank">{{resource.title}}</a></td>
-					<td>{{resource.upvotes}}</td>
-					<td>{{resource.owner.username}}</td>
-					<td>{{resource.created_at | date}}</td>
+				<tr ng-repeat="resource in resources | orderBy:sort:sortDescending"
+						ng-class="{'success': resource.synthesis}">
+					<!-- <td>{{ resource.media_type ? resource.media_type : 'N/A' }}</td> -->
+					<td>
+						<a href="{{ resource.url }}" target="_blank">
+							{{ resource.title | capitalize:true }}
+						</a>
+					</td>
+					<td>{{ resource.upvotes }}</td>
+					<td>{{ resource.owner.username }}</td>
+					<td>{{ resource.created_at | date }}</td>
 				</tr>		
 			</tbody>
 		</table>

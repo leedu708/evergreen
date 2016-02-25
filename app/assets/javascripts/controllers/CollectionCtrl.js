@@ -2,9 +2,6 @@ evergreen.controller('CollectionCtrl',
   ['$scope', 'Restangular', 'collections', 'categories', 'collectionService', '$stateParams', 'flashService',
   function($scope, Restangular, collections, categories, collectionService, $stateParams, flashService) {
 
-  	// Instantiate thisCollection to be used below
-  	$scope.thisCollection = '';
-
     $scope.init = function() {
       collectionService.setCollections(collections);
       $scope.categories = categories;
@@ -21,16 +18,6 @@ evergreen.controller('CollectionCtrl',
       $scope.collections = collectionService.getCollections();
       $scope.setSynthesis();
     };
-
-    $scope.thisCollection = function() {
-    	if ($stateParams.collection_id) {
-    		angular.forEach($scope.collections, function(collection) {
-    			if (collection.id == $stateParams.collection_id) {
-    				$scope.thisCollection = collection;
-    			}
-    		});
-    	}
-    }
 
     $scope.createCollection = function(collection) {
       Restangular.all('collections').post(collection)
