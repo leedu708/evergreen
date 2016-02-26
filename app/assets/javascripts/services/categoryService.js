@@ -10,14 +10,6 @@ evergreen.factory('categoryService',
       this.sortCategories();
     };
 
-    categoryService.getTotalResources = function(category) {
-      var sum = 0;
-      angular.forEach(category.collections, function(collection) {
-        sum += collection.resources.length;
-      });
-      return sum;
-    };
-
     categoryService.addCategory = function(category) {
       categoryService.categories.push(category);
     };

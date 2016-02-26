@@ -7,7 +7,7 @@ class Admin::UsersController < AdminController
     @users = User.all
     respond_to do |format|
       format.json { render json: @users.to_json(
-        :include => [:resources]), :status => 200 }
+        :methods => [:resource_total, :upvotes]), :status => 200 }
     end
 
   end

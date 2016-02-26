@@ -10,22 +10,6 @@ evergreen.factory('collectionService',
       this.sortCollections();
     };
 
-    collectionService.getSynthesis = function(collection) {
-      return collection.resources.filter(function(resource) {
-        return resource.synthesis === true;
-      });
-    };
-
-    collectionService.getSynthesisIDs = function(collection) {
-      var output = [];
-      angular.forEach(collection.resources, function(resource) {
-        if (resource.synthesis) {
-          output.push(resource.id);
-        };
-      });
-      return output;
-    };
-
     collectionService.addCollection = function(collection) {
       collectionService.collections.push(collection);
     };

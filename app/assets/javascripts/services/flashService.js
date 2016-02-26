@@ -69,6 +69,12 @@ evergreen.factory('flashService',
       flashService.setFlash(bootstrapClass, message);
     };
 
+    flashService.unauthorized = function() {
+      var message = "Unauthorized Access!";
+
+      flashService.setFlash('danger', message);
+    };
+
     return flashService;
 
   }]);

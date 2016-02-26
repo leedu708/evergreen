@@ -49,9 +49,9 @@ evergreen.factory('userService',
     userService.getTopContributors = function(num) {
       var output = [];
       resourceLength = userService.users.sort(function(a, b) {
-        if (a.resources.length < b.resources.length) {
+        if (a.resource_total < b.resource_total) {
           return 1;
-        } else if (a.resources.length > b.resources.length) {
+        } else if (a.resource_total > b.resource_total) {
           return -1;
         } else {
           return 0;
@@ -64,25 +64,11 @@ evergreen.factory('userService',
       return output;
     };
 
-    userService.getUpvotes = function(user) {
-      var upvotes = 0;
-      angular.forEach(user.resources, function(resource) {
-        upvotes += resource.upvotes;
-      });
-
-      return upvotes;
-    }
-
     userService.getMostProlific = function(num) {
-      userUpvotes = angular.forEach(userService.users, function(user) {
-        upvotes = userService.getUpvotes(user);
-        user["totalUpvotes"] = upvotes;
-      });
-
-      userUpvotes.sort(function(a, b) {
-        if (a.totalUpvotes < b.totalUpvotes) {
+      sortUpvotes = this.users.sort(function(a, b) {
+        if (a.upvotes < b.upvotes) {
           return 1;
-        } else if (a.totalUpvotes > b.totalUpvotes) {
+        } else if (a.upvotes > b.upvotes) {
           return -1;
         } else {
           return 0;
@@ -91,7 +77,7 @@ evergreen.factory('userService',
 
       var output = [];
       for (var i = 0; i < num; i++) {
-        output.push(userUpvotes[i]);
+        output.push(sortUpvotes[i]);
       };
 
       return output;

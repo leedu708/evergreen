@@ -89,14 +89,15 @@ var evergreen = angular.module('evergreen', ['ui.router', 'restangular', 'templa
         resolve: {
           // grabs current_user and checks if user type is an admin or curator
           // locks user out if not admin/curator
-          current_user: ['Restangular', '$q', function(Restangular, $q) {
+          current_user: ['Restangular', '$q', 'flashService', function(Restangular, $q, flashService) {
             return Restangular.one('users').get()
               .then( function(response) {
                 if (response.user_type === "reader") {
+                  flashService.unauthorized();
                   return $q.reject("Not Authorized");
                 };
                 return response;
-              });
+              }, flashService.unauthorized());
           }],
           collections: ['Restangular', function(Restangular) {
             return Restangular.all('collections').getList();
@@ -137,13 +138,14 @@ var evergreen = angular.module('evergreen', ['ui.router', 'restangular', 'templa
             resolve: {
               // grabs current_user and checks if user type is an admin
               // if user isn't an admin, he/she is locked out of the dashboard
-              current_user: ['Restangular', '$q', function(Restangular, $q) {
+              current_user: ['Restangular', '$q', 'flashService', function(Restangular, $q, flashService) {
                 return Restangular.one('users').get()
                   .then( function(response) {
                     if (response.user_type !== "admin") {
+                      flashService.unauthorized();
                       return $q.reject("Not Authorized");
                     };
-                  });
+                  }, flashService.unauthorized());
               }]
             }
           }

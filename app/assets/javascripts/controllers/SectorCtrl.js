@@ -13,7 +13,6 @@ evergreen.controller('SectorCtrl',
       $scope.addSector = {};
       $scope.editSector = {};
       $scope.sectors = sectorService.getSectors();
-      $scope.setTotals();
     };
 
     $scope.createSector = function(sector) {
@@ -48,14 +47,6 @@ evergreen.controller('SectorCtrl',
           $scope.setSectorVars();
           flashService.updateFlash('Sector', 'update', false);
         });
-    };
-
-    $scope.setTotals = function() {
-      angular.forEach($scope.sectors, function(sector) {
-        totalVars = sectorService.getTotalVars(sector);
-        sector["totalCollections"] = totalVars[0];
-        sector["totalResources"] = totalVars[1];
-      });
     };
 
     $scope.toggleAddForm = function() {

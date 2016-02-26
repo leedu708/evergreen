@@ -7,7 +7,8 @@ class CollectionsController < ApplicationController
     @collections = Collection.all
     respond_to do |format|
       format.json { render json: @collections.to_json(
-        :include => [ { :resources => { :include => :owner }}]), :status => 200 }
+        :methods => [:resource_total,
+                     :syn_IDs]), :status => 200 }
     end
 
   end
@@ -19,7 +20,8 @@ class CollectionsController < ApplicationController
     if @collection.save
       respond_to do |format|
         format.json { render json: @collection.to_json(
-          :include => [ { :resources => { :include => :owner }}]), :status => 200 }
+          :methods => [:resource_total,
+                       :syn_IDs]), :status => 201 }
       end
     else
       respond_to do |format|
@@ -36,7 +38,8 @@ class CollectionsController < ApplicationController
     if @collection.update(collection_params)
       respond_to do |format|
         format.json { render json: @collection.to_json(
-          :include => [ { :resources => { :include => :owner }}]), :status => 200 }
+          :methods => [:resource_total,
+                       :syn_IDs]), :status => 200 }
       end
     else
       respond_to do |format|

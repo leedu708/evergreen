@@ -14,7 +14,6 @@ evergreen.controller('CategoryCtrl',
       $scope.addCategory = {};
       $scope.editCategory = {};
       $scope.categories = categoryService.getCategories();
-      $scope.setTotals();
     };
 
     $scope.createCategory = function(category) {
@@ -49,13 +48,6 @@ evergreen.controller('CategoryCtrl',
           $scope.setCategoryVars();
           flashService.updateFlash('Category', 'update', false);
         });
-    };
-
-    $scope.setTotals = function() {
-      angular.forEach($scope.categories, function(category) {
-        totalResources = categoryService.getTotalResources(category);
-        category["totalResources"] = totalResources;
-      });
     };
 
     $scope.toggleAddForm = function() {

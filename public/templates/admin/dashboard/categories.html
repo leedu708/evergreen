@@ -16,14 +16,14 @@
             <i ng-class="sortIcon('title')"></i>
           </th>
 
-          <th class='pointer' ng-click="toggleSort('collections.length')">
+          <th class='pointer' ng-click="toggleSort('collection_total')">
             Number of Collections
-            <i ng-class="sortIcon('collections.length')"></i>
+            <i ng-class="sortIcon('collection_total')"></i>
           </th>
 
-          <th class='pointer' ng-click="toggleSort('totalResources')">
+          <th class='pointer' ng-click="toggleSort('resource_total')">
             Number of Resources
-            <i ng-class="sortIcon('totalResources')"></i>
+            <i ng-class="sortIcon('resource_total')"></i>
           </th>
 
           <th>Remove Category?</th>
@@ -36,8 +36,8 @@
         <tr ng-repeat="category in categories | orderBy:sort:sortDescending">
           <td>{{ category.id }}</td>
           <td>{{ category.title }}</td>
-          <td>{{ category.collections.length }}</td>
-          <td>{{ category.totalResources }}</td>
+          <td>{{ category.collection_total }}</td>
+          <td>{{ category.resource_total }}</td>
           <td>
             <span class='btn btn-danger btn-sm' ng-click='destroyCategory(category)'>
               Delete

@@ -6,8 +6,12 @@ class User < ActiveRecord::Base
 
   has_many :resources, :foreign_key => 'owner_id', :dependent => :destroy
 
-  def self.all_other_users(current_user)
-    User.where('id <> ?', current_user.id)
+  def resource_total
+    self.resources.length
+  end
+
+  def upvotes
+    self.resources.inject(0) { |sum, resource| sum + resource.upvotes }
   end
   
 end

@@ -1,6 +1,6 @@
 evergreen.controller('InfoCtrl',
-  ['$scope', 'Restangular', 'siteInfo', 'infoService',
-  function($scope, Restangular, siteInfo, infoService) {
+  ['$scope', 'Restangular', 'siteInfo', 'infoService', 'flashService',
+  function($scope, Restangular, siteInfo, infoService, flashService) {
 
     $scope.init = function() {
       $scope.setInfoVars(siteInfo);
@@ -17,7 +17,8 @@ evergreen.controller('InfoCtrl',
       Restangular.one('admin/site_info', info.id).patch( info )
         .then(function(response) {
           $scope.setInfoVars(response);
-        });
+          flashService.updateFlash('Site Information', 'update', true);
+        }, flashService.updateFlash('Site Information', 'update', false));
     };
 
     $scope.toggleEditForm = function(info) {

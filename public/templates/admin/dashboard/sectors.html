@@ -16,19 +16,19 @@
             <i ng-class="sortIcon('title')"></i>
           </th>
 
-          <th class='pointer' ng-click="toggleSort('categories.length')">
+          <th class='pointer' ng-click="toggleSort('category_total')">
             Number of Categories
-            <i ng-class="sortIcon('categories.length')"></i>
+            <i ng-class="sortIcon('category_total')"></i>
           </th>
 
-          <th class='pointer' ng-click="toggleSort('totalCollections')">
+          <th class='pointer' ng-click="toggleSort('collection_total')">
             Number of Collections
-            <i ng-class="sortIcon('totalCollections')"></i>
+            <i ng-class="sortIcon('collection_total')"></i>
           </th>
 
-          <th class='pointer' ng-click="toggleSort('totalResources')">
+          <th class='pointer' ng-click="toggleSort('resource_total')">
             Number of Resources
-            <i ng-class="sortIcon('totalResources')"></i>
+            <i ng-class="sortIcon('resource_total')"></i>
           </th>
 
           <th>Remove Sector?</th>
@@ -51,9 +51,9 @@
             </form>
           </td>
 
-          <td>{{ sector.categories.length }}</td>
-          <td>{{ sector.totalCollections }}</td>
-          <td>{{ sector.totalResources }}</td>
+          <td>{{ sector.category_total }}</td>
+          <td>{{ sector.collection_total }}</td>
+          <td>{{ sector.resource_total }}</td>
           <td>
             <span class='btn btn-danger btn-sm' ng-click='destroySector(sector)'>
               Delete

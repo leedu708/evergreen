@@ -18,9 +18,9 @@
 
           <th>Collection Description</th>
 
-          <th class='pointer' ng-click="toggleSort('resources.length')">
+          <th class='pointer' ng-click="toggleSort('resource_total')">
             Total Resources
-            <i ng-class="sortIcon('resources.length')"></i>
+            <i ng-class="sortIcon('resource_total')"></i>
           </th>
 
           <th>Synthesis IDs</th>
@@ -36,8 +36,8 @@
           <td>{{ collection.id }}</td>
           <td>{{ collection.title }}</td>
           <td>{{ collection.description }}</td>
-          <td>{{ collection.resources.length }}</td>
-          <td>{{ collection.synthesis }}</td>
+          <td>{{ collection.resource_total }}</td>
+          <td>{{ collection.syn_IDs }}</td>
           <td>
             <span class='btn btn-danger btn-sm' ng-click='destroyCollection(collection)'>
               Delete

@@ -133,7 +133,7 @@
 <h3 class='page-header'>Top 3 Contributors</h3>
 <div class='row'>
   <ul class='list-group'>
-    <li class='list-group-item' ng-repeat='contributor in topContributors'>{{ contributor.username }}: {{ contributor.resources.length }} resources</li>
+    <li class='list-group-item' ng-repeat='contributor in topContributors'>{{ contributor.username }}: {{ contributor.resource_total }} resources</li>
   </ul>
 </div>
 
@@ -141,6 +141,6 @@
 <h3 class='page-header'>Top 3 Most Prolific Contributors</h3>
 <div class='row'>
   <ul class='list-group'>
-    <li class='list-group-item' ng-repeat='user in top3Prolific'>{{ user.username }}: {{ user.totalUpvotes }} total upvotes</li>
+    <li class='list-group-item' ng-repeat='user in top3Prolific'>{{ user.username }}: {{ user.upvotes }} total upvotes</li>
   </ul>
 </div>

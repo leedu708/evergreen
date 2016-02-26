@@ -7,10 +7,8 @@ class CategoriesController < ApplicationController
     @categories = Category.all
     respond_to do |format|
       format.json { render json: @categories.to_json(
-        :include => [ { :collections => {
-                        :include => { :resources => {
-                        :include => :owner }}
-          }}]), :status => 200 }
+        :methods => [:collection_total,
+                     :resource_total]), :status => 200 }
     end
 
   end
@@ -22,10 +20,8 @@ class CategoriesController < ApplicationController
     if @category.save
       respond_to do |format|
         format.json { render json: @category.to_json(
-          :include => [ { :collections => {
-                          :include => { :resources => {
-                          :include => :owner }}
-            }}]), :status => 201 }
+          :methods => [:collection_total,
+                       :resource_total]), :status => 201 }
       end
     else
       respond_to do |format|
@@ -42,10 +38,8 @@ class CategoriesController < ApplicationController
     if @category.update(category_params)
       respond_to do |format|
         format.json { render json: @category.to_json(
-          :include => [ { :collections => {
-                          :include => { :resources => {
-                          :include => :owner }}
-            }}]), :status => 200 }
+          :methods => [:collection_total,
+                       :resource_total]), :status => 200 }
       end
     else
       respond_to do |format|

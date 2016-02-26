@@ -15,7 +15,6 @@ evergreen.controller('CollectionCtrl',
       $scope.addCollection = {};
       $scope.editCollection = {};
       $scope.collections = collectionService.getCollections();
-      $scope.setSynthesis();
     };
 
     $scope.createCollection = function(collection) {
@@ -51,13 +50,6 @@ evergreen.controller('CollectionCtrl',
           $scope.setCollectionVars();
           flashService.updateFlash('Collection', 'update', false);
         });
-    };
-
-    $scope.setSynthesis = function() {
-      angular.forEach($scope.collections, function(collection) {
-        synIDs = collectionService.getSynthesisIDs(collection);
-        collection["synthesis"] = synIDs.join(", ");
-      });
     };
 
     $scope.toggleAddForm = function() {
