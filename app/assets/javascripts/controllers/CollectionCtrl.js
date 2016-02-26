@@ -6,7 +6,6 @@ evergreen.controller('CollectionCtrl',
       collectionService.setCollections(collections);
       $scope.categories = categories;
       $scope.setCollectionVars();
-      $scope.thisCollection();
     };
 
     // admin vars

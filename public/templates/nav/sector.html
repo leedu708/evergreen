@@ -14,7 +14,7 @@
       <h2 class='text-center'>{{ category.title | capitalize:true }}</h2>
 
       <!-- COLLECTION TITLES -->
-      <ul>
+      <ol>
         <li ng-repeat='collection in category.collections'>
           <h4>
             <a ui-sref='collection({collection_id: collection.id})'>
@@ -22,7 +22,7 @@
             </a>
           </h4>
         </li>
-      </ul>
+      </ol>
     </div>
   </div>
 </div>
