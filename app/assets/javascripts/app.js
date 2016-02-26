@@ -97,7 +97,7 @@ var evergreen = angular.module('evergreen', ['ui.router', 'restangular', 'templa
                   return $q.reject("Not Authorized");
                 };
                 return response;
-              }, flashService.unauthorized());
+              });
           }],
           collections: ['Restangular', function(Restangular) {
             return Restangular.all('collections').getList();
@@ -145,7 +145,7 @@ var evergreen = angular.module('evergreen', ['ui.router', 'restangular', 'templa
                       flashService.unauthorized();
                       return $q.reject("Not Authorized");
                     };
-                  }, flashService.unauthorized());
+                  });
               }]
             }
           }
