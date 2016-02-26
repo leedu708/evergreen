@@ -9,6 +9,7 @@ evergreen.controller('ResourceCtrl',
 
     $scope.setResourceVars = function() {
       $scope.resources = resourceService.getResources();
+      $scope.owner = $scope.resources[0].owner_username;
     };
 
     $scope.destroyResource = function(resource, userID) {

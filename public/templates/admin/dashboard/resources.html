@@ -29,14 +29,14 @@
             Resource Description
           </th>
 
-          <th class='pointer' ng-click="toggleSort('owner.username')">
+          <th class='pointer' ng-click="toggleSort('owner_username')">
             Resource Owner
-            <i ng-class="sortIcon('owner.username')"></i>
+            <i ng-class="sortIcon('owner_username')"></i>
           </th>
 
-          <th class='pointer' ng-click="toggleSort('collection.title')">
+          <th class='pointer' ng-click="toggleSort('collection_name')">
             Collection
-            <i ng-class="sortIcon('collection.title')"></i>
+            <i ng-class="sortIcon('collection_name')"></i>
           </th>
 
           <th>Remove Resource?</th>
@@ -49,16 +49,20 @@
           <td>{{ resource.upvotes }} <i class='fa fa-thumbs-o-up fa-1x'></i></td>
           <td>
             <a href="{{ resource.url }}">
-              {{ resource.title }}
+              {{ resource.title | capitalize:true }}
             </a>
           </td>
           <td>{{ resource.description }}</td>
           <td>
-            <a ui-sref="userResources({user_id: {{resource.owner.id}}})">
-              {{ resource.owner.username }}
+            <a ui-sref="userResources({user_id: {{resource.owner_id}}})">
+              {{ resource.owner_username }}
             </a>
           </td>
-          <td>{{ resource.collection.title }}</td>
+          <td>
+            <a ui-sref="collection({collection_id: {{resource.collection_id}}})">
+              {{ resource.collection_name | capitalize:true }}
+            </a>
+          </td>
           <td>
             <span class='btn btn-danger btn-sm' ng-click='destroyResource(resource, resource.owner.id)'>
               Delete

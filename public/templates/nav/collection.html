@@ -8,16 +8,17 @@
 			<thead>
 				<tr>
 					<!-- <th>Type</th> -->
-					<th class='pointer' ng-click="toggleSort('title')">
-						Title
-						<i ng-class="sortIcon('title')"></i>
-					</th>
 
 					<th class='pointer' ng-click="toggleSort('upvotes')">
 						Upvotes
 						<i ng-class="sortIcon('upvotes')"></i>
 					</th>
 
+					<th class='pointer' ng-click="toggleSort('title')">
+						Title
+						<i ng-class="sortIcon('title')"></i>
+					</th>
+					
 					<th class='pointer' ng-click="toggleSort('owner.username')">
 						Owner
 						<i ng-class="sortIcon('owner.username')"></i>
@@ -34,12 +35,12 @@
 				<tr ng-repeat="resource in resources | orderBy:sort:sortDescending"
 						ng-class="{'success': resource.synthesis}">
 					<!-- <td>{{ resource.media_type ? resource.media_type : 'N/A' }}</td> -->
+					<td>{{ resource.upvotes }} <i class='fa fa-thumbs-o-up fa-1x'></i></td>
 					<td>
 						<a href="{{ resource.url }}" target="_blank">
 							{{ resource.title | capitalize:true }}
 						</a>
-					</td>
-					<td>{{ resource.upvotes }}</td>
+					</td>					
 					<td>{{ resource.owner.username }}</td>
 					<td>{{ resource.created_at | date }}</td>
 				</tr>		
