@@ -78,7 +78,7 @@ User.all.each do |user|
     user.resources.create(:title => Faker::Lorem.sentence(2, true, 3).chomp('.'),
                           :url => Faker::Internet.url('test.com'),
                           :description => Faker::Lorem.sentence(4, true, 7),
-                          :upvotes => rand(10000) + 1,
+                          :upvotes => rand(User.all.length) + 1,
                           :collection_id => collection_id,
                           :synthesis => random_synthesis,
                           :created_at => rand(Time.now - user.created_at).seconds.ago)
