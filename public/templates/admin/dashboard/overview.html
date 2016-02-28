@@ -103,7 +103,7 @@
 <div class='row' ng-repeat='sector in sectors'>
 
   <h3 class='page-header text-center'>{{ sector.title | capitalize:true }}</h3>
-  <div class='col-md-4' ng-repeat="resource in sector.top_three">
+  <div class='col-md-4' ng-repeat="resource in sector.top_three[0]">
     <div class='panel panel-default'>
       <div class='panel-heading'>
         <div class='panel-text-md text-center'><b>{{ resource.title | capitalize:true }}</b></div>
@@ -123,7 +123,7 @@
       </div>
 
       <div class='panel-footer'>
-        <div><b>Owner:</b> {{ resource.owner_username }}</div>
+        <div><b>Owner:</b> {{ sector.top_three[1][sector.top_three[0].indexOf(resource)] }}</div>
       </div>
     </div>
   </div>

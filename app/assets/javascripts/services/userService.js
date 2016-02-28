@@ -46,6 +46,10 @@ evergreen.factory('userService',
       });
     };
 
+    userService.getUsers = function() {
+      return this.users;
+    };
+
     userService.getTopContributors = function(num) {
       var output = [];
       resourceLength = userService.users.sort(function(a, b) {
