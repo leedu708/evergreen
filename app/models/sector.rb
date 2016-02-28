@@ -17,5 +17,26 @@ class Sector < ActiveRecord::Base
     end
     resources
   end
+
+  def top_three
+    resources = []
+
+    self.categories.each do |category|
+      category.collections.each do |collection|
+        collection.resources.each do |resource|
+          resources.push(resource)
+        end
+      end
+    end
+
+    sorted = resources.sort { |left, right| right.upvotes <=> left.upvotes }
+
+    top = []
+    3.times do |x|
+      top.push(sorted[x])
+    end
+
+    top
+  end
   
 end

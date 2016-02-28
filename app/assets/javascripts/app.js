@@ -176,9 +176,6 @@ var evergreen = angular.module('evergreen', ['ui.router', 'restangular', 'templa
           }],
           sectors: ['Restangular', function(Restangular) {
             return Restangular.all('sectors').getList();
-          }],
-          resources: ['Restangular', function(Restangular) {
-            return Restangular.all('resources').getList();
           }]
         }
       })

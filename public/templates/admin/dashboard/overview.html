@@ -99,13 +99,14 @@
 </div>
 
 <!-- Top 3 Resources -->
-<h3 class='page-header'>Top 3 Resources</h3>
-<div class='row'>
+<h2 class='page-header'>Top 3 Resources in Each Sector</h2>
+<div class='row' ng-repeat='sector in sectors'>
 
-  <div class='col-md-4' ng-repeat="resource in topThree">
+  <h3 class='page-header text-center'>{{ sector.title | capitalize:true }}</h3>
+  <div class='col-md-4' ng-repeat="resource in sector.top_three">
     <div class='panel panel-default'>
       <div class='panel-heading'>
-        <div class='panel-text-md text-center'><b>{{ resource.title }}</b></div>
+        <div class='panel-text-md text-center'><b>{{ resource.title | capitalize:true }}</b></div>
       </div>
 
       <div class='panel-body'>
@@ -130,17 +131,17 @@
 </div>
 
 <!-- Top 3 Contributors -->
-<h3 class='page-header'>Top 3 Contributors</h3>
+<h2 class='page-header'>Top 3 Contributors</h2>
 <div class='row'>
-  <ul class='list-group'>
+  <ol class='list-group'>
     <li class='list-group-item' ng-repeat='contributor in topContributors'>{{ contributor.username }}: {{ contributor.resource_total }} resources</li>
-  </ul>
+  </ol>
 </div>
 
 <!-- Top 3 Prolific -->
-<h3 class='page-header'>Top 3 Most Prolific Contributors</h3>
+<h2 class='page-header'>Top 3 Most Prolific Contributors</h2>
 <div class='row'>
-  <ul class='list-group'>
+  <ol class='list-group'>
     <li class='list-group-item' ng-repeat='user in top3Prolific'>{{ user.username }}: {{ user.upvotes }} total upvotes</li>
-  </ul>
+  </ol>
 </div>

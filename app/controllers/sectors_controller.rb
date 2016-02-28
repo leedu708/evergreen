@@ -9,7 +9,8 @@ class SectorsController < ApplicationController
       format.json { render json: @sectors.to_json(
         :methods => [:category_total,
                      :collection_total,
-                     :resource_total]), :status => 200 }
+                     :resource_total,
+                     :top_three]), :status => 200 }
     end
 
   end
