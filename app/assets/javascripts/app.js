@@ -105,6 +105,20 @@ var evergreen = angular.module('evergreen', ['ui.router', 'restangular', 'templa
         }
       })
 
+      .state('editResource', {
+        url: '/user/:user_id/resource/:resource_id/edit',
+        templateUrl: '/templates/users/resources/edit.html',
+        controller: 'editResourceCtrl',
+        resolve: {
+          resource: ['Restangular', '$stateParams', function(Restangular, $stateParams) {
+            return Restangular.one("users", $stateParams["user_id"]).one("resources", $stateParams["resource_id"]).get();
+          }],
+          collections: ['Restangular', function(Restangular) {
+            return Restangular.all('collections').getList();
+          }]
+        }
+      })
+
       .state('userResources', {
         url: '/user/:user_id/resources',
         templateUrl: '/templates/users/resources/index.html',

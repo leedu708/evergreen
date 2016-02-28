@@ -40,6 +40,7 @@
           </th>
 
           <th>Remove Resource?</th>
+          <th>Edit Resource?</th>
         </tr>
       </thead>
 
@@ -64,9 +65,16 @@
             </a>
           </td>
           <td>
-            <span class='btn btn-danger btn-sm' ng-click='destroyResource(resource, resource.owner.id)'>
+            <span class='btn btn-danger btn-sm' ng-click='destroyResource(resource, resource.owner_id)'>
               Delete
             </span>
+          </td>
+
+          <td>
+            <a class='btn btn-warning btn-sm'
+               href="#/user/{{resource.owner_id}}/resource/{{resource.id}}/edit">
+              Edit Resource
+            </a>
           </td>
         </tr>
       </tbody>

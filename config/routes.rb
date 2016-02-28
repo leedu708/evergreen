@@ -9,14 +9,14 @@ Rails.application.routes.draw do
       resources :site_info, :only => [:index, :update]
     end
     resources :users, :only => [:index] do
-      resources :resources, :only => [:index, :destroy]
+      resources :resources, :only => [:index, :show, :destroy]
     end
     resources :sectors, :only => [:index, :show, :create, :update, :destroy]
     resources :categories, :only => [:index, :create, :update, :destroy]
     resources :collections, :only => [:index, :create, :update, :destroy] do
       resources :resources, :only => [:index]
     end
-    resources :resources, :only => [:index, :create]
+    resources :resources, :only => [:index, :create, :update]
   end
 
 end

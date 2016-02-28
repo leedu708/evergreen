@@ -1,7 +1,7 @@
 class ResourcesController < ApplicationController
 
   before_action :require_curator, :only => [:create, :destroy]
-  before_action :require_owner, :only => [:index, :destroy]
+  before_action :require_owner, :only => [:index, :show, :update, :destroy]
 
   def index
 
@@ -35,6 +35,16 @@ class ResourcesController < ApplicationController
 
   end
 
+  def show
+
+    @resource = Resource.find_by_id(params[:id])
+    respond_to do |format|
+      format.json { render json: @resource.to_json(
+        :methods => [:owner_id]), :status => 200 }
+    end
+
+  end
+
   def create
 
     @resource = Resource.new(resource_params)
@@ -51,6 +61,22 @@ class ResourcesController < ApplicationController
 
   end
 
+  def update
+
+    @resource = Resource.find_by_id(params[:id])
+
+    if @resource.update(resource_params)
+      respond_to do |format|
+        format.json { render nothing: true, :status => 200 }
+      end
+    else
+      respond_to do |format|
+        format.json { render nothing => :true, :status => 422 }
+      end
+    end
+
+  end
+
   def destroy
 
     @resource = Resource.find_by_id(params[:id])
@@ -60,7 +86,7 @@ class ResourcesController < ApplicationController
         format.json { render nothing: true, :status => 204 }
       end
     else
-      respond_ to do |format|
+      respond_to do |format|
         format.json { render nothing => :true, :status => 422 }
       end
     end

@@ -50,10 +50,6 @@ evergreen.factory('flashService',
 
       var message = object + ' ' + outcome + action + '!';
 
-      if (!bool) {
-        var message = 'Unauthorized!' + message;
-      };
-
       return message;
     };
 

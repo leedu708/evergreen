@@ -14,11 +14,6 @@
           <table class='table table-bordered table-striped text-center'>
             <thead>
               <tr>
-                <th class='pointer' ng-click="toggleSort('id')">
-                  ID
-                  <i ng-class="sortIcon('id')"></i>
-                </th>
-
                 <th class='pointer' ng-click="toggleSort('upvotes')">
                   Upvotes
                   <i ng-class="sortIcon('upvotes')"></i>
@@ -39,12 +34,12 @@
                 </th>
 
                 <th>Remove Resource?</th>
+                <th>Edit Resource?</th>
               </tr>
             </thead>
 
             <tbody>
               <tr ng-repeat="resource in resources | orderBy:sort:sortDescending" ng-class="{'success': resource.synthesis}">
-                <td>{{ resource.id }}</td>
                 <td>{{ resource.upvotes }} <i class='fa fa-thumbs-o-up fa-1x'></i></td>
                 <td>
                   <a href="{{ resource.url }}">
@@ -54,9 +49,16 @@
                 <td>{{ resource.description }}</td>
                 <td>{{ resource.collection_name | capitalize:true }}</td>
                 <td>
-                  <span class='btn btn-danger btn-sm' ng-click='destroyResource(resource, resource.owner.id)'>
+                  <span class='btn btn-danger btn-sm' ng-click='destroyResource(resource, resource.owner_id)'>
                     Delete
                   </span>
+                </td>
+
+                <td>
+                  <a class='btn btn-warning btn-sm'
+                     href="#/user/{{resource.owner_id}}/resource/{{resource.id}}/edit">
+                    Edit Resource
+                  </a>
                 </td>
               </tr>
             </tbody>
