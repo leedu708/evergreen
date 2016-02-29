@@ -40,7 +40,7 @@
       <tbody>
         <tr ng-repeat="sector in sectors | orderBy:sort:sortDescending">
           <td>{{ sector.id }}</td>
-          <td ng-if='!editSectorForm[sector.id]'>{{ sector.title }}</td>
+          <td ng-if='!editSectorForm[sector.id]'>{{ sector.title | capitalize:true }}</td>
 
           <!-- EDIT SECTOR FORM -->
           <td ng-if='editSectorForm[sector.id]'>

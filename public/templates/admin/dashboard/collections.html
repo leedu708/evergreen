@@ -34,7 +34,7 @@
       <tbody>
         <tr ng-repeat="collection in collections | orderBy:sort:sortDescending">
           <td>{{ collection.id }}</td>
-          <td>{{ collection.title }}</td>
+          <td>{{ collection.title | capitalize:true }}</td>
           <td>{{ collection.description }}</td>
           <td>{{ collection.resource_total }}</td>
           <td>{{ collection.syn_IDs }}</td>

@@ -18,7 +18,10 @@
 //= require angular-rails-templates
 //= require angular-ui-router
 
-//= require angular-sanitize
+//= require textAngular/textAngular-rangy.min
+//= require textAngular/textAngular-sanitize.min
+//= require textAngular/textAngular.min
+
 //= require angular-animate
 
 //= require restangular

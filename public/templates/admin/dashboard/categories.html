@@ -35,7 +35,7 @@
       <tbody>
         <tr ng-repeat="category in categories | orderBy:sort:sortDescending">
           <td>{{ category.id }}</td>
-          <td>{{ category.title }}</td>
+          <td>{{ category.title | capitalize:true }}</td>
           <td>{{ category.collection_total }}</td>
           <td>{{ category.resource_total }}</td>
           <td>

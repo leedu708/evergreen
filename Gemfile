@@ -37,6 +37,10 @@ gem 'angularjs-rails'
 gem 'angular_rails_csrf'
 gem 'angular-rails-templates'
 
+source "https://rails-assets.org" do
+  gem 'rails-assets-angular-devise'
+end
+
 gem 'binding_of_caller'
 gem 'devise'
 gem 'twitter-bootstrap-rails'
