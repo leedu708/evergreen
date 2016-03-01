@@ -40,6 +40,7 @@ class CollectionsController < ApplicationController
       respond_to do |format|
         format.json { render json: @collection.to_json(
           :methods => [:resource_total,
+                       :resource_names,
                        :approved_IDs]), :status => 200 }
       end
     else
