@@ -7,8 +7,8 @@ class Collection < ActiveRecord::Base
     self.resources.length
   end
 
-  def syn_IDs
-    resources = self.resources.select { |resource| resource.synthesis }
+  def approved_IDs
+    resources = self.resources.select { |resource| resource.approved }
     resource_ids = resources.map { |resource| resource.id }
     resource_ids.join(", ");
   end

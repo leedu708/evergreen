@@ -39,7 +39,7 @@
             </thead>
 
             <tbody>
-              <tr ng-repeat="resource in resources | orderBy:sort:sortDescending" ng-class="{'success': resource.synthesis}">
+              <tr ng-repeat="resource in resources | orderBy:sort:sortDescending" ng-class="{'success': resource.approved}">
                 <td>{{ resource.upvotes }} <i class='fa fa-thumbs-o-up fa-1x'></i></td>
                 <td>
                   <a href="{{ resource.url }}">

@@ -33,7 +33,7 @@
 		
 			<tbody>
 				<tr ng-repeat="resource in resources | orderBy:sort:sortDescending"
-						ng-class="{'success': resource.synthesis}">
+						ng-class="{'success': resource.approved}">
 					<!-- <td>{{ resource.media_type ? resource.media_type : 'N/A' }}</td> -->
 					<td>{{ resource.upvotes }} <i class='fa fa-thumbs-o-up fa-1x'></i></td>
 					<td>

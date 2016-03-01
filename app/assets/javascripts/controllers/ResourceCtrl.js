@@ -23,6 +23,20 @@ evergreen.controller('ResourceCtrl',
       });
     };
 
+    $scope.toggleApproval = function(resource) {
+      obj = {};
+      obj["approved"] = !resource.approved;
+      Restangular.one('resources', resource.id).patch( obj )
+        .then(function(response) {
+          resourceService.toggleApproval(resource);
+          $scope.setResourceVars();
+          flashService.updateFlash('Resource', 'update', true);
+        }, function() {
+          $scope.setResourceVars();
+          flashService.updateFlash('Resource', 'update', true);
+        });
+    };
+
     $scope.toggleSort = function(column) {
       if (column === $scope.sort) {
         $scope.sortDescending ^= true;

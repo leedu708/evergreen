@@ -96,7 +96,7 @@ class ResourcesController < ApplicationController
   private
 
   def resource_params
-    params.require(:resource).permit(:title, :description, :url, :owner_id, :collection_id, :media_type)
+    params.require(:resource).permit(:title, :description, :url, :owner_id, :collection_id, :media_type, :approved)
   end
 
   def require_owner

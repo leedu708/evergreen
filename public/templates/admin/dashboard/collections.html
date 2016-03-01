@@ -23,7 +23,7 @@
             <i ng-class="sortIcon('resource_total')"></i>
           </th>
 
-          <th>Synthesis IDs</th>
+          <th>Approved IDs</th>
 
           <th>Remove Collection?</th>
 
@@ -37,7 +37,7 @@
           <td>{{ collection.title | capitalize:true }}</td>
           <td>{{ collection.description }}</td>
           <td>{{ collection.resource_total }}</td>
-          <td>{{ collection.syn_IDs }}</td>
+          <td>{{ collection.approved_IDs }}</td>
           <td>
             <span class='btn btn-danger btn-sm' ng-click='destroyCollection(collection)'>
               Delete

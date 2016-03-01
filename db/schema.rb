@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160222152850) do
+ActiveRecord::Schema.define(version: 20160301031342) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "title"
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20160222152850) do
     t.text     "description",                   null: false
     t.string   "media_type",    default: ""
     t.integer  "upvotes",       default: 0,     null: false
-    t.boolean  "synthesis",     default: false, null: false
+    t.boolean  "approved",      default: false, null: false
     t.integer  "owner_id"
     t.integer  "collection_id"
     t.datetime "created_at",                    null: false

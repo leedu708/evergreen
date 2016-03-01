@@ -8,7 +8,7 @@ class CollectionsController < ApplicationController
     respond_to do |format|
       format.json { render json: @collections.to_json(
         :methods => [:resource_total,
-                     :syn_IDs]), :status => 200 }
+                     :approved_IDs]), :status => 200 }
     end
 
   end
@@ -21,7 +21,7 @@ class CollectionsController < ApplicationController
       respond_to do |format|
         format.json { render json: @collection.to_json(
           :methods => [:resource_total,
-                       :syn_IDs]), :status => 201 }
+                       :approved_IDs]), :status => 201 }
       end
     else
       respond_to do |format|
@@ -39,7 +39,7 @@ class CollectionsController < ApplicationController
       respond_to do |format|
         format.json { render json: @collection.to_json(
           :methods => [:resource_total,
-                       :syn_IDs]), :status => 200 }
+                       :approved_IDs]), :status => 200 }
       end
     else
       respond_to do |format|
