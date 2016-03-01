@@ -8,6 +8,7 @@ class CollectionsController < ApplicationController
     respond_to do |format|
       format.json { render json: @collections.to_json(
         :methods => [:resource_total,
+                     :resource_names,
                      :approved_IDs]), :status => 200 }
     end
 
@@ -68,7 +69,7 @@ class CollectionsController < ApplicationController
   private
 
   def collection_params
-    params.require(:collection).permit(:title, :description, :category_id)
+    params.require(:collection).permit(:title, :description, :category_id, :synthesis_id)
   end
 
 end

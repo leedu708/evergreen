@@ -5,10 +5,18 @@ evergreen.controller('showCollectionCtrl',
     $scope.init = function() {
       $scope.collectionName = resources[0].collection.title;
       $scope.collectionDesc = resources[0].collection.description;
+      $scope.synthesis = $scope.getSynthesis();
 
       // using the service keeps sorting on page load consistent
       resourceService.setResources(resources);
       $scope.resources = resourceService.getResources();
+    };
+
+    $scope.getSynthesis = function() {
+      var id = resources[0].collection.synthesis_id;
+      return resources.filter( function(resource) {
+        return resource.id == id;
+      })[0];
     };
 
     $scope.toggleSort = function(column) {

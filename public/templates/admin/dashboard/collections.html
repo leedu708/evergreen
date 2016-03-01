@@ -25,6 +25,8 @@
 
           <th>Approved IDs</th>
 
+          <th>Synthesis ID</th>
+
           <th>Remove Collection?</th>
 
           <th>Edit Collection?</th>
@@ -34,10 +36,15 @@
       <tbody>
         <tr ng-repeat="collection in collections | orderBy:sort:sortDescending">
           <td>{{ collection.id }}</td>
-          <td>{{ collection.title | capitalize:true }}</td>
+          <td>
+            <a ui-sref="collection({collection_id: {{collection.id}}})">
+              {{ collection.title | capitalize:true }}
+            </a>
+          </td>
           <td>{{ collection.description }}</td>
           <td>{{ collection.resource_total }}</td>
           <td>{{ collection.approved_IDs }}</td>
+          <td>{{ collection.synthesis_id }}</td>
           <td>
             <span class='btn btn-danger btn-sm' ng-click='destroyCollection(collection)'>
               Delete
@@ -92,6 +99,11 @@
       <form>
         <div class='form-group'>
           <select class='form-control' ng-model='editCollection.category_id' ng-options="category.id as category.title for category in categories">
+          </select>
+        </div>
+
+        <div class='form-group'>
+          <select class='form-control' ng-model='editCollection.synthesis_id' ng-options="resource[1] as resource[0] for resource in editCollection.resource_names">
           </select>
         </div>
 

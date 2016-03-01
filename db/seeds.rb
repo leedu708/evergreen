@@ -119,6 +119,13 @@ end
 
 puts 'Resources Created'
 
+Collection.all.each do |collection|
+  collection.synthesis = collection.resources.sample
+  collection.save
+end
+
+puts 'Syntheses Added'
+
 User.create(:email => "reader@test.com",
             :username => "readerTester",
             :password => "password",

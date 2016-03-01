@@ -3,6 +3,8 @@
 		<div class='navbar-spacer'></div>
 		<h2>{{ collectionName | capitalize:true }}:</h2>
 		<p>{{ collectionDesc | capitalize}}</p>
+
+		<h3>Synthesis - <a href="{{ synthesis.url }}">{{ synthesis.title }}</a></h3>
 		
 		<table class="table table-hover table-bordered">
 			<thead>
@@ -18,6 +20,8 @@
 						Title
 						<i ng-class="sortIcon('title')"></i>
 					</th>
+
+					<th>Description</th>
 					
 					<th class='pointer' ng-click="toggleSort('owner.username')">
 						Owner
@@ -40,7 +44,8 @@
 						<a href="{{ resource.url }}" target="_blank">
 							{{ resource.title | capitalize:true }}
 						</a>
-					</td>					
+					</td>			
+					<td>{{ resource.description }}</td>		
 					<td>{{ resource.owner.username }}</td>
 					<td>{{ resource.created_at | date }}</td>
 				</tr>		
