@@ -124,6 +124,9 @@ var evergreen = angular.module('evergreen', ['ui.router', 'restangular', 'templa
         templateUrl: '/templates/users/resources/index.html',
         controller: 'ResourceCtrl',
         resolve: {
+          current_user: ['Restangular', function(Restangular) {
+            return Restangular.one('users').get();
+          }],
           resources: ['Restangular', '$stateParams', function(Restangular, $stateParams) {
             return Restangular.one("users", $stateParams["user_id"]).all("resources").getList();
           }]
@@ -246,6 +249,9 @@ var evergreen = angular.module('evergreen', ['ui.router', 'restangular', 'templa
         templateUrl: '/templates/admin/dashboard/resources.html',
         controller: 'ResourceCtrl',
         resolve: {
+          current_user: ['Restangular', function(Restangular) {
+            return Restangular.one('users').get();
+          }],
           resources: ['Restangular', function(Restangular) {
             return Restangular.all('resources').getList();
           }]

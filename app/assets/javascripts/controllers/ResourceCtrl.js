@@ -1,9 +1,10 @@
 evergreen.controller('ResourceCtrl',
-  ['$scope', 'Restangular', 'resources', 'resourceService', 'flashService',
-  function($scope, Restangular, resources, resourceService, flashService) {
+  ['$scope', 'Restangular', 'current_user', 'resources', 'resourceService', 'flashService',
+  function($scope, Restangular, current_user, resources, resourceService, flashService) {
 
     $scope.init = function() {
       resourceService.setResources(resources);
+      $scope.current_user = current_user;
       $scope.setResourceVars();
     };
 
@@ -33,8 +34,12 @@ evergreen.controller('ResourceCtrl',
           flashService.updateFlash('Resource', 'update', true);
         }, function() {
           $scope.setResourceVars();
-          flashService.updateFlash('Resource', 'update', true);
+          flashService.updateFlash('Resource', 'update', false);
         });
+    };
+
+    $scope.userAdmin = function() {
+      return ($scope.current_user.user_type === "admin");
     };
 
     $scope.toggleSort = function(column) {
