@@ -22,14 +22,16 @@ class ResourcesController < ApplicationController
     if params[:collection_id]
       respond_to do |format|
         format.json { render json: @resources.to_json(
-          :include => [:owner, :collection]), :status => 200 }
+          :include => [:owner, :collection],
+          :methods => [:upvote_count]), :status => 200 }
       end
     else
       respond_to do |format|
         format.json { render json: @resources.to_json(
           :methods => [:owner_username,
                        :owner_id,
-                       :collection_name]), :status => 200 }
+                       :collection_name,
+                       :upvote_count]), :status => 200 }
       end
     end
 

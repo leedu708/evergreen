@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160301171052) do
+ActiveRecord::Schema.define(version: 20160302160059) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "title"
@@ -34,7 +34,6 @@ ActiveRecord::Schema.define(version: 20160301171052) do
     t.string   "url",                           null: false
     t.text     "description",                   null: false
     t.string   "media_type",    default: ""
-    t.integer  "upvotes",       default: 0,     null: false
     t.boolean  "approved",      default: false, null: false
     t.integer  "owner_id"
     t.integer  "collection_id"
@@ -54,6 +53,13 @@ ActiveRecord::Schema.define(version: 20160301171052) do
     t.string   "mission",    default: "Add Mission", null: false
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
+  end
+
+  create_table "upvotes", force: :cascade do |t|
+    t.integer  "resource_id"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "users", force: :cascade do |t|

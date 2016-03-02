@@ -11,9 +11,9 @@
 				<tr>
 					<!-- <th>Type</th> -->
 
-					<th class='pointer' ng-click="toggleSort('upvotes')">
+					<th class='pointer' ng-click="toggleSort('upvote_count')">
 						Upvotes
-						<i ng-class="sortIcon('upvotes')"></i>
+						<i ng-class="sortIcon('upvote_count')"></i>
 					</th>
 
 					<th class='pointer' ng-click="toggleSort('title')">
@@ -39,7 +39,7 @@
 				<tr ng-repeat="resource in resources | orderBy:sort:sortDescending"
 						ng-class="{'success': resource.approved}">
 					<!-- <td>{{ resource.media_type ? resource.media_type : 'N/A' }}</td> -->
-					<td>{{ resource.upvotes }} <i class='fa fa-thumbs-o-up fa-1x'></i></td>
+					<td>{{ resource.upvote_count }} <i class='fa fa-thumbs-o-up fa-1x'></i></td>
 					<td>
 						<a href="{{ resource.url }}" target="_blank">
 							{{ resource.title | capitalize:true }}
