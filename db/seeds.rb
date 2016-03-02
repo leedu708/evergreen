@@ -110,7 +110,6 @@ User.all.each do |user|
     user.resources.create(:title => Faker::Lorem.sentence(2, true, 3).chomp('.'),
                           :url => Faker::Internet.url('test.com'),
                           :description => Faker::Lorem.sentence(4, true, 7),
-                          :upvotes => rand(43) + 1,
                           :collection_id => collection_id,
                           :approved => random_approved,
                           :created_at => rand(Time.now - user.created_at).seconds.ago)
@@ -143,5 +142,15 @@ puts 'Created test reader [:email => reader@test.com, :password => password]'
 end
 
 puts 'Created random readers'
+
+Resource.all.each do |resource|
+  User.all.each do |user|
+    if (rand(10) > 6)
+      resource.upvotes.create(user_id: user.id)
+    end
+  end
+end
+
+puts 'Upvotes Added'
 
 puts 'SEEDING COMPLETE'

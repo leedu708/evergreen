@@ -6,12 +6,15 @@ class User < ActiveRecord::Base
 
   has_many :resources, :foreign_key => 'owner_id', :dependent => :destroy
 
+  has_many :upvotes, :dependent => :destroy
+  has_many :upvoted_resources, :through => :upvotes, :source => :resource
+
   def resource_total
     self.resources.length
   end
 
-  def upvotes
-    self.resources.inject(0) { |sum, resource| sum + resource.upvotes }
+  def upvote_count
+    self.resources.inject(0) { |sum, resource| sum + resource.upvote_count }
   end
   
 end

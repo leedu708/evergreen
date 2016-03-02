@@ -16,7 +16,9 @@ Rails.application.routes.draw do
     resources :collections, :only => [:index, :create, :update, :destroy] do
       resources :resources, :only => [:index]
     end
-    resources :resources, :only => [:index, :create, :update]
+    resources :resources, :only => [:index, :create, :update] do
+      post 'upvote', :on => :member
+    end
   end
 
 end

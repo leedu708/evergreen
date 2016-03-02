@@ -29,15 +29,19 @@ class Sector < ActiveRecord::Base
       end
     end
 
-    sorted = resources.sort { |left, right| right.upvotes <=> left.upvotes }
+    sorted = resources.sort { |left, right| right.upvote_count <=> left.upvote_count }
 
-    top = [[],[]]
+    top = [[],[], []]
     3.times do |x|
       top[0].push(sorted[x])
     end
 
     3.times do |x|
       top[1].push(User.find(top[0][x].owner_id).username)
+    end
+
+    3.times do |x|
+      top[2].push(top[0][x].upvote_count)
     end
 
     top

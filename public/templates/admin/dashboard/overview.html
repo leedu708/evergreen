@@ -116,7 +116,7 @@
           </div>
 
           <div class='col-xs-4 text-right'>
-            <span class='panel-text-upvote'>{{ resource.upvotes }}</span>
+            <span class='panel-text-upvote'>{{ sector.top_three[2][sector.top_three[0].indexOf(resource)] }}</span>
             &nbsp;&nbsp;<i class='fa fa-thumbs-o-up fa-2x'></i>
           </div>
         </div>
@@ -142,6 +142,6 @@
 <h2 class='page-header'>Top 3 Most Prolific Contributors</h2>
 <div class='row'>
   <ol class='list-group'>
-    <li class='list-group-item' ng-repeat='user in top3Prolific'>{{ user.username }}: {{ user.upvotes }} total upvotes</li>
+    <li class='list-group-item' ng-repeat='user in top3Prolific'>{{ user.username }}: {{ user.upvote_count }} total upvotes</li>
   </ol>
 </div>

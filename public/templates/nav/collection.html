@@ -11,9 +11,13 @@
 				<tr>
 					<!-- <th>Type</th> -->
 
-					<th class='pointer' ng-click="toggleSort('upvotes')">
-						Upvotes
-						<i ng-class="sortIcon('upvotes')"></i>
+					<th class='pointer' ng-click="toggleSort('upvote_count')">
+						Rating
+						<i ng-class="sortIcon('upvote_count')"></i>
+					</th>
+
+					<th ng-if='user'>
+						Upvote?
 					</th>
 
 					<th class='pointer' ng-click="toggleSort('title')">
@@ -39,7 +43,18 @@
 				<tr ng-repeat="resource in resources | orderBy:sort:sortDescending"
 						ng-class="{'success': resource.approved}">
 					<!-- <td>{{ resource.media_type ? resource.media_type : 'N/A' }}</td> -->
-					<td>{{ resource.upvotes }} <i class='fa fa-thumbs-o-up fa-1x'></i></td>
+					<td>{{ resource.upvote_count }} <i class='fa fa-thumbs-o-up fa-1x'></i></td>
+
+					<td class='text-center' ng-if='notUpvoted(resource.upvote_ids)'>
+						<span class='btn btn-primary btn-sm' ng-click="upvoteResource(resource)">
+							Upvote
+						</span>
+					</td>
+
+					<td class='text-center' ng-if='upvoted(resource.upvote_ids)'>
+						Upvoted
+					</td>
+
 					<td>
 						<a href="{{ resource.url }}" target="_blank">
 							{{ resource.title | capitalize:true }}

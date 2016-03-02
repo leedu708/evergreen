@@ -20,6 +20,10 @@ evergreen.factory('userService',
       });
     };
 
+    userService.currentUser = function() {
+      return Restangular.one('users').get();
+    };
+
     userService.promoteReader = function(id) {
       userService.users[id].user_type = "curator";
     };
@@ -70,9 +74,9 @@ evergreen.factory('userService',
 
     userService.getMostProlific = function(num) {
       sortUpvotes = this.users.sort(function(a, b) {
-        if (a.upvotes < b.upvotes) {
+        if (a.upvote_count < b.upvote_count) {
           return 1;
-        } else if (a.upvotes > b.upvotes) {
+        } else if (a.upvote_count > b.upvote_count) {
           return -1;
         } else {
           return 0;
