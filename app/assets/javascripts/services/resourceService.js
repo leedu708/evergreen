@@ -25,6 +25,14 @@ evergreen.factory('resourceService',
       });
     };
 
+    resourceService.addUpvote = function(resource, userId) {
+      index = this.resources.indexOf(resource);
+
+      this.resources[index].upvote_count += 1;
+      this.resources[index].upvote_ids.push(userId);
+      console.log(this.resources[index].upvote_ids);
+    };
+
     resourceService.toggleApproval = function(response) {
       index = this.resources.indexOf(response);
 

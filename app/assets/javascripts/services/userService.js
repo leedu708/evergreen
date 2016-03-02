@@ -20,6 +20,10 @@ evergreen.factory('userService',
       });
     };
 
+    userService.currentUser = function() {
+      return Restangular.one('users').get();
+    };
+
     userService.promoteReader = function(id) {
       userService.users[id].user_type = "curator";
     };

@@ -8,7 +8,7 @@ Rails.application.routes.draw do
       resources :users, :only => [:index, :show, :update]
       resources :site_info, :only => [:index, :update]
     end
-    resources :users, :only => [:index, :upvote] do
+    resources :users, :only => [:index] do
       resources :resources, :only => [:index, :show, :destroy]
     end
     resources :sectors, :only => [:index, :show, :create, :update, :destroy]
@@ -16,7 +16,9 @@ Rails.application.routes.draw do
     resources :collections, :only => [:index, :create, :update, :destroy] do
       resources :resources, :only => [:index]
     end
-    resources :resources, :only => [:index, :create, :update]
+    resources :resources, :only => [:index, :create, :update] do
+      post 'upvote', :on => :member
+    end
   end
 
 end

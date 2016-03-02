@@ -2,6 +2,7 @@ class ResourcesController < ApplicationController
 
   before_action :require_curator, :only => [:create, :update, :destroy]
   before_action :require_owner, :only => [:index, :show, :update, :destroy]
+  before_action :require_current_user, :only => [:upvote]
 
   def index
 
@@ -23,7 +24,8 @@ class ResourcesController < ApplicationController
       respond_to do |format|
         format.json { render json: @resources.to_json(
           :include => [:owner, :collection],
-          :methods => [:upvote_count]), :status => 200 }
+          :methods => [:upvote_count,
+                       :upvote_ids]), :status => 200 }
       end
     else
       respond_to do |format|
@@ -58,6 +60,26 @@ class ResourcesController < ApplicationController
     else
       respond_to do |format|
         format.json { render nothing: true, :status => 422 }
+      end
+    end
+
+  end
+
+  def upvote
+
+    @resource = Resource.find(params[:id])
+
+    if @resource.upvotes.create(user_id: current_user.id)
+      respond_to do |format|
+        format.json { render json: @resource.to_json(
+          :include => [:owner, :collection],
+          :methods => [:upvote_count,
+                       :upvote_ids]), :status => 200 }
+      end
+
+    else
+      respond_to do |format|
+        format.json { render :nothing => :true, :status => 422 }
       end
     end
 
@@ -111,6 +133,17 @@ class ResourcesController < ApplicationController
           format.json { render :nothing => :true, :status => 401 }
           format.html { redirect_to root_path }
         end
+      end
+    end
+
+  end
+
+  def require_current_user
+
+    unless current_user
+      flash[:danger] = "You must be logged in!"
+      respond_to do |format|
+        format.json { render :nothing => :true, :status => 422 }
       end
     end
 
