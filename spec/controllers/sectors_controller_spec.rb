@@ -174,15 +174,16 @@ RSpec.describe SectorsController, type: :controller do
         post :create, :format => :json, :sector => attributes_for(:sector)
       end
 
+      it { should use_before_action(:require_admin) }
+      it { should respond_with(:created) }
+
       it 'should save to the database' do
         expect(Sector.find(sector.id)).to eq(sector)
       end
 
       it 'should set the title' do
         expect(Sector.find(sector.id).title).to eq("sector_title")
-      end
-
-      it { should respond_with(:created) }
+      end      
 
       it 'should return the new sector as a hash' do
         expect(json).to be_a(Hash)
@@ -216,6 +217,7 @@ RSpec.describe SectorsController, type: :controller do
         delete :destroy, :format => :json, :id => -1
       end
 
+      it { should use_before_action(:require_admin) }
       it { should respond_with(422) }
 
     end
@@ -226,6 +228,7 @@ RSpec.describe SectorsController, type: :controller do
         delete :destroy, :format => :json, :id => sector.id
       end
 
+      it { should use_before_action(:require_admin) }
       it { should respond_with(204) }
 
       it 'should remove the sector from the database' do
@@ -244,11 +247,13 @@ RSpec.describe SectorsController, type: :controller do
 
     context 'with valid changes' do
 
-      let(:updated_title) { 'Update Title' }
+      let(:updated_title) { 'Updated Title' }
 
       before do
         patch :update, :format => :json, :id => sector.id, :sector => attributes_for(:sector, :title => updated_title)
       end
+
+      it { should use_before_action(:require_admin) }
 
       it 'should change the sector in the database' do
         expect(Sector.find(sector.id).title).to eq(updated_title)
