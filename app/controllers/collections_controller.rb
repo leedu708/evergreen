@@ -1,6 +1,6 @@
 class CollectionsController < ApplicationController
 
-  before_action :require_admin, :only => [:create, :destroy]
+  before_action :require_admin, :only => [:index, :create, :update, :destroy]
 
   def index
 
