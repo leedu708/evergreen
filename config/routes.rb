@@ -11,7 +11,11 @@ Rails.application.routes.draw do
     resources :users, :only => [:index] do
       resources :resources, :only => [:index, :show, :destroy]
     end
-    resources :sectors, :only => [:index, :show, :create, :update, :destroy]
+    resources :sectors do
+      collection do
+        get 'overview'
+      end
+    end
     resources :categories, :only => [:index, :create, :update, :destroy]
     resources :collections, :only => [:index, :create, :update, :destroy] do
       resources :resources, :only => [:index]

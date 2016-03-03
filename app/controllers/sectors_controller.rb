@@ -1,8 +1,17 @@
 class SectorsController < ApplicationController
 
-  before_action :require_admin, :only => [:create, :update, :destroy]
+  before_action :require_admin, :only => [:create, :update, :destroy, :overview]
 
   def index
+
+    @sectors = Sector.all
+    respond_to do |format|
+      format.json { render json: @sectors.to_json, :status => 200 }
+    end
+
+  end
+
+  def overview
 
     @sectors = Sector.all
     respond_to do |format|

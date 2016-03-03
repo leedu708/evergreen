@@ -178,7 +178,7 @@ var evergreen = angular.module('evergreen', ['ui.router', 'restangular', 'templa
             return Restangular.all('admin/users').getList();
           }],
           sectors: ['Restangular', function(Restangular) {
-            return Restangular.all('sectors').getList();
+            return Restangular.all('sectors').get('overview');
           }]
         }
       })
@@ -211,7 +211,7 @@ var evergreen = angular.module('evergreen', ['ui.router', 'restangular', 'templa
         controller: 'SectorCtrl',
         resolve: {
           sectors: ['Restangular', function(Restangular) {
-            return Restangular.all('sectors').getList();
+            return Restangular.all('sectors').get('overview');
           }]
         }
       })
