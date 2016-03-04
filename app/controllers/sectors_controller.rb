@@ -49,7 +49,7 @@ class SectorsController < ApplicationController
       end
     else
       respond_to do |format|
-        format.json { render nothing: true, :status => 422 }
+        format.json { render :nothing => :true, :status => 422 }
       end
     end
 
@@ -68,7 +68,7 @@ class SectorsController < ApplicationController
       end
     else
       respond_to do |format|
-        format.json { render nothing: true, :status => 422 }
+        format.json { render :nothing => :true, :status => 422 }
       end
     end
 
@@ -80,7 +80,7 @@ class SectorsController < ApplicationController
 
     if @sector && @sector.destroy
       respond_to do |format|
-        format.json { render nothing: true, :status => 204 }
+        format.json { render :nothing => :true, :status => 204 }
       end
     else
       respond_to do |format|
