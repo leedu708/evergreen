@@ -59,7 +59,7 @@ class ResourcesController < ApplicationController
       end
     else
       respond_to do |format|
-        format.json { render nothing: true, :status => 422 }
+        format.json { render :nothing => :true, :status => 422 }
       end
     end
 
@@ -91,11 +91,11 @@ class ResourcesController < ApplicationController
 
     if @resource.update(resource_params)
       respond_to do |format|
-        format.json { render nothing: true, :status => 200 }
+        format.json { render :nothing => :true, :status => 200 }
       end
     else
       respond_to do |format|
-        format.json { render nothing => :true, :status => 422 }
+        format.json { render :nothing => :true, :status => 422 }
       end
     end
 
@@ -107,11 +107,11 @@ class ResourcesController < ApplicationController
 
     if @resource && @resource.destroy
       respond_to do |format|
-        format.json { render nothing: true, :status => 204 }
+        format.json { render :nothing => :true, :status => 204 }
       end
     else
       respond_to do |format|
-        format.json { render nothing => :true, :status => 422 }
+        format.json { render :nothing => :true, :status => 422 }
       end
     end
 
@@ -127,7 +127,7 @@ class ResourcesController < ApplicationController
 
     if params[:user_id]
       user = User.find_by_id(params[:user_id])
-      unless current_user.id == user.id || current_user.user_type == "admin"
+      unless current_user && (current_user.id == user.id || current_user.user_type == "admin")
         flash[:danger] = "Unauthorized Access!"
         respond_to do |format|
           format.json { render :nothing => :true, :status => 401 }
@@ -143,7 +143,7 @@ class ResourcesController < ApplicationController
     unless current_user
       flash[:danger] = "You must be logged in!"
       respond_to do |format|
-        format.json { render :nothing => :true, :status => 422 }
+        format.json { render :nothing => :true, :status => 401 }
       end
     end
 
