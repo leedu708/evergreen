@@ -5,6 +5,8 @@ class Sector < ActiveRecord::Base
   has_many :resources, :through => :collections
   has_many :upvotes, :through => :resources
 
+  validates :title, :length => { :in => 1..50 }
+
   def category_total
     self.categories.count
   end

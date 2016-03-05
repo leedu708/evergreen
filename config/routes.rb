@@ -21,6 +21,9 @@ Rails.application.routes.draw do
       resources :resources, :only => [:index]
     end
     resources :resources, :only => [:index, :create, :update] do
+      collection do
+        get 'search'
+      end
       post 'upvote', :on => :member
     end
   end

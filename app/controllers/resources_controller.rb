@@ -47,6 +47,18 @@ class ResourcesController < ApplicationController
 
   end
 
+  def search
+
+    @resources = Resource.all.search(params[:search])
+    respond_to do |format|
+      format.json { render json: @resources.to_json(
+        :methods => [:owner_username,
+                     :collection_name,
+                     :upvote_count]), :status => 200 }
+    end
+
+  end
+
   def create
 
     @resource = Resource.new(resource_params)
