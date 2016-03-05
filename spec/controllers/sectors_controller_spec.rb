@@ -85,16 +85,20 @@ RSpec.describe SectorsController, type: :controller do
         expect(json).to be_an(Array)
       end
 
-      it 'should return the total categories per sector' do
-        expect(json[0]).to have_key("category_total")
+      it 'should return all the totals for categories, collections, and resources under the sector' do
+        expect(json[0]).to have_key("all_totals")
       end
 
-      it 'should return the total collections per sector' do
-        expect(json[0]).to have_key("collection_total")
+      it 'should return the correct total number of categories for the sector' do
+        expect(json[0]["all_totals"][0]).to eq(Sector.find(sector.id).category_total)
       end
 
-      it 'should return the total resources per sector' do
-        expect(json[0]).to have_key("resource_total")
+      it 'should return the correct total number of collections for the sector' do
+        expect(json[0]["all_totals"][1]).to eq(Sector.find(sector.id).collection_total)
+      end
+
+      it 'should return the correct total number of resources for the sector' do
+        expect(json[0]["all_totals"][2]).to eq(Sector.find(sector.id).resource_total)
       end
 
       it 'should return the top 3 resources per sector' do

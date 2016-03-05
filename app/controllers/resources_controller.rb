@@ -31,7 +31,6 @@ class ResourcesController < ApplicationController
       respond_to do |format|
         format.json { render json: @resources.to_json(
           :methods => [:owner_username,
-                       :owner_id,
                        :collection_name,
                        :upvote_count]), :status => 200 }
       end
@@ -43,8 +42,7 @@ class ResourcesController < ApplicationController
 
     @resource = Resource.find_by_id(params[:id])
     respond_to do |format|
-      format.json { render json: @resource.to_json(
-        :methods => [:owner_id]), :status => 200 }
+      format.json { render json: @resource.to_json, :status => 200 }
     end
 
   end

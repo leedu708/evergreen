@@ -21,7 +21,7 @@ evergreen.controller('OverviewCtrl',
     $scope.getTotalCategories = function() {
       var sum = 0;
       angular.forEach($scope.sectors, function(sector) {
-        sum += sector.category_total;
+        sum += sector.all_totals[0];
       })
       return sum;
     };
@@ -29,7 +29,7 @@ evergreen.controller('OverviewCtrl',
     $scope.getTotalCollections = function() {
       var sum = 0;
       angular.forEach($scope.sectors, function(sector) {
-        sum += sector.collection_total;
+        sum += sector.all_totals[1];
       });
       return sum;
     };
@@ -37,7 +37,7 @@ evergreen.controller('OverviewCtrl',
     $scope.getTotalResources = function() {
       var sum = 0;
       angular.forEach($scope.sectors, function(sector) {
-        sum += sector.resource_total;
+        sum += sector.all_totals[2];
       });
       return sum;
     };

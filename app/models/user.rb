@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   end
 
   def upvote_count
-    self.resources.inject(0) { |sum, resource| sum + resource.upvote_count }
+    self.upvotes.count
   end
   
 end

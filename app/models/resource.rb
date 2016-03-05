@@ -10,20 +10,12 @@ class Resource < ActiveRecord::Base
     self.owner.username
   end
 
-  def owner_id
-    self.owner.id
-  end
-
   def collection_name
     self.collection.title
   end
 
-  def collection_id
-    self.collection.id
-  end
-
   def upvote_count
-    self.upvotes.length
+    self.upvotes.count
   end
 
   def upvote_ids

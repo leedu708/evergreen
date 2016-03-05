@@ -11,10 +11,9 @@ RSpec.describe CollectionsController, type: :controller do
 
   describe 'GET#index' do
 
-    context 'as an admin' do
+    context 'as a user' do
 
       before do
-        sign_in admin
         get :index, :format => :json
       end
 

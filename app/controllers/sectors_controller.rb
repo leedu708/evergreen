@@ -16,9 +16,7 @@ class SectorsController < ApplicationController
     @sectors = Sector.all
     respond_to do |format|
       format.json { render json: @sectors.to_json(
-        :methods => [:category_total,
-                     :collection_total,
-                     :resource_total,
+        :methods => [:all_totals,
                      :top_three]), :status => 200 }
     end
 

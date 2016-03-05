@@ -1,50 +1,41 @@
 class Sector < ActiveRecord::Base
 
   has_many :categories, :foreign_key => :sector_id, :dependent => :nullify
+  has_many :collections, :through => :categories
+  has_many :resources, :through => :collections
+  has_many :upvotes, :through => :resources
 
   def category_total
-    self.categories.length
+    self.categories.count
   end
 
   def collection_total
-    self.categories.inject(0) { |sum, category| sum + category.collections.length }
+    self.collections.count
   end
 
   def resource_total
-    resources = 0
-    self.categories.length.times do |i|
-      resources += self.categories[i].collections.inject(0) { |sum, collection| sum + collection.resources.length }
-    end
-    resources
+    self.resources.count
+  end
+
+  def all_totals
+
+    [self.category_total, self.collection_total, self.resource_total]
+
   end
 
   def top_three
-    resources = []
+    resource_ids = self.upvotes.group('resource_id').order('count_id DESC').limit(3).count(:id)
 
-    self.categories.each do |category|
-      category.collections.each do |collection|
-        collection.resources.each do |resource|
-          resources.push(resource)
-        end
-      end
+    output = [[],[],[]]
+
+    resource_ids.each do |id|
+      output[0].push(Resource.find(id[0]))
+      output[1].push(Resource.find(id[0]).owner.username)
+      output[2].push(id[1])
     end
 
-    sorted = resources.sort { |left, right| right.upvote_count <=> left.upvote_count }
+    output
 
-    top = [[],[], []]
-    3.times do |x|
-      top[0].push(sorted[x])
-    end
-
-    3.times do |x|
-      top[1].push(User.find(top[0][x].owner_id).username)
-    end
-
-    3.times do |x|
-      top[2].push(top[0][x].upvote_count)
-    end
-
-    top
   end
   
 end
