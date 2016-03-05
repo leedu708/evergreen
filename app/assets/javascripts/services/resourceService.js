@@ -1,5 +1,6 @@
 evergreen.factory('resourceService',
-  [function() {
+  ['Restangular',
+  function(Restangular) {
 
     var resourceService = {};
 
@@ -49,6 +50,10 @@ evergreen.factory('resourceService',
           return 0;
         };
       });
+    };
+
+    resourceService.getSearch = function(query) {
+      return Restangular.all('resources').customGETLIST('search', { search: query });
     };
 
     resourceService.getResources = function() {

@@ -1,10 +1,35 @@
 evergreen.controller('SearchCtrl',
-  ['$scope', 'resources', 'resourceService',
-  function($scope, resources, resourceService) {
+  ['$scope', '$rootScope', '$stateParams', 'Restangular', 'resourceService',
+  function($scope, $rootScope, $stateParams, Restangular, resourceService) {
 
-    $scope.init = function() {
-      resourceService.setResources(resources);
+    $scope.editorEnabled = false;
+
+    $scope.enableEditor = function() {
+      $scope.editorEnabled ^= true;
+    };
+
+    $scope.setResources = function() {
+      $scope.searchText = "";
+      $scope.enableEditor();
       $scope.resources = resourceService.getResources();
+      $scope.setResultAgreement();
+    };
+
+    $scope.getSearch = function(query) {
+      resourceService.getSearch(query)
+        .then(function(response) {
+          console.log($scope.query);
+          resourceService.setResources(response); 
+          $scope.setResources();
+        });               
+    };
+
+    $scope.setResultAgreement = function() {
+      if ($scope.resources.length === 1) {
+        $scope.resulted = "result";
+      } else {
+        $scope.resulted = "results";
+      };
     };
 
     $scope.toggleSort = function(column) {
@@ -23,7 +48,5 @@ evergreen.controller('SearchCtrl',
           : 'fa fa-chevron-down fa-1x';
       };
     };
-
-    $scope.init();
 
   }]);

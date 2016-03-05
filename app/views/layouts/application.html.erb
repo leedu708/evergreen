@@ -82,7 +82,7 @@
     <% end %>
   <% end %>
 
-  <%= menu_group :pull => :right do %>
+<!--   <%= menu_group :pull => :right do %>
     <li class="dropdown">
       <a class="dropdown-toggle pointer" data-toggle="dropdown">
         <i class="fa fa-search fa-1x"></i>
@@ -98,6 +98,10 @@
         </li>
       </ul>
     </li>
+  <% end %> -->
+
+  <%= menu_group :pull => :right do %>
+    <search-form></search-form>
   <% end %>
 
 <% end %>

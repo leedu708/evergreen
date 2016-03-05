@@ -20,7 +20,6 @@ evergreen.controller('CollectionCtrl',
     $scope.createCollection = function(collection) {
       Restangular.all('collections').post(collection)
         .then( function(response) {
-          console.log(response);
           collectionService.addCollection(response)
           $scope.setCollectionVars();
           flashService.updateFlash('Collection', 'create', true);

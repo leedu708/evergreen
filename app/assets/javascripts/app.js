@@ -134,14 +134,9 @@ var evergreen = angular.module('evergreen', ['ui.router', 'restangular', 'templa
       })
 
       .state('search', {
-        url: '/resources/search/:query',
+        url: '/resources/search',
         templateUrl: '/templates/nav/search.html',
-        controller: 'SearchCtrl',
-        resolve: {
-          resources: ['Restangular', '$stateParams', function(Restangular, $stateParams) {
-            return Restangular.all('resources').customGETLIST('search', {search: $stateParams["query"]});
-          }]
-        }
+        controller: 'SearchCtrl'
       })
 
       // ADMIN DASHBOARD

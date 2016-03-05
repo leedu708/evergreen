@@ -1,0 +1,14 @@
+<div class="search-form-wrapper">
+  <li class="pointer" ng-hide="editorEnabled" ng-click="enableEditor($event)">
+    <i class="fa fa-search fa-1x"></i>
+  </li>
+
+  <li ng-show="editorEnabled">
+    <form class="form-inline">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search terms..." ng-model='searchText'>
+      </div>
+      <a ui-sref="search" class="btn btn-primary" ng-click="getSearch(searchText)">Search</a>
+    </form>
+  </li>
+</div>
