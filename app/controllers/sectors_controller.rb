@@ -60,9 +60,7 @@ class SectorsController < ApplicationController
     if @sector.update(sector_params)
       respond_to do |format|
         format.json { render json: @sector.to_json(
-          :methods => [:category_total,
-                       :collection_total,
-                       :resource_total]), :status => 200 }
+          :methods => [:all_totals]), :status => 200 }
       end
     else
       respond_to do |format|

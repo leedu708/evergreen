@@ -267,6 +267,26 @@ RSpec.describe SectorsController, type: :controller do
         expect(response).to have_http_status(:ok)
       end
 
+      it 'should return the sector as a hash' do
+        expect(json).to be_a(Hash)
+      end
+
+      it 'should return all the totals for categories, collections, and resources under the sector' do
+        expect(json).to have_key("all_totals")
+      end
+
+      it 'should return the correct total number of categories for the sector' do
+        expect(json["all_totals"][0]).to eq(Sector.find(sector.id).category_total)
+      end
+
+      it 'should return the correct total number of collections for the sector' do
+        expect(json["all_totals"][1]).to eq(Sector.find(sector.id).collection_total)
+      end
+
+      it 'should return the correct total number of resources for the sector' do
+        expect(json["all_totals"][2]).to eq(Sector.find(sector.id).resource_total)
+      end
+
     end
 
   end
