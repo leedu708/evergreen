@@ -74,6 +74,30 @@ evergreen.factory('flashService',
       flashService.setFlash('danger', message);
     };
 
+    flashService.login = function(bool) {
+      if (bool) {
+        bootstrapClass = 'success';
+        message = 'Login successful!';
+      } else {
+        bootstrapClass = 'danger';
+        message = 'Login failed!';
+      };
+
+      flashService.setFlash(bootstrapClass, message);
+    };
+
+    flashService.logout = function(bool) {
+      if (bool) {
+        bootstrapClass = 'success';
+        message = 'Logged Out!';
+      } else {
+        bootstrapClass = 'danger';
+        message = 'Log out failed!';
+      };
+
+      flashService.setFlash(bootstrapClass, message);
+    };
+
     return flashService;
 
   }]);

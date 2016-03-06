@@ -27,60 +27,8 @@
       {{ $root.flash[1] }}
     </li>
   <% end %>
-  
-  <% if current_user %>
-    <%= menu_group :pull => :right do %>
-      <li class="dropdown">
-        <a class="dropdown-toggle pointer" data-toggle="dropdown">Welcome, <%= "#{current_user.username}" %><b class="caret"></b></a>
-        <ul class="dropdown-menu">
-          <% if current_user.user_type == "admin" %>
-            <li ui-sref-active='active'>
-              <a ui-sref='admin.dashboard.overview'>Admin Dashboard</a>
-            </li>
-          <% end %>
-          <% if current_user.user_type == "admin" || current_user.user_type == "curator" %>
-            <li ui-sref-active='active'>
-              <a ui-sref="addResource">Add Resource</a>
-            </li>
 
-            <li ui-sref-active='active'>
-              <a ui-sref="userResources({user_id: <%= current_user.id %>})">View Your Resources</a>
-            </li>
-          <% end %>
-          <%= menu_item "Edit Information", edit_user_registration_path %>
-          <%= menu_item "Logout", destroy_user_session_path, :method => :delete %>
-        </ul>
-      </li>
-    <% end %>
-
-  <% else %>
-    <%= menu_group pull: :right do %>
-      <li class="dropdown">
-        <a class="dropdown-toggle pointer" data-toggle="dropdown">Log In<b class="caret"></b></a>
-        <ul class="dropdown-menu">      
-          <%= form_for(:user, :url => session_path(:user)) do |f| -%>
-            <div class="nav-login-wrapper">
-              <div class="field form-group">
-                <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: "Email" %>
-              </div>
-
-              <div class="field form-group">
-                <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: "Password" %>
-              </div>
-
-              <div>
-                <%= f.submit "Log in", class: 'btn btn-success col-xs-12 log-in' %>
-              </div>
-
-              <div>
-                <%= link_to "Sign Up!", new_user_registration_path, class: 'btn btn-primary col-xs-12 log-in' %>
-              </div>
-            </div>
-          <% end -%>
-        </ul>
-      </li>
-    <% end %>
-  <% end %>
+  <nav-login></nav-login>
 
   <%= menu_group :pull => :right do %>
     <search-form></search-form>

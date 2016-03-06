@@ -1,0 +1,43 @@
+<div class='container'>
+  <div class='row'>
+    <div class='col-md-6 col-md-offset-3'>
+      <h1 class='page-header'>Edit User Information</h1>
+
+      <!-- REGISTRATION FORM -->
+      <form>
+        <div class='form-group'>
+          <label for='email'>Email</label><br>
+          <input type='email' class='form-control' id='email' ng-model="creds.email">
+        </div>
+        <br>
+
+        <div class='form-group'>
+          <label for='password'>Password</label>
+          <i>(leave blank if you don't want to change it)</i><br>
+          <input type='password' class='form-control' id='password' ng-model="creds.password">
+        </div>
+        <br>
+
+        <div class='form-group'>
+          <label for='password_confirmation'>Confirm Password</label><br>
+          <input type='password' class='form-control' id='password_confirmation' ng-model="creds.password_confirmation">
+        </div>
+        <br>
+
+        <div class='form-group'>
+          <label for='current_password'>Current Password</label>
+          <i>(we need your current password to confirm your changes)</i><br>
+          <input type='password' class='form-control' id='current_password' ng-model="creds.current_password">
+        </div>
+        <br>
+
+        <button type='submit' class='btn btn-primary' ng-click='editInfo(creds)'>
+          Update Information
+        </button>
+        <br><br>
+
+        <a ui-sref="home">Cancel</a>
+      </form>
+    </div>
+  </div>
+</div>

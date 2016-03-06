@@ -1,71 +1,67 @@
-<div class='container'>
+<div class='container-fluid'>
   <div class='row'>
-    <div class='col-md-12'>
+    <div class='col-md-8 col-md-offset-2'>
       <h1 class='page-header'>
         Search Results
         <small>showing {{ resources.length }} {{ resulted }} for "{{ searchText }}"...</small>
       </h1>
 
       <!-- SEARCH RESULTS TABLE -->
-      <div class='row'>
-        <div class='col-md-10 col-md-offset-1'>
-          <table class="table table-hover table-bordered" ng-if="resources.length">
-            <thead>
-              <tr>
-                <!-- <th>Type</th> -->
+      <table class="table table-hover table-bordered" ng-if="resources.length">
+        <thead>
+          <tr>
+            <!-- <th>Type</th> -->
 
-                <th class='pointer' ng-click="toggleSort('upvote_count')">
-                  Rating
-                  <i ng-class="sortIcon('upvote_count')"></i>
-                </th>
+            <th class='pointer' ng-click="toggleSort('upvote_count')">
+              Rating
+              <i ng-class="sortIcon('upvote_count')"></i>
+            </th>
 
-                <th class='pointer' ng-click="toggleSort('title')">
-                  Title
-                  <i ng-class="sortIcon('title')"></i>
-                </th>
+            <th class='pointer' ng-click="toggleSort('title')">
+              Title
+              <i ng-class="sortIcon('title')"></i>
+            </th>
 
-                <th>Description</th>
+            <th>Description</th>
 
-                <th class='pointer' ng-click="toggleSort('collection_name')">
-                  Collection
-                  <i ng-class="sortIcon('collection_name')">
-                </i>
-                
-                <th class='pointer' ng-click="toggleSort('owner_username')">
-                  Owner
-                  <i ng-class="sortIcon('owner_username')"></i>
-                </th>
+            <th class='pointer' ng-click="toggleSort('collection_name')">
+              Collection
+              <i ng-class="sortIcon('collection_name')">
+            </i>
+            
+            <th class='pointer' ng-click="toggleSort('owner_username')">
+              Owner
+              <i ng-class="sortIcon('owner_username')"></i>
+            </th>
 
-                <th class='pointer' ng-click="toggleSort('created_at')">
-                  Date Added
-                  <i ng-class="sortIcon('created_at')"></i>
-                </th>
-              </tr>
-            </thead>
-          
-            <tbody>
-              <tr ng-repeat="resource in resources | orderBy:sort:sortDescending"
-                  ng-class="{'success': resource.approved}">
-                <!-- <td>{{ resource.media_type ? resource.media_type : 'N/A' }}</td> -->
-                <td>{{ resource.upvote_count }} <i class='fa fa-thumbs-o-up fa-1x'></i></td>
-                <td>
-                  <a href="{{ resource.url }}" target="_blank">
-                    {{ resource.title | capitalize:true }}
-                  </a>
-                </td>     
-                <td>{{ resource.description }}</td>
-                <td>
-                  <a ui-sref="collection({collection_id: {{resource.collection_id}}})">
-                    {{ resource.collection_name }}
-                  </a>
-                </td>
-                <td>{{ resource.owner_username }}</td>
-                <td>{{ resource.created_at | date }}</td>
-              </tr>   
-            </tbody>
-          </table>
-        </div>
-      </div>
+            <th class='pointer' ng-click="toggleSort('created_at')">
+              Date Added
+              <i ng-class="sortIcon('created_at')"></i>
+            </th>
+          </tr>
+        </thead>
+      
+        <tbody>
+          <tr ng-repeat="resource in resources | orderBy:sort:sortDescending"
+              ng-class="{'success': resource.approved}">
+            <!-- <td>{{ resource.media_type ? resource.media_type : 'N/A' }}</td> -->
+            <td>{{ resource.upvote_count }} <i class='fa fa-thumbs-o-up fa-1x'></i></td>
+            <td>
+              <a href="{{ resource.url }}" target="_blank">
+                {{ resource.title | capitalize:true }}
+              </a>
+            </td>     
+            <td>{{ resource.description }}</td>
+            <td>
+              <a ui-sref="collection({collection_id: {{resource.collection_id}}})">
+                {{ resource.collection_name }}
+              </a>
+            </td>
+            <td>{{ resource.owner_username }}</td>
+            <td>{{ resource.created_at | date }}</td>
+          </tr>   
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

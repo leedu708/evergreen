@@ -1,4 +1,4 @@
-var evergreen = angular.module('evergreen', ['ui.router', 'restangular', 'templates', 'ngAnimate', 'textAngular'])
+var evergreen = angular.module('evergreen', ['ui.router', 'restangular', 'templates', 'ngAnimate', 'textAngular', 'Devise'])
 
 .config( ['$stateProvider', '$urlRouterProvider', 'RestangularProvider',
   function($stateProvider, $urlRouterProvider, RestangularProvider) {
@@ -14,6 +14,26 @@ var evergreen = angular.module('evergreen', ['ui.router', 'restangular', 'templa
     $urlRouterProvider.otherwise('/home');
 
     $stateProvider
+
+      // Login
+      .state('login', {
+        url: '/login',
+        templateUrl: '/templates/users/auth/login.html',
+        controller: 'LoginCtrl'
+      })
+
+      // Registration
+      .state('register', {
+        url: '/register',
+        templateUrl: '/templates/users/auth/register.html',
+        controller: 'LoginCtrl'
+      })
+
+      .state('editRegistration', {
+        url: '/register/edit',
+        templateUrl: '/templates/users/auth/edit.html',
+        controller: 'LoginCtrl'
+      })
 
       // Reader Flow
       .state('home', {
