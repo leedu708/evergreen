@@ -5,29 +5,50 @@
 
       <!-- REGISTRATION FORM -->
       <form>
-        <div class='form-group'>
-          <label for='email'>Email</label><br>
+        <div class='form-group' ng-class="errorClass('email')">
+          <label class='control-label' for='email'>Email</label><br>
+          
           <input type='email' class='form-control' id='email' ng-model="creds.email">
+
+          <span class='help-block' ng-show="errorClass('email') === 'has-error'">
+            Email {{ errorMessages('email') }}
+          </span>
         </div>
+        
         <br>
 
-        <div class='form-group'>
-          <label for='password'>Password</label>
+        <div class='form-group' ng-class="errorClass('password')">
+          <label class='control-label' for='password'>Password</label>
           <i>(leave blank if you don't want to change it)</i><br>
+
           <input type='password' class='form-control' id='password' ng-model="creds.password">
+          <span class='help-block' ng-show="errorClass('password') === 'has-error'">
+
+            Password {{ errorMessages('password') }}
+          </span>
         </div>
         <br>
 
-        <div class='form-group'>
-          <label for='password_confirmation'>Confirm Password</label><br>
+        <div class='form-group' ng-class="errorClass('password_confirmation')">
+          <label class='control-label' for='password_confirmation'>Confirm Password</label><br>
+
           <input type='password' class='form-control' id='password_confirmation' ng-model="creds.password_confirmation">
+
+          <span class='help-block' ng-show="errorClass('password_confirmation') === 'has-error'">
+            Confirmation password {{ errorMessages('password_confirmation') }}
+          </span>
         </div>
         <br>
 
-        <div class='form-group'>
-          <label for='current_password'>Current Password</label>
+        <div class='form-group' ng-class="errorClass('current_password')">
+          <label class='control-label' for='current_password'>Current Password</label>
           <i>(we need your current password to confirm your changes)</i><br>
+
           <input type='password' class='form-control' id='current_password' ng-model="creds.current_password">
+
+          <span class='help-block' ng-show="errorClass('current_password') === 'has-error'">
+            Current password {{ errorMessages('current_password') }}
+          </span>
         </div>
         <br>
 

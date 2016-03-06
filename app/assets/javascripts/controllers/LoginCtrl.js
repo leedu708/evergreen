@@ -1,6 +1,6 @@
 evergreen.controller('LoginCtrl',
-  ['$scope', 'Auth', '$location', '$window', 'flashService',
-  function($scope, Auth, $location, $window, flashService) {
+  ['$scope', 'Auth', '$location', '$window', 'errorService', 'flashService',
+  function($scope, Auth, $location, $window, errorService, flashService) {
 
     // always try to grab current user
     Auth.currentUser().then(function(user) {
@@ -52,9 +52,26 @@ evergreen.controller('LoginCtrl',
         .then(function(user) {
           flashService.updateFlash('User information', 'update', true);
           $location.path(" /home ");
-        }, function(error) {
+        }, function(response) {
+          $scope.invalid = errorService.getInvalids(response);
           flashService.updateFlash('User information', 'update', false);
         });
+    };
+
+    // error functions
+
+    $scope.errorClass = function(key) {
+      if ($scope.invalid) {
+        return $scope.invalid[key] ? 'has-error' : '';
+      } else {
+        return '';
+      };
+    };
+
+    $scope.errorMessages = function(key) {
+      if ($scope.invalid && $scope.invalid[key]) {
+        return $scope.invalid[key]["messages"][0];
+      };
     };
 
     // grab user information
