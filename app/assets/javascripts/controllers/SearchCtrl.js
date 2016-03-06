@@ -1,27 +1,12 @@
 evergreen.controller('SearchCtrl',
-  ['$scope', '$rootScope', '$stateParams', 'Restangular', 'resourceService',
-  function($scope, $rootScope, $stateParams, Restangular, resourceService) {
+  ['$scope', '$rootScope', '$stateParams', 'resources', 'Restangular', 'resourceService',
+  function($scope, $rootScope, $stateParams, resources, Restangular, resourceService) {
 
-    $scope.editorEnabled = false;
-
-    $scope.enableEditor = function() {
-      $scope.editorEnabled ^= true;
-    };
-
-    $scope.setResources = function() {
-      $scope.searchText = "";
-      $scope.enableEditor();
+    $scope.init = function() {
+      $scope.searchText = $stateParams["query"];
+      resourceService.setResources(resources);
       $scope.resources = resourceService.getResources();
       $scope.setResultAgreement();
-    };
-
-    $scope.getSearch = function(query) {
-      resourceService.getSearch(query)
-        .then(function(response) {
-          console.log($scope.query);
-          resourceService.setResources(response); 
-          $scope.setResources();
-        });               
     };
 
     $scope.setResultAgreement = function() {
@@ -48,5 +33,7 @@ evergreen.controller('SearchCtrl',
           : 'fa fa-chevron-down fa-1x';
       };
     };
+
+    $scope.init()
 
   }]);

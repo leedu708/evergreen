@@ -8,7 +8,7 @@
       <div class="form-group">
         <input type="text" class="form-control" placeholder="Search terms..." ng-model='searchText'>
       </div>
-      <a ui-sref="search" class="btn btn-primary" ng-click="getSearch(searchText)">Search</a>
+      <a ui-sref="search({query: searchText})" class="btn btn-primary" ng-click="closeSearch()" ng-class="{ disabled: empty() }">Search</a>
     </form>
   </li>
 </div>
