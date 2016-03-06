@@ -1,0 +1,67 @@
+<div>
+  <!-- IF NOT LOGGED IN -->
+  <ul ng-if='!loggedIn()' class='nav navbar-nav navbar-right login-directive'>
+    <li ng-hide='loggedIn()' class='dropdown'>
+      <a class='dropdown-toggle pointer' data-toggle='dropdown'>
+        Log In
+        <b class='caret'></b>
+      </a>
+
+      <ul class='dropdown-menu'>
+        <form>
+          <div class='nav-login-wrapper'>
+            <li>
+              <div class='form-group'>
+                <input type='email' class='form-control' autofocus='autofocus' placeholder='Email' ng-model='creds.email'>
+              </div>
+
+              <div class='form-group'>
+                <input type='password' class='form-control' placeholder='Password' ng-model='creds.password'>
+              </div>
+            </li>
+
+            <li>
+              <button type='submit' class='btn btn-success col-xs-12 log-in' ng-click='login(creds)'>Log In</button>
+            </li>
+
+            <li>
+              <a ui-sref='register' class='btn btn-primary col-xs-12 log-in'>Sign Up!</a>
+            </li>
+          </div>
+        </form>
+      </ul>
+    </li>
+  </ul>
+
+  <!-- IF LOGGED IN -->
+  <ul ng-if='loggedIn()' class='nav navbar-nav navbar-right login-directive'>
+    <li class='dropdown'>
+      <a class='dropdown-toggle pointer' data-toggle='dropdown'>
+        Welcome, {{ username() }}
+        <b class='caret'></b>
+      </a>
+
+      <ul class='dropdown-menu'>
+        <li ng-if="requireAdmin()" ui-sref-active='active'>
+          <a ui-sref='admin.dashboard.overview'>Admin Dashboard</a>
+        </li>
+
+        <li ng-if="requireCurator()" ui-sref-active='active'>
+          <a ui-sref='addResource'>Add Resource</a>
+        </li>
+
+        <li ng-if="requireCurator()" ui-sref-active='active'>
+          <a ui-sref='userResources({user_id: userID()})'>View Your Resources</a>
+        </li>
+
+        <li>
+          <a ui-sref='editRegistration' class='pointer'>Edit Information</a>
+        </li>
+
+        <li>
+          <a ng-click='logout()' class='pointer'>Log Out</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>

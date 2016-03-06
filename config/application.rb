@@ -24,5 +24,9 @@ module Evergreen
     config.active_record.raise_in_transactional_callbacks = true
 
     config.generators.javascripts = false
+
+    config.to_prepare do
+        DeviseController.respond_to :json
+    end
   end
 end

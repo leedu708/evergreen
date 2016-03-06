@@ -1,6 +1,6 @@
 evergreen.controller('SearchCtrl',
-  ['$scope', '$rootScope', '$stateParams', 'resources', 'Restangular', 'resourceService',
-  function($scope, $rootScope, $stateParams, resources, Restangular, resourceService) {
+  ['$scope', '$stateParams', 'resources', 'resourceService',
+  function($scope, $stateParams, resources, resourceService) {
 
     $scope.init = function() {
       $scope.searchText = $stateParams["query"];

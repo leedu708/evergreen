@@ -31,7 +31,6 @@ evergreen.factory('resourceService',
 
       this.resources[index].upvote_count += 1;
       this.resources[index].upvote_ids.push(userId);
-      console.log(this.resources[index].upvote_ids);
     };
 
     resourceService.toggleApproval = function(response) {

@@ -6,9 +6,9 @@
   <li class="search-animation" ng-show="editorEnabled">
     <form class="form-inline">
       <div class="form-group">
-        <input type="text" class="form-control" placeholder="Search terms..." ng-model='searchText'>
+        <input autofocus="autofocus" type="text" class="form-control" placeholder="Search terms..." ng-model='searchText'>
       </div>
-      <a ui-sref="search({query: searchText})" class="search-btn btn btn-default" ng-click="closeSearch()" ng-class="{ disabled: empty() }"><i class="fa fa-search fa-1x"></i></a>
+      <button ui-sref="search({query: searchText})" class="search-btn btn btn-default" ng-click="closeSearch()" ng-class="{ disabled: empty() }"><i class="fa fa-search fa-1x"></i></button>
     </form>
   </li>
 </div>
