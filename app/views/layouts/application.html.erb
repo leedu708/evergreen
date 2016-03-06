@@ -82,24 +82,6 @@
     <% end %>
   <% end %>
 
-<!--   <%= menu_group :pull => :right do %>
-    <li class="dropdown">
-      <a class="dropdown-toggle pointer" data-toggle="dropdown">
-        <i class="fa fa-search fa-1x"></i>
-      </a>
-      <ul class="dropdown-menu">
-        <li class="nav-search-wrapper">
-          <form class="form-inline">
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="Search terms..." ng-model='$root.search'>
-            </div>
-            <a ui-sref="search({query: $root.search })" class="btn btn-primary">Search</a>
-          </form>
-        </li>
-      </ul>
-    </li>
-  <% end %> -->
-
   <%= menu_group :pull => :right do %>
     <search-form></search-form>
   <% end %>

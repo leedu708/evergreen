@@ -1,0 +1,11 @@
+.search-animation.ng-hide-add, .search-animation.ng-hide-remove {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-name: tinUpIn;
+  animation-name: tinUpIn;
+}
+
+.search-animation.ng-hide {
+  -webkit-animation-duration: 0s;
+  animation-duration: 0s;
+}
