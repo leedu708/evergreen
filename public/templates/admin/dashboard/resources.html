@@ -15,9 +15,9 @@
             <i ng-class="sortIcon('id')"></i>
           </th>
 
-          <th class='pointer' ng-click="toggleSort('upvotes')">
+          <th class='pointer' ng-click="toggleSort('upvote_count')">
             Upvotes
-            <i ng-class="sortIcon('upvotes')"></i>
+            <i ng-class="sortIcon('upvote_count')"></i>
           </th>
 
           <th>Approved?</th>
@@ -50,7 +50,7 @@
         <tr ng-repeat="resource in resources | orderBy:sort:sortDescending" ng-class="{'success': resource.approved}">
           <td>{{ resource.id }}</td>
 
-          <td>{{ resource.upvotes }} <i class='fa fa-thumbs-o-up fa-1x'></i></td>
+          <td>{{ resource.upvote_count }} <i class='fa fa-thumbs-o-up fa-1x'></i></td>
 
           <td>
             <span class='btn btn-primary btn-sm' ng-click='toggleApproval(resource)'>

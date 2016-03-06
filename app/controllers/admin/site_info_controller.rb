@@ -22,7 +22,7 @@ class Admin::SiteInfoController < AdminController
       end
     else
       respond_to do |format|
-        format.json { render nothing: true, :status => 422 }
+        format.json { render :nothing => :true, :status => 422 }
       end
     end
 

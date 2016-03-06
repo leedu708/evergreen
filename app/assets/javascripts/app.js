@@ -124,8 +124,22 @@ var evergreen = angular.module('evergreen', ['ui.router', 'restangular', 'templa
         templateUrl: '/templates/users/resources/index.html',
         controller: 'ResourceCtrl',
         resolve: {
+          current_user: ['Restangular', function(Restangular) {
+            return Restangular.one('users').get();
+          }],
           resources: ['Restangular', '$stateParams', function(Restangular, $stateParams) {
             return Restangular.one("users", $stateParams["user_id"]).all("resources").getList();
+          }]
+        }
+      })
+
+      .state('search', {
+        url: '/resources/search/:query',
+        templateUrl: '/templates/nav/search.html',
+        controller: 'SearchCtrl',
+        resolve: {
+          resources: ['Restangular', '$stateParams', function(Restangular, $stateParams) {
+            return Restangular.all("resources").customGETLIST("search", { search: $stateParams["query"] });
           }]
         }
       })
@@ -175,7 +189,7 @@ var evergreen = angular.module('evergreen', ['ui.router', 'restangular', 'templa
             return Restangular.all('admin/users').getList();
           }],
           sectors: ['Restangular', function(Restangular) {
-            return Restangular.all('sectors').getList();
+            return Restangular.all('sectors').get('overview');
           }]
         }
       })
@@ -208,7 +222,7 @@ var evergreen = angular.module('evergreen', ['ui.router', 'restangular', 'templa
         controller: 'SectorCtrl',
         resolve: {
           sectors: ['Restangular', function(Restangular) {
-            return Restangular.all('sectors').getList();
+            return Restangular.all('sectors').get('overview');
           }]
         }
       })
@@ -246,6 +260,9 @@ var evergreen = angular.module('evergreen', ['ui.router', 'restangular', 'templa
         templateUrl: '/templates/admin/dashboard/resources.html',
         controller: 'ResourceCtrl',
         resolve: {
+          current_user: ['Restangular', function(Restangular) {
+            return Restangular.one('users').get();
+          }],
           resources: ['Restangular', function(Restangular) {
             return Restangular.all('resources').getList();
           }]

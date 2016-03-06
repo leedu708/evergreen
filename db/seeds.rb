@@ -79,11 +79,15 @@ end
 
 puts 'Created random curators'
 
-(3).times do
+(2).times do
   Sector.create(:title => Faker::Book.genre)
 end
 
-puts 'Sectors Created'
+puts 'Random Sectors Created'
+
+Sector.create(:title => "Business")
+
+puts 'Business Sector Created'
 
 Sector.all.each do |sector|
   (rand(MULTIPLIER / 3) + 2).times do
@@ -103,6 +107,10 @@ end
 
 puts 'Collections Created'
 
+Sector.find(3).categories.create(:title => "Building A Team")
+
+puts 'Building A Team category created'
+
 User.all.each do |user|
   (rand(6 * MULTIPLIER)).times do
     collection_id = rand(Collection.all.length) + 1
@@ -110,7 +118,6 @@ User.all.each do |user|
     user.resources.create(:title => Faker::Lorem.sentence(2, true, 3).chomp('.'),
                           :url => Faker::Internet.url('test.com'),
                           :description => Faker::Lorem.sentence(4, true, 7),
-                          :upvotes => rand(43) + 1,
                           :collection_id => collection_id,
                           :approved => random_approved,
                           :created_at => rand(Time.now - user.created_at).seconds.ago)
@@ -118,6 +125,26 @@ User.all.each do |user|
 end
 
 puts 'Resources Created'
+
+Category.last.collections.create(:title => "Hiring",
+                                 :description => "There’s no debate on the importance of hiring and hiring well. Nearly every article, book, and interview lists is as the most important skill in building a successful enterprise. After all — you don’t get to make every decision, but you do get to choose the decision makers.")
+
+puts 'Hiring collection created'
+
+hiring_titles = ["How To Hire", "Here's why you're not hiring the best and the brightest", "Hiring religion", "Here's the advice I give all of our first time founders"]
+
+hiring_descriptions = ["Many founders hire just because it seems like a cool thing to do, and people always ask how many employees you have. Companies generally work better when they are smaller. It’s always worth spending time to think about the least amount of projects/work you can feasibly do, and then having as small a team as possible to do it. Don’t hire for the sake of hiring. Hire because there is no other way to do what you want to do.", "If you want to determine beyond a shadow of a doubt whether someone’s going to be a great hire, give them an audition project — even before having them speak to other employees on your team. I’m not talking about a generic, abstract problem. I’m talking about a real world, honest-to-God unit of work that you need done right now today on your actual product. It should be something you would give to a current employee, if they weren’t all so busy.", "A point that seemed unique among resources, yet important (and very much appreciated by the job seekers of the world) is to move quickly and smoothly. Paul English talks about the 7-day rule of hiring. Moving this fast is a serious advantage to snap up talent.", "When you do the math on an amazing prospective hire, it’s probably worth paying several months of unexpected salary to land incredible talent and jumpstart a part of your business you already know you’ll need. “When you happen to come across these really good people, don’t let an arbitrary schedule tell you you don’t need them until March of next year. Just get them in the door,” Hayes says. “You’ll get all that time back that you would have spent in the recruiting process too."]
+
+hiring_urls = ["http://blog.samaltman.com/how-to-hire", "http://firstround.com/review/Heres-Why-Youre-Not-Hiring-the-Best-and-the-Brightest/", "http://paulenglish.com/hiring.html", "http://firstround.com/review/Heres-the-Advice-I-Give-All-of-Our-First-Time-Founders/"]
+
+4.times do |x|
+  User.first.resources.create(:title => hiring_titles[x],
+                              :description => hiring_descriptions[x],
+                              :url => hiring_urls[x],
+                              :collection_id => Collection.last.id)
+end
+
+puts 'Custom resources created'
 
 Collection.all.each do |collection|
   collection.synthesis = collection.resources.sample
@@ -143,5 +170,15 @@ puts 'Created test reader [:email => reader@test.com, :password => password]'
 end
 
 puts 'Created random readers'
+
+Resource.all.each do |resource|
+  User.all.each do |user|
+    if (rand(10) > 6)
+      resource.upvotes.create(user_id: user.id)
+    end
+  end
+end
+
+puts 'Upvotes Added'
 
 puts 'SEEDING COMPLETE'

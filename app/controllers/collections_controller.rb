@@ -1,6 +1,6 @@
 class CollectionsController < ApplicationController
 
-  before_action :require_admin, :only => [:create, :destroy]
+  before_action :require_admin, :only => [:create, :update, :destroy]
 
   def index
 
@@ -26,7 +26,7 @@ class CollectionsController < ApplicationController
       end
     else
       respond_to do |format|
-        format.json { render nothing: true, :status => 422 }
+        format.json { render :nothing => :true, :status => 422 }
       end
     end
 
@@ -45,7 +45,7 @@ class CollectionsController < ApplicationController
       end
     else
       respond_to do |format|
-        format.json { render nothing: true, :status => 422 }
+        format.json { render :nothing => :true, :status => 422 }
       end
     end
 
@@ -57,7 +57,7 @@ class CollectionsController < ApplicationController
 
     if @collection && @collection.destroy
       respond_to do |format|
-        format.json { render nothing: true, :status => 204 }
+        format.json { render :nothing => :true, :status => 204 }
       end
     else
       respond_to do |format|

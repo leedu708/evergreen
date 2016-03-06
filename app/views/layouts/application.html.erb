@@ -27,7 +27,7 @@
       {{ $root.flash[1] }}
     </li>
   <% end %>
-
+  
   <% if current_user %>
     <%= menu_group :pull => :right do %>
       <li class="dropdown">
@@ -61,7 +61,7 @@
           <%= form_for(:user, :url => session_path(:user)) do |f| -%>
             <div class="nav-login-wrapper">
               <div class="field form-group">
-              <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: "Email" %>
+                <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: "Email" %>
               </div>
 
               <div class="field form-group">
@@ -80,6 +80,10 @@
         </ul>
       </li>
     <% end %>
+  <% end %>
+
+  <%= menu_group :pull => :right do %>
+    <search-form></search-form>
   <% end %>
 
 <% end %>

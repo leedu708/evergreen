@@ -19,6 +19,8 @@
                   <i ng-class="sortIcon('upvotes')"></i>
                 </th>
 
+                <th ng-if="userAdmin()">Approved?</th>
+
                 <th class='pointer' ng-click="toggleSort('title')">
                   Resource Title
                   <i ng-class="sortIcon('title')"></i>
@@ -40,14 +42,23 @@
 
             <tbody>
               <tr ng-repeat="resource in resources | orderBy:sort:sortDescending" ng-class="{'success': resource.approved}">
-                <td>{{ resource.upvotes }} <i class='fa fa-thumbs-o-up fa-1x'></i></td>
+                <td>{{ resource.upvote_count }} <i class='fa fa-thumbs-o-up fa-1x'></i></td>
+                <td ng-if="userAdmin()">
+                  <span class='btn btn-primary btn-sm' ng-click='toggleApproval(resource)'>
+                    Toggle
+                  </span>
+                </td>
                 <td>
                   <a href="{{ resource.url }}">
                     {{ resource.title | capitalize:true }}
                   </a>
                 </td>
                 <td>{{ resource.description }}</td>
-                <td>{{ resource.collection_name | capitalize:true }}</td>
+                <td>
+                  <a ui-sref="collection({collection_id: {{resource.collection_id}}})">
+                    {{ resource.collection_name | capitalize:true }}
+                  </a>
+                </td>
                 <td>
                   <span class='btn btn-danger btn-sm' ng-click='destroyResource(resource, resource.owner_id)'>
                     Delete

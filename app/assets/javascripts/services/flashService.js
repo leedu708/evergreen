@@ -43,6 +43,9 @@ evergreen.factory('flashService',
         case 'access':
           action = 'accessed';
           break;
+        case 'upvote':
+          action = 'upvoted';
+          break;
         case '':
          action = '';
          break;

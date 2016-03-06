@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
     unless current_user && current_user.user_type == "admin"
       flash[:danger] = "Unauthorized Access!"
       respond_to do |format|
-        format.js { render :nothing => :true, :status => 401 }
+        format.json { render :nothing => :true, :status => 401 }
         format.html { redirect_to root_path }
       end
     end
@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
     unless current_user && current_user.user_type != "reader"
       flash[:danger] = "Unauthorized Access!"
       respond_to do |format|
-        format.js { render :nothing => :true, :status => 401 }
+        format.json { render :nothing => :true, :status => 401 }
         format.html { redirect_to root_path }
       end
     end
