@@ -69,7 +69,7 @@ class ResourcesController < ApplicationController
       end
     else
       respond_to do |format|
-        format.json { render :nothing => :true, :status => 422 }
+        format.json { render json: @resource.errors.to_json, :status => 422 }
       end
     end
 

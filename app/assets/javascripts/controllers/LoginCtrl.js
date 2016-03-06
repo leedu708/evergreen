@@ -43,6 +43,8 @@ evergreen.controller('LoginCtrl',
           loginInfo.email = creds.email;
           loginInfo.password = creds.password;
           $scope.login(loginInfo);
+        }, function(response) {
+          $scope.invalid = errorService.getInvalidsLogin(response);
         });
     };
 
@@ -53,7 +55,7 @@ evergreen.controller('LoginCtrl',
           flashService.updateFlash('User information', 'update', true);
           $location.path(" /home ");
         }, function(response) {
-          $scope.invalid = errorService.getInvalids(response);
+          $scope.invalid = errorService.getInvalidsLogin(response);
           flashService.updateFlash('User information', 'update', false);
         });
     };

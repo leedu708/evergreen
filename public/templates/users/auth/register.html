@@ -7,24 +7,40 @@
       <div class='row'>
         <div class='col-md-8 col-md-offset-2'>
           <form>
-            <div class='form-group'>
-              <label for='username'>Username</label>
+            <div class='form-group' ng-class="errorClass('username')">
+              <label class='control-label' for='username'>Username</label>
               <input type='text' class='form-control' id='username' ng-model="creds.username">
+
+              <span class='help-block' ng-show="errorClass('username') === 'has-error'">
+                Username {{ errorMessages('username') }}
+              </span>
             </div>
 
-            <div class='form-group'>
-              <label for='email'>Email</label>
+            <div class='form-group' ng-class="errorClass('email')">
+              <label class='control-label' for='email'>Email</label>
               <input type='email' class='form-control' id='email' ng-model="creds.email">
+
+              <span class='help-block' ng-show="errorClass('email') === 'has-error'">
+                Email {{ errorMessages('email') }}
+              </span>
             </div>
 
-            <div class='form-group'>
-              <label for='password'>Password</label>
+            <div class='form-group' ng-class="errorClass('password')">
+              <label class='control-label' for='password'>Password</label>
               <input type='password' class='form-control' id='password' ng-model="creds.password">
+
+              <span class='help-block' ng-show="errorClass('password') === 'has-error'">
+                Password {{ errorMessages('password') }}
+              </span>
             </div>
 
-            <div class='form-group'>
-              <label for='password_confirmation'>Confirm Password</label>
+            <div class='form-group' ng-class="errorClass('password_confirmation')">
+              <label class='control-label' for='password_confirmation'>Confirm Password</label>
               <input type='password' class='form-control' id='password_confirmation' ng-model="creds.password_confirmation">
+
+              <span class='help-block' ng-show="errorClass('password_confirmation') === 'has-error'">
+                Confirmation password {{ errorMessages('password_confirmation') }}
+              </span>
             </div>
 
             <button type='submit' class='btn btn-primary' ng-click='register(creds)'>
