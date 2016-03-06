@@ -1,7 +1,7 @@
 class Resource < ActiveRecord::Base
 
   belongs_to :owner, :class_name => 'User'
-  belongs_to :collection
+  belongs_to :collection, required: true
 
   has_many :upvotes, :dependent => :destroy
   has_many :upvoted_users, :through => :upvotes, :source => :user

@@ -1,6 +1,6 @@
 class Collection < ActiveRecord::Base
 
-  belongs_to :category
+  belongs_to :category, required: true
   has_many :resources, :foreign_key => :collection_id, :dependent => :nullify
   belongs_to :synthesis, class_name: 'Resource', :foreign_key => :synthesis_id
 

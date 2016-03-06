@@ -7,14 +7,14 @@
       <div class='row'>
         <div class='col-md-6 col-md-offset-3'>
           <form>
-            <div class='form-group' ng-class="errorClass('collection_id')">
+            <div class='form-group' ng-class="errorClass('collection')">
               <label class='control-label' for='collection_id'>Collection</label>
               <select class='form-control' id='collection_id' ng-model="addResource.collection_id">
                 <option ng-repeat="collection in collections" value="{{ collection.id }}">{{ collection.title }}</option>
               </select>
 
-              <span class='help-block' ng-show="errorClass('collection_id') === 'has-error'">
-                Collection {{ errorMessages('collection_id') }}
+              <span class='help-block' ng-show="errorClass('collection') === 'has-error'">
+                Collection {{ errorMessages('collection') }}
               </span>
             </div>
 

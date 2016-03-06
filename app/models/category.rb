@@ -1,6 +1,6 @@
 class Category < ActiveRecord::Base
 
-  belongs_to :sector
+  belongs_to :sector, required: true
   has_many :collections, :foreign_key => :category_id, :dependent => :nullify
   has_many :resources, :through => :collections
 
