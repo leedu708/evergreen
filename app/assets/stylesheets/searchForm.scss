@@ -9,3 +9,22 @@
   -webkit-animation-duration: 0s;
   animation-duration: 0s;
 }
+
+.search-btn {
+  border-color: #333;
+  background-color: #222;
+  color: #DDD;
+}
+
+.search-form-wrapper {
+  min-height: 50px;
+  margin-right: 10px;
+
+  li {
+    line-height: 50px;
+  }
+
+  .disabled {
+    cursor: not-allowed;
+  }
+}
