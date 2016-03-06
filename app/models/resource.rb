@@ -6,7 +6,7 @@ class Resource < ActiveRecord::Base
   has_many :upvotes, :dependent => :destroy
   has_many :upvoted_users, :through => :upvotes, :source => :user
 
-  validates :title, :length => { :in => 1..50 }
+  validates :title, :length => { :in => 1..200 }
   validates :description, :length => { :in => 1..1000 }
   validates :url, :format => { :with => /\A(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?\z/ }
 
