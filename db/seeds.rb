@@ -107,7 +107,10 @@ end
 
 puts 'Collections Created'
 
-Sector.find(3).categories.create(:title => "Building A Team")
+# Get the ID's of all of our sectors
+sector_ids = Sector.all.pluck(:id)
+
+Sector.find(sector_ids.sample).categories.create(:title => "Building A Team")
 
 puts 'Building A Team category created'
 

@@ -61,6 +61,7 @@ group :development, :test do
   gem 'spring'
   gem 'factory_girl_rails'
   gem 'sqlite3'
+  gem 'letter_opener'
 end
 
 group :development do

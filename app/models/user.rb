@@ -4,6 +4,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  # Send our users an email after signup
+  after_create :send_signup_mail
+
   has_many :resources, :foreign_key => 'owner_id', :dependent => :destroy
 
   has_many :upvotes, :dependent => :destroy
@@ -15,6 +18,10 @@ class User < ActiveRecord::Base
 
   def upvote_count
     self.upvotes.count
+  end
+
+  def send_signup_mail
+  	ReaderMailer.signup(self).deliver_now
   end
   
 end
