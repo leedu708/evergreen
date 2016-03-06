@@ -23,7 +23,6 @@ evergreen.controller('SectorCtrl',
           flashService.updateFlash('Sector', 'create', true);
         }, function() {
           $scope.setSectorVars();
-          flashService.updateFlash('Sector', 'create', false);
         });
     };
 

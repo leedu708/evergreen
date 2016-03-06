@@ -7,25 +7,42 @@
       <div class='row'>
         <div class='col-md-6 col-md-offset-3'>
           <form>
-            <div class='form-group'>
-              <label for='collection_id'>Collection</label>
+            <div class='form-group' ng-class="errorClass('collection_id')">
+              <label class='control-label' for='collection_id'>Collection</label>
               <select class='form-control' ng-model='editResource.collection_id' ng-options="collection.id as collection.title for collection in collections">
               </select>
+
+              <span class='help-block' ng-show="errorClass('collection_id') === 'has-error'">
+                Collection {{ errorMessages('collection_id') }}
+              </span>
             </div>
 
-            <div class='form-group'>
-              <label for='title'>Resource Name</label>
+            <div class='form-group' ng-class="errorClass('title')">
+              <label class='control-label' for='title'>Resource Name</label>
               <input type='text' class='form-control' id='title' ng-model="editResource.title">
+
+              <span class='help-block' ng-show="errorClass('title') === 'has-error'">
+                Name {{ errorMessages('title') }}
+              </span>
             </div>
 
-            <div class='form-group'>
-              <label for='description'>Resource Description</label>
+            <div class='form-group' ng-class="errorClass('description')">
+              <label class='control-label' for='description'>Resource Description</label>
               <textarea class='form-control' id='description' rows='3' ng-model="editResource.description"></textarea>
+
+              <span class='help-block' ng-show="errorClass('description') === 'has-error'">
+                Description {{ errorMessages('description') }}
+              </span>
             </div>
 
-            <div class='form-group'>
-              <label for='url'>Resource Url</label>
+            <div class='form-group' ng-class="errorClass('url')">
+              <label class='control-label' for='url'>Resource Url</label>
+              <i>(Ex. http://www.google.com)</i>
               <input type='text' class='form-control' id='url' ng-model="editResource.url">
+
+              <span class='help-block' ng-show="errorClass('url') === 'has-error'">
+                Url {{ errorMessages('url') }}
+              </span>
             </div>
 
             <button type='submit' class='btn btn-success' ng-click='updateResource(editResource)'>Update Resource</button>

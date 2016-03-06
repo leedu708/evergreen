@@ -15,7 +15,6 @@ evergreen.controller('addResourceCtrl',
           $location.path( "/user/" + $scope.current_user.id + "/resources" );
           flashService.updateFlash('Resource', 'create', true);
         }, function(response) {
-          console.log(response);
           flashService.updateFlash('Resource', 'create', false);
           $scope.invalid = errorService.getInvalids(response);
         });

@@ -1,6 +1,6 @@
 evergreen.controller('editResourceCtrl',
-  ['$scope', '$location', 'Restangular', 'resource', 'collections', 'flashService',
-  function($scope, $location, Restangular, resource, collections, flashService) {
+  ['$scope', '$location', 'Restangular', 'resource', 'collections', 'errorService', 'flashService',
+  function($scope, $location, Restangular, resource, collections, errorService, flashService) {
 
     $scope.init = function() {
       $scope.resource = resource;
@@ -22,7 +22,10 @@ evergreen.controller('editResourceCtrl',
         .then(function(response) {
           $location.path( "/user/" + $scope.resource.owner_id + "/resources" );
           flashService.updateFlash('Resource', 'update', true);
-        }, flashService.updateFlash('Resource', 'update', false));
+        }, function(response) {
+          flashService.updateFlash('Resource', 'update', false);
+          $scope.invalid = errorService.getInvalids(response);
+        });
     };
 
     $scope.destroyResource = function(resource) {
@@ -32,6 +35,22 @@ evergreen.controller('editResourceCtrl',
         $location.path( "/user/" + $scope.resource.owner_id + "/resources" );
         flashService.updateFlash('Resource', 'destroy', true);
       }, flashService.updateFlash('Resource', 'destroy', false));
+    };
+
+    // error functions
+
+    $scope.errorClass = function(key) {
+      if ($scope.invalid) {
+        return $scope.invalid[key] ? 'has-error' : '';
+      } else {
+        return '';
+      };
+    };
+
+    $scope.errorMessages = function(key) {
+      if ($scope.invalid && $scope.invalid[key]) {
+        return $scope.invalid[key]["messages"][0];
+      };
     };
 
     $scope.init();
