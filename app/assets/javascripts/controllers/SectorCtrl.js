@@ -28,11 +28,12 @@ evergreen.controller('SectorCtrl',
     };
 
     $scope.destroySector = function(sector) {
-      sector.remove().then( function() {
-        sectorService.remove(sector);
-        $scope.setSectorVars();
-        flashService.updateFlash('Sector', 'destroy', true);
-      }, flashService.updateFlash('Sector', 'destroy', false));
+      Restangular.one('sectors', sector.id).remove()
+        .then( function() {
+          sectorService.remove(sector);
+          $scope.setSectorVars();
+          flashService.updateFlash('Sector', 'destroy', true);
+        }, flashService.updateFlash('Sector', 'destroy', false));
     };
 
     $scope.updateSector = function(sector) {
