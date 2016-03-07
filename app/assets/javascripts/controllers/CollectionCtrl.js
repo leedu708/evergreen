@@ -10,8 +10,6 @@ evergreen.controller('CollectionCtrl',
 
     // admin vars
     $scope.setCollectionVars = function() {
-      $scope.addCollectionForm = false;
-      $scope.editCollectionForm = false;
       $scope.addCollection = {};
       $scope.editCollection = {};
       $scope.collections = collectionService.getCollections();
@@ -46,17 +44,11 @@ evergreen.controller('CollectionCtrl',
           $scope.setCollectionVars();
           flashService.updateFlash('Collection', 'update', true);
         }, function() {
-          $scope.setCollectionVars();
           flashService.updateFlash('Collection', 'update', false);
         });
     };
 
-    $scope.toggleAddForm = function() {
-      $scope.addCollectionForm = !$scope.addCollectionForm;
-    };
-
     $scope.toggleEditForm = function(collection) {
-      $scope.editCollectionForm = !$scope.editCollectionForm;
       $scope.editCollection = collection;
     };
 

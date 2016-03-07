@@ -62,7 +62,7 @@ RSpec.describe CategoriesController, type: :controller do
 
     before do
       sign_in admin
-      post :create, :format => :json, :category => attributes_for(:category)
+      post :create, :format => :json, :category => attributes_for(:category, :sector_id => sector.id)
     end
 
     context 'adding the category as an admin' do
