@@ -1,4 +1,8 @@
-<h1 class='page-header'>Collections</h1>
+<h1 class='page-header'>
+  Collections
+
+  <span class='pull-right btn btn-primary' data-toggle='modal' data-target='#addCollectionForm'>Add Collection</span>
+</h1>
 
 <div class='row'>
   <div class='col-md-12'>
@@ -52,7 +56,7 @@
           </td>
 
           <td>
-            <span class='btn btn-warning btn-sm' ng-click='toggleEditForm(collection)'>
+            <span class='btn btn-warning btn-sm' ng-click='toggleEditForm(collection)' data-toggle='modal' data-target='#editCollectionForm'>
               Edit
             </span>
           </td>
@@ -63,74 +67,103 @@
   </div>
 </div>
 
-<div class='row' id='collection-form'>
+<!-- MODALS -->
   <!-- ADD COLLECTION FORM -->
-  <div class='col-md-4'>
-    <div ng-if="!addCollectionForm">
-      <span class='btn btn-primary' ng-click='toggleAddForm()'>Add a new collection</span>
-    </div>
+<div class='modal fade' tabindex='-1' role='dialog' aria-labelledby='addCollectionForm' id='addCollectionForm'>
+  <div class='modal-dialog' role='document'>
+    <div class='modal-content'>
+      <div class='modal-header'>
+        <button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
 
-    <div ng-if="addCollectionForm">
-      <form>
-        <div class='form-group'>
-          <select class='form-control' ng-model='addCollection.category_id'>
-            <option value="" disabled selected>Choose a category...</option>
-            <option ng-repeat="category in categories" value='{{ category.id }}'>{{ category.title }}</option>
-          </select>
-        </div>
+        <h3 class='modal-title'>Add Collection</h3>
+      </div>
 
-        <div class='form-group'>
-          <input type='text' class='form-control' placeholder='Collection Name...' ng-model='addCollection.title'>
-        </div>
-
-        <div class='form-group'>
-          <textarea class='form-control' placeholder='Collection Description...' rows='3' ng-model='addCollection.description'>
-          </textarea>
-        </div>
-
-        <button type='submit' class='btn btn-success' ng-click='createCollection(addCollection)'>Add Collection</button>
-      </form><br />
-    </div>
-  </div>
-
-  <!-- EDIT COLLECTION FORM -->
-  <div class='col-md-4 col-md-offset-4'>
-    <div ng-if="editCollectionForm">
-      <form class='form-horizontal'>
-        <div class='form-group'>
-          <label class="col-sm-2">Category</label>
-          <div class='col-sm-10'>
-            <select class='form-control' ng-model='editCollection.category_id' ng-options="category.id as category.title for category in categories">
-            </select>
+      <div class='modal-body'>
+        <form class='form-horizontal'>
+          <div class='form-group'>
+            <label class="col-sm-2">Category</label>
+            <div class='col-sm-10'>
+              <select class='form-control' ng-model='addCollection.category_id'>
+                <option value="" disabled selected>Choose a category...</option>
+                <option ng-repeat="category in categories" value='{{ category.id }}'>{{ category.title }}</option>
+              </select>
+            </div>
           </div>
-        </div>
 
-        <div class='form-group'>
-          <label class="col-sm-2">Synthesis</label>
-          <div class='col-sm-10'>
-            <select class='form-control' ng-model='editCollection.synthesis_id' ng-options="resource[1] as resource[0] for resource in editCollection.resource_names">
-            </select>
+          <div class='form-group'>
+            <label class="col-sm-2">Name</label>
+            <div class='col-sm-10'>
+              <input type='text' class='form-control' placeholder='Collection Name...' ng-model='addCollection.title'>
+            </div>
           </div>
-        </div>
 
-        <div class='form-group'>
-          <label class="col-sm-2">Name</label>
-          <div class='col-sm-10'>
-            <input type='text' class='form-control' placeholder='Collection Name...' ng-model='editCollection.title'>
+          <div class='form-group'>
+            <label class="col-sm-2">Name</label>
+            <div class='col-sm-10'>
+              <textarea class='form-control' placeholder='Collection Description...' rows='3' ng-model='addCollection.description'>
+              </textarea>
+            </div>
           </div>
-        </div>
+        </form>
+      </div>
 
-        <div class='form-group'>
-          <label class="col-sm-2">Description</label>
-          <div class='col-sm-10'>
-            <textarea class='form-control' placeholder='Collection Description...' rows='3' ng-model='editCollection.description'>
-            </textarea>
-          </div>
-        </div>
-
-        <button type='submit' class='btn btn-success col-sm-offset-5 col-sm-4' ng-click='updateCollection(editCollection)'>Edit Collection</button>
-      </form><br />
+      <div class='modal-footer'>
+        <button type='submit' class='btn btn-success' ng-click='createCollection(addCollection)' data-dismiss='modal'>Add Collection</button>
+      </div>
     </div>
   </div>
+</div>
 
+<!-- EDIT COLLECTION FORM -->
+<div class='modal fade' tabindex='-1' role='dialog' aria-labelledby='editCollectionForm' id='editCollectionForm'>
+  <div class='modal-dialog' role='document'>
+    <div class='modal-content'>
+      <div class='modal-header'>
+        <button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+
+        <h3 class='modal-title'>Edit Collection</h3>
+      </div>
+
+      <div class='modal-body'>
+        <div>
+          <form class='form-horizontal'>
+            <div class='form-group'>
+              <label class="col-sm-2">Category</label>
+              <div class='col-sm-10'>
+                <select class='form-control' ng-model='editCollection.category_id' ng-options="category.id as category.title for category in categories">
+                </select>
+              </div>
+            </div>
+
+            <div class='form-group'>
+              <label class="col-sm-2">Synthesis</label>
+              <div class='col-sm-10'>
+                <select class='form-control' ng-model='editCollection.synthesis_id' ng-options="resource[1] as resource[0] for resource in editCollection.resource_names">
+                </select>
+              </div>
+            </div>
+
+            <div class='form-group'>
+              <label class="col-sm-2">Name</label>
+              <div class='col-sm-10'>
+                <input type='text' class='form-control' placeholder='Collection Name...' ng-model='editCollection.title'>
+              </div>
+            </div>
+
+            <div class='form-group'>
+              <label class="col-sm-2">Description</label>
+              <div class='col-sm-10'>
+                <textarea class='form-control' placeholder='Collection Description...' rows='3' ng-model='editCollection.description'>
+                </textarea>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class='modal-footer'>
+        <button type='submit' class='btn btn-success' ng-click='updateCollection(editCollection)' data-dismiss='modal'>Edit Collection</button>
+      </div>
+    </div>
+  </div>
 </div>
