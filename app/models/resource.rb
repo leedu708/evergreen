@@ -11,6 +11,7 @@ class Resource < ActiveRecord::Base
   validates :url, :format => { :with => /\A(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?\z/ }
 
   after_create :add_http
+  after_update :add_http
 
   def owner_username
     self.owner.username
