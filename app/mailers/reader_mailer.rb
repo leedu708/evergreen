@@ -13,4 +13,14 @@ class ReaderMailer < ApplicationMailer
 	end
 
 
+	# Weekly email to send out to all users
+	def weekly_email(user, collections)
+		@user = user
+
+		# Let's only send the last 5 categories in our email
+		@collections = collections.last(5)
+		mail(to: @user.email, subject: "What's new this week from Evergreen")
+	end
+
+
 end
