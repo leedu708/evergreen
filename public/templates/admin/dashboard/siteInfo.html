@@ -1,19 +1,28 @@
-<h1 class="page-header">Edit Site Information</h1>
+<h1 class="page-header">
+  Edit Site Information
+  <div class='col-md-1 pull-right info-choice-wrapper'>
+    <select class='form-control' ng-model='currentInfoType' ng-change='setInfoType(currentInfoType)'>
+      <option value='about'>About</option>
+      <option value='contact'>Contact</option>
+      <option value='mission'>Mission</option>
+    </select>
+  </div>
+</h1>
 
 <!-- VIEW CURRENT SITE INFO -->
 <div class='row' id="edit-info" ng-if="!editInfoForm">
 
-  <div class='col-md-12'>
+  <div class='col-md-12' ng-if="showInfoType('about')">
     <h3><b>About</b></h3>
     <div ng-bind-html="info.about"></div><br />
   </div>
 
-  <div class='col-md-12'>
+  <div class='col-md-12' ng-if="showInfoType('contact')">
     <h3><b>Contact</b></h3>
     <div ng-bind-html="info.contact"></div><br />
   </div>
 
-  <div class='col-md-12'>
+  <div class='col-md-12' ng-if="showInfoType('mission')">
     <h3><b>Mission</b></h3>
     <div ng-bind-html="info.mission"></div><br />
   </div>
@@ -29,17 +38,17 @@
 
   <div class='col-md-12' id="edit-info">
     <form>
-      <div class='form-group'>
+      <div class='form-group' ng-if="showInfoType('about')">
         <label for='about'>About</label>
         <text-angular id='about' ng-model="editInfo.about"></text-angular>
       </div>
 
-      <div class='form-group'>
+      <div class='form-group' ng-if="showInfoType('contact')">
         <label for='contact'>Contact</label>
         <text-angular id='contact' ng-model="editInfo.contact"></text-angular>
       </div>
 
-      <div class='form-group'>
+      <div class='form-group' ng-if="showInfoType('mission')">
         <label for='mission'>Mission</label>
         <text-angular id='mission' ng-model="editInfo.mission"></text-angular>
       </div>

@@ -4,6 +4,7 @@ evergreen.controller('InfoCtrl',
 
     $scope.init = function() {
       $scope.setInfoVars(siteInfo);
+      $scope.currentInfoType = "about";
     };
 
     $scope.setInfoVars = function(info) {
@@ -11,6 +12,14 @@ evergreen.controller('InfoCtrl',
       $scope.editInfoForm = false;
       $scope.editInfo = {};
       $scope.info = infoService.getInfo();
+    };
+
+    $scope.setInfoType = function(infoType) {
+      $scope.currentInfoType = infoType;
+    };
+
+    $scope.showInfoType = function(infoType) {
+      return !!($scope.currentInfoType === infoType);
     };
 
     $scope.updateInfo = function(info) {
