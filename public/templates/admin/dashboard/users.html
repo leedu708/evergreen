@@ -1,9 +1,18 @@
-<h1 class="page-header">Users</h1>
+<h1 class="page-header">
+  Users
+  <div class='col-md-1 pull-right user-choice-wrapper'>
+    <select class='form-control' ng-model='currentTable' ng-change='setTable(currentTable)'>
+      <option value='admin'>Admins</option>
+      <option value='curator'>Curators</option>
+      <option value='reader'>Readers</option>
+    </select>
+  </div>
+</h1>
 
 <div class='row'>
 
   <!-- ALL ADMINS -->
-  <div class='col-md-4'>
+  <div class='col-md-8 col-md-offset-2' ng-if="showTable('admin')">
 
     <table class='table table-bordered table-striped table-condensed text-center'>
       <caption>Admins <span class="badge">{{ admins.length }}</span></caption>
@@ -18,6 +27,13 @@
             Username
             <i ng-class="sortIcon('username')"></i>
           </th>
+
+          <th>Email</th>
+
+          <th class='pointer' ng-click="toggleSort('resource_total')">
+            Total Resources
+            <i ng-class="sortIcon('resource_total')"></i>
+          </th>
         </tr>
       </thead>
 
@@ -29,6 +45,8 @@
               {{ admin.username }}
             </a>
           </td>
+          <td>{{ admin.email }}</td>
+          <td>{{ admin.resource_total }}</td>
         </tr>
       </tbody>
     </table>
@@ -36,7 +54,7 @@
   </div>
 
   <!-- ALL CURATORS -->
-  <div class='col-md-4'>
+  <div class='col-md-8 col-md-offset-2' ng-if="showTable('curator')">
 
     <table class='table table-bordered table-striped table-condensed text-center'>
       <caption>Curators <span class="badge">{{ curators.length }}</span></caption>
@@ -52,6 +70,13 @@
             <i ng-class="sortIcon('username')"></i>
           </th>
 
+          <th>Email</th>
+
+          <th class='pointer' ng-click="toggleSort('resource_total')">
+            Total Resources
+            <i ng-class="sortIcon('resource_total')"></i>
+          </th>
+
           <th>Demote?</th>
         </tr>
       </thead>
@@ -64,6 +89,8 @@
               {{ curator.username }}
             </a>
           </td>
+          <td>{{ curator.email }}</td>
+          <td>{{ curator.resource_total }}</td>
           <td>
             <a class='btn btn-sm btn-danger' ng-click="demoteCurator(curator)">
               Demote
@@ -76,7 +103,7 @@
   </div>
 
   <!-- ALL READERS -->
-  <div class='col-md-4'>
+  <div class='col-md-8 col-md-offset-2' ng-if="showTable('reader')">
 
     <table class='table table-bordered table-striped table-condensed text-center'>
       <caption>Readers <span class="badge">{{ readers.length }}</span></caption>
@@ -92,6 +119,8 @@
             <i ng-class="sortIcon('username')"></i>
           </th>
 
+          <th>Email</th>
+
           <th>Promote?</th>
         </tr>
       </thead>
@@ -100,6 +129,7 @@
         <tr ng-repeat="reader in readers | orderBy:sort:sortDescending">
           <td>{{ reader.id }}</td>
           <td>{{ reader.username }}</td>
+          <td>{{ reader.email }}</td>
           <td>
             <a class='btn btn-sm btn-primary' ng-click="promoteReader(reader)">
               Promote

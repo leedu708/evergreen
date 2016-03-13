@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   has_many :upvoted_resources, :through => :upvotes, :source => :resource
 
   def resource_total
-    self.resources.length
+    self.resources.count
   end
 
   def upvote_count

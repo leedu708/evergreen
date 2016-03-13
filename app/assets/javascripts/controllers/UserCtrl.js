@@ -4,6 +4,7 @@ evergreen.controller('UserCtrl',
 
     $scope.init = function() {
       userService.setUsers(users);
+      $scope.currentTable = "admin";
       $scope.setUsers();
     };
 
@@ -11,6 +12,14 @@ evergreen.controller('UserCtrl',
       $scope.readers = userService.getReaders();
       $scope.curators = userService.getCurators();
       $scope.admins = userService.getAdmins();
+    };
+
+    $scope.setTable = function(userType) {
+      $scope.currentTable = userType;
+    };
+
+    $scope.showTable = function(userType) {
+      return !!($scope.currentTable === userType);
     };
 
     $scope.promoteReader = function(reader) {

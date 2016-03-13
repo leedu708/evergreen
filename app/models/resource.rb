@@ -10,8 +10,7 @@ class Resource < ActiveRecord::Base
   validates :description, :length => { :in => 1..1000 }
   validates :url, :format => { :with => /\A(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?\z/ }
 
-  after_create :add_http
-  after_update :add_http
+  after_save :add_http
 
   def owner_username
     self.owner.username
@@ -26,7 +25,7 @@ class Resource < ActiveRecord::Base
   end
 
   def upvote_ids
-    self.upvoted_users.map { |user| user.id }
+    self.upvoted_users.pluck(:user_id)
   end
 
   def self.search(query)
@@ -41,8 +40,8 @@ class Resource < ActiveRecord::Base
 
   def add_http
     if /\Ahttp/.match(self.url).nil?
-      self.url = 'http://' + self.url
-      self.save
+      url = 'http://' + self.url
+      self.update_attributes(:url => url)
     end
   end
   
