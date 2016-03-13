@@ -6,6 +6,9 @@
         <a class='pull-right btn btn-success' ui-sref="addResource">
           Add Resource
         </a>
+        <div class='col-md-2 pull-right resource-search-wrapper'>
+          <input type='text' class='form-control' ng-model='searchText' placeholder='Search Terms...'>
+        </div>
       </h1>
 
       <div class='row'>
@@ -41,7 +44,7 @@
             </thead>
 
             <tbody>
-              <tr ng-repeat="resource in resources | orderBy:sort:sortDescending" ng-class="{'success': resource.approved}">
+              <tr ng-repeat="resource in resources | orderBy:sort:sortDescending | resourceFilter:searchText" ng-class="{'success': resource.approved}">
                 <td>{{ resource.upvote_count }} <i class='fa fa-thumbs-o-up fa-1x'></i></td>
                 <td ng-if="userAdmin()">
                   <span class='btn btn-primary btn-sm' ng-click='toggleApproval(resource)'>

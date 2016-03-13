@@ -4,6 +4,7 @@ evergreen.controller('ResourceCtrl',
 
     $scope.init = function() {
       resourceService.setResources(resources);
+      $scope.searchText = "";
       $scope.current_user = current_user;
       $scope.setResourceVars();
     };
