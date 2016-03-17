@@ -38,7 +38,7 @@ var evergreen = angular.module('evergreen', ['ui.router', 'restangular', 'templa
       // Reader Flow
       .state('home', {
         url: '/home',
-        templateUrl: '/templates/nav/home.html',
+        templateUrl: '/templates/nav/_home.html',
        	controller: 'SectorCtrl',
        	resolve: {
           sectors: ['Restangular', function(Restangular) {
@@ -294,4 +294,5 @@ var evergreen = angular.module('evergreen', ['ui.router', 'restangular', 'templa
 evergreen.run(['$rootScope',
 	function($rootScope) {
 		$rootScope.$on('$stateChangeError', console.log.bind(console));
-	}]);
+	}
+]);

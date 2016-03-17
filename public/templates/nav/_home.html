@@ -1,0 +1,54 @@
+<!-- BEGIN Evergreen Header -->
+<div class="row">
+	<section class="col-sm-12">
+		<div id="homepage-header">
+			<section id="homepage-content" class="text-center">
+				<h1>Evergreen</h1>
+				<h3>Collections of Timeless Resources</h3>
+				<hr>
+			</section>
+		</div>
+	</section>
+</div>
+<!-- END Evergreen Header -->
+
+<!-- BEGIN Email Signup -->
+<div class="row">
+	<section class="col-sm-12">
+		<div id="email-signup-above" class="col-sm-6 col-sm-offset-3 text-center">
+			<p class="header">Because finding the right resource at the right time is life-changing.</p>
+			<p>Evergreen is home to the all-time greatest resources,collected into a library so you can find useful lessons in an internet full of slapdash, pageview optimized bullshit.</p>
+		</div>
+	</section>
+	
+	<section id="email-hr" class="col-sm-12">
+		<hr>
+	</section>
+
+	<section id="email-signup" class="col-sm-12">
+		<p class="text-center">New resources added every Monday(ish). Join 3,000 others here.</p>
+		<form id="mailchimp-form" class="form-inline">
+			<div class="form-group">
+				<input type="text" name="mailchimp-email" id="mailchimp-email" class="form-control" placeholder="Email">
+			</div>
+			<div class="form-group">
+				<input type="submit" id="mailchimp-submit" class="btn btn-mailchimp form-control" value="Sign Up"></input>
+			</div>
+		</form>
+	</section>
+</div>
+<!-- END Email Signup -->
+
+<div class='row'>
+  <div id="all-sector-wrapper" class='col-xs-10 col-xs-offset-1'>
+   <h2>Sectors:</h2>
+   <!-- <pre>{{sectors}}</pre> -->
+   <div class="sector-wrapper col-xs-4" ng-repeat="sector in sectors">
+   	<h3>
+      <a ui-sref='sector({sector_id: sector.id})'>
+        {{sector.title | uppercase}}
+      </a>
+    </h3>
+   </div>
+  </div>
+</div>

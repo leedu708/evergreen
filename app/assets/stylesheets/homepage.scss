@@ -1,0 +1,72 @@
+$primary: #336633;
+
+/* Raleway */ 
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,300,700,400italic,300italic,700italic);
+
+/* Lato */
+/* @import url(https://fonts.googleapis.com/css?family=Lato:400,300,400italic,700); */
+
+* {
+	font-family: 'Raleway', sans-serif;
+}
+
+#homepage-header {
+	height: 200px;
+	background-color: $primary;
+	color: white;
+	padding-top: 20px;
+
+	h1 {
+		font-size: 6em;
+		padding: 0px;
+		margin: 0px;
+	}
+
+	h3 {
+		font-weight: 300;
+		font-size: 1.6em;
+	}
+
+	hr {
+		width: 40%;
+	}
+}
+
+#email-signup-above {
+	margin-top: 20px;
+
+	.header {
+		font-weight: 700;
+		font-size: 1.3em;
+	}
+}
+
+#email-hr {
+	hr{
+		width: 20%;
+	}
+}
+
+#email-signup {
+
+	#mailchimp-form {
+		width: 420px;
+		display: block;
+		margin: 0px auto;
+	}
+
+	#mailchimp-email {
+		height: 50px;
+		width: 320px;
+		font-size: 1.8em;
+	}
+
+	#mailchimp-submit {
+		background-color: $primary;
+		color: white;
+		font-weight: bold;
+		height: 50px;
+		width: 96px;
+	}
+
+}
