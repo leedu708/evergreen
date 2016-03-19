@@ -31,13 +31,12 @@ class Sector < ActiveRecord::Base
     output = [[],[],[]]
 
     resource_ids.each do |id|
-      output[0].push(Resource.find(id[0]))
-      output[1].push(Resource.find(id[0]).owner.username)
-      output[2].push(id[1])
+      output[0].push(Resource.find(id[0])) #resource
+      output[1].push(Resource.find(id[0]).owner.username) #username
+      output[2].push(id[1]) #upvotes
     end
 
     output
-
   end
   
 end

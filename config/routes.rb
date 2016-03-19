@@ -19,6 +19,9 @@ Rails.application.routes.draw do
     resources :categories, :only => [:index, :create, :update, :destroy]
     resources :collections, :only => [:index, :create, :update, :destroy] do
       resources :resources, :only => [:index]
+      collection do
+        get 'homepage'
+      end
     end
     resources :resources, :only => [:index, :create, :update] do
       collection do

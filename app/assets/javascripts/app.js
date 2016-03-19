@@ -43,6 +43,9 @@ var evergreen = angular.module('evergreen', ['ui.router', 'restangular', 'templa
        	resolve: {
           collections: ['Restangular', function(Restangular) {
             return Restangular.all('collections').getList();
+          }],
+          top_collections: ['Restangular', function(Restangular) {
+            return Restangular.all('collections').get('homepage');
           }]
         }
       })

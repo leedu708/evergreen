@@ -14,6 +14,16 @@ class CollectionsController < ApplicationController
 
   end
 
+  def homepage
+
+    @collections = Collection.most_recently_updated
+    respond_to do |format|
+      format.json { render json: @collections.to_json(
+        :methods => [:top_three]), :status => 200 }
+    end
+
+  end
+
   def create
 
     @collection = Collection.new(collection_params)
