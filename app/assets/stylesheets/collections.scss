@@ -1,7 +1,67 @@
 // Place all the styles related to the collections controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$primary: #336633;
 
 #collection-form {
   margin-bottom: 20px;
+}
+
+#collection-header {
+  height: 200px;
+  background: $primary;
+  color: #FFF;
+
+  h1 {
+    font-size: 2.5em;
+  }
+
+  small {
+    color: #FFF;
+  }
+
+  p {
+    font-size: 1.15em;
+  }
+
+  #collection-email {
+    width: 100%;
+    height: 200px;
+
+    .collection-email-wrapper {
+      position: relative;
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+              transform: translateY(-50%);
+    }
+  }
+
+  #mailchimp-submit {
+    border: 2px solid #E8E8E8;
+  }
+}
+
+.collection-strike {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.collection-title-wrapper {
+  p {
+    font-size: 1.7em;
+  }
+}
+
+.collection-resource-wrapper {
+  border-bottom: 1px solid #E8E8E8;
+  margin-top: 15px;
+  padding-bottom: 15px;
+
+  .fa {
+    margin-left: 10px;
+  }
+
+  .resource-owner {
+    color: #636363;
+  }
 }

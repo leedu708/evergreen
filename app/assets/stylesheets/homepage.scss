@@ -90,6 +90,40 @@ $primary: #336633;
 
 }
 
+// strikes e.g. -------- Test ---------
+.strike {
+  display: block;
+  text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
+
+  span {
+    position: relative;
+    display: inline-block;
+    color: #636363;
+  }
+
+  span:before,
+  span:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 9999px;
+    height: 2px;
+    background: #E8E8E8;
+  }
+
+  span:before {
+    right: 100%;
+    margin-right: 15px;
+  }
+
+  span:after {
+    left: 100%;
+    margin-left: 15px;
+  }
+}
+
 // most updated collections
 
 .top-collection-title {
@@ -116,5 +150,4 @@ $primary: #336633;
 
 .view-all-btn:hover {
 	color: #FFF;
-	text-decoration: underline;
 }

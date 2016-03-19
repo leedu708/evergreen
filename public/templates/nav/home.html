@@ -1,85 +1,85 @@
 <!-- BEGIN Evergreen Header -->
-<div class="row">
-	<section class="col-sm-12">
-		<div id="homepage-header">
+<div class='container-fluid'>
+	<div class="row">
+		<section class="col-sm-12" id="homepage-header">
 			<section id="homepage-content" class="text-center">
 				<h1>Evergreen</h1>
 				<h3>Collections of Timeless Resources</h3>
 				<hr>
 			</section>
-		</div>
-	</section>
-</div>
-<!-- END Evergreen Header -->
+		</section>
+	</div>
+	<!-- END Evergreen Header -->
 
-<!-- BEGIN Email Signup -->
-<div class="row">
-	<section class="col-sm-12">
-		<div id="email-signup-above" class="col-sm-6 col-sm-offset-3 text-center">
-			<p class="header">Because finding the right resource at the right time is life-changing.</p>
-			<p>Evergreen is home to the all-time greatest resources,collected into a library so you can find useful lessons in an internet full of slapdash, pageview optimized bullshit.</p>
-		</div>
-	</section>
-	
-	<section id="email-hr" class="col-sm-12">
-		<hr>
-	</section>
-
-	<section id="email-signup" class="col-sm-12">
-		<p class="text-center">New resources added every Monday(ish). Join 3,000 others here.</p>
-		<form id="mailchimp-form" class="form-inline">
-			<div class="form-group">
-				<input type="text" name="mailchimp-email" id="mailchimp-email" class="form-control" placeholder="Email">
+	<!-- BEGIN Email Signup -->
+	<div class="row">
+		<section class="col-sm-12">
+			<div id="email-signup-above" class="col-sm-6 col-sm-offset-3 text-center">
+				<p class="header">Because finding the right resource at the right time is life-changing.</p>
+				<p>Evergreen is home to the all-time greatest resources,collected into a library so you can find useful lessons in an internet full of slapdash, pageview optimized bullshit.</p>
 			</div>
-			<div class="form-group">
-				<input type="submit" id="mailchimp-submit" class="btn btn-mailchimp form-control" value="Sign Up"></input>
-			</div>
-		</form>
-	</section>
-</div>
-<!-- END Email Signup -->
+		</section>
+		
+		<section id="email-hr" class="col-sm-12">
+			<hr>
+		</section>
 
-<div class='row'>
-  <div id="collection-cloud" class='col-sm-8 col-sm-offset-2'>
-  	<h3 class="text-center">Explore the Library</h3>
-		<ul id="collection-cloud-list" class="list-inline">
-			<li ng-repeat="collection in collections">
-				<a ui-sref="collection({collection_id: collection.id })">{{ collection.title | capitalize:true }}</a>
-			</li>
-		</ul>
-  </div>
-</div>
-
-<!-- BEGIN Top Collections -->
-<div class="row">
-	<div class="col-sm-10 col-sm-offset-1 top-collection" ng-repeat="top_collection in top_collections">
-		<div class='row'>
-			<div class="col-sm-12 top-collection-title">
-				<h3>{{ top_collection.title | capitalize:true }}</h3>
-			</div>
-			
-			<div class='col-sm-10 col-sm-offset-1 resource-wrapper'>
-				<div ng-repeat="resource in top_collection.top_three[0]">
-					<div class="resource-info col-sm-12">
-						<div class='resource-title'>
-							<a href='{{ resource.url }}' target='_blank'>
-								{{ resource.title | capitalize:true }}
-							</a>
-							<span class='pull-right'>
-								{{ top_collection.top_three[1][top_collection.top_three[0].indexOf(resource)] }}
-							</span>
-						</div>
-						<p>{{ resource.description }}</p>
-					</div>
+		<section id="email-signup" class="col-sm-12">
+			<p class="text-center">New resources added every Monday(ish). Join 3,000 others here.</p>
+			<form id="mailchimp-form" class="form-inline">
+				<div class="form-group">
+					<input type="text" name="mailchimp-email" id="mailchimp-email" class="form-control" placeholder="Email">
 				</div>
+				<div class="form-group">
+					<input type="submit" id="mailchimp-submit" class="btn btn-mailchimp form-control" value="Sign Up"></input>
+				</div>
+			</form>
+		</section>
+	</div>
+	<!-- END Email Signup -->
 
-				<div class='col-sm-12'>
-					<a ui-sref='collection({collection_id: top_collection.id})' class='btn view-all-btn'>
-						View All {{ top_collection.title | capitalize:true }} Resources
-					</a>
+	<div class='row'>
+	  <div id="collection-cloud" class='col-sm-6 col-sm-offset-3'>
+	  	<h3 class="text-center">Explore the Library</h3>
+			<ul id="collection-cloud-list" class="list-inline">
+				<li ng-repeat="collection in collections">
+					<a ui-sref="collection({collection_id: collection.id })">{{ collection.title | capitalize:true }}</a>
+				</li>
+			</ul>
+	  </div>
+	</div>
+
+	<!-- BEGIN Top Collections -->
+	<div class="row">
+		<div class="col-sm-8 col-sm-offset-2 top-collection" ng-repeat="top_collection in top_collections">
+			<div class='row'>
+				<div class="col-sm-12 top-collection-title">
+					<h3>{{ top_collection.title | capitalize:true }}</h3>
+				</div>
+				
+				<div class='col-sm-12 resource-wrapper'>
+					<div ng-repeat="resource in top_collection.top_three[0]">
+						<div class="resource-info col-sm-12">
+							<div class='resource-title'>
+								<a href='{{ resource.url }}' target='_blank'>
+									{{ resource.title | capitalize:true }}
+								</a>
+								<span class='pull-right'>
+									{{ top_collection.top_three[1][top_collection.top_three[0].indexOf(resource)] }}
+								</span>
+							</div>
+							<p>{{ resource.description }}</p>
+						</div>
+					</div>
+
+					<div class='col-sm-12'>
+						<a ui-sref='collection({collection_id: top_collection.id})' class='btn view-all-btn'>
+							View All {{ top_collection.title | capitalize:true }} Resources &nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right"></i>
+						</a>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+	<!-- END Top Collections -->
 </div>
-<!-- END Top Collections -->

@@ -1,71 +1,68 @@
-<div class='row'>
-	<div id="all-sector-wrapper" class='col-md-8 col-md-offset-2'>
-		<div class='navbar-spacer'></div>
-		<h2>{{ collectionName | capitalize:true }}:</h2>
-		<p>{{ collectionDesc | capitalize}}</p>
+<div class='container-fluid'>
 
-		<h3>Synthesis - <a href="{{ synthesis.url }}">{{ synthesis.title }}</a></h3>
-		
-		<table class="table table-hover table-bordered">
-			<thead>
-				<tr>
-					<!-- <th>Type</th> -->
+	<!-- HEADER -->
+	<div class="row" id="collection-header">
+		<section class="col-sm-7">
+			<section>
+				<h1>Evergreen <small><i>Collections of Timeless Resources</i></small></h1>
+				<hr>
+				<p><strong>Because finding the right resource at the right time is life-changing.</strong> Evergreen is home to the all-time greatest resources, organized so you can find useful lessons in an internet full of slapdash, pageview-optimized bullshit.</p>
+			</section>
+		</section>
 
-					<th class='pointer' ng-click="toggleSort('upvote_count')">
-						Rating
-						<i ng-class="sortIcon('upvote_count')"></i>
-					</th>
+		<section class='col-sm-5'>
+			<div id='collection-email'>
+				<div class='collection-email-wrapper text-center' id='email-signup'>
+					<p class="text-center">New resources added every Monday(ish). Join 3,000 others here.</p>
+					<form id="mailchimp-form" class="form-inline">
+						<div class="form-group">
+							<input type="text" name="mailchimp-email" id="mailchimp-email" class="form-control" placeholder="Email">
+						</div>
+						<div class="form-group">
+							<input type="submit" id="mailchimp-submit" class="btn btn-mailchimp form-control" value="Join"></input>
+						</div>
+					</form>
+				</div>
+			</div>
+		</section>
+	</div>
+	<!-- END HEADER -->
 
-					<th ng-if='user'>
-						Upvote?
-					</th>
+	<!-- Title -->
+	<div class='row collection-title-wrapper'>
+		<div class='col-sm-10 col-sm-offset-1 text-center'>
+			<h1>The Top Resources to Learn: <strong>{{ collectionName | capitalize:true }}</strong></h1>
+		</div>
 
-					<th class='pointer' ng-click="toggleSort('title')">
-						Title
-						<i ng-class="sortIcon('title')"></i>
-					</th>
+		<div class='col-sm-10 col-sm-offset-1 collection-strike'>
+			<div class='strike'>
+				<span>Take your time, truly great content deserves care.</span>
+			</div>
+		</div>
 
-					<th>Description</th>
-					
-					<th class='pointer' ng-click="toggleSort('owner.username')">
-						Owner
-						<i ng-class="sortIcon('owner.username')"></i>
-					</th>
+		<div class='col-sm-8 col-sm-offset-2 text-center'>
+			<p>{{ collectionDesc }}</p>
+		</div>
 
-					<th class='pointer' ng-click="toggleSort('created_at')">
-						Date Added
-						<i ng-class="sortIcon('created_at')"></i>
-					</th>
-				</tr>
-			</thead>
-		
-			<tbody>
-				<tr ng-repeat="resource in resources | orderBy:sort:sortDescending"
-						ng-class="{'success': resource.approved}">
-					<!-- <td>{{ resource.media_type ? resource.media_type : 'N/A' }}</td> -->
-					<td>{{ resource.upvote_count }} <i class='fa fa-thumbs-o-up fa-1x'></i></td>
+		<div class='col-sm-6 col-sm-offset-3 text-center'>
+			<br><br>
+			<p>Synthesis &mdash; <a href='{{ synthesis.url }}' target='_blank'>{{ synthesis.title }}</a></p>
+		</div>
+	</div>
 
-					<td class='text-center' ng-if='notUpvoted(resource.upvote_ids)'>
-						<span class='btn btn-primary btn-sm' ng-click="upvoteResource(resource)">
-							Upvote
-						</span>
-					</td>
-
-					<td class='text-center' ng-if='upvoted(resource.upvote_ids)'>
-						Upvoted
-					</td>
-
-					<td>
-						<a href="{{ resource.url }}" target="_blank">
-							{{ resource.title | capitalize:true }}
-						</a>
-					</td>			
-					<td>{{ resource.description }}</td>		
-					<td>{{ resource.owner.username }}</td>
-					<td>{{ resource.created_at | date }}</td>
-				</tr>		
-			</tbody>
-		</table>
-
+	<!-- Resources -->
+	<div ng-repeat='resource in resources' class='row'>
+		<div class='col-sm-8 col-sm-offset-2 collection-resource-wrapper'>
+			<h3>
+				<a href='{{ resource.url }}' target='_blank'>
+					{{ resource.title }}<!--
+				--></a><!--
+				--><i class='fa fa-check-square' data-toggle="tooltip" data-placement="left" title="Admin Approved" ng-if='resource.approved'></i>
+			</h3>
+			<p class='resource-owner'>by {{ resource.owner.username }} | {{ resource.created_at | date }}</p>
+			<div class='col-sm-12'>
+				<p>{{ resource.description }}</p>
+			</div>
+		</div>
 	</div>
 </div>
