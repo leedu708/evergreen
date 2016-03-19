@@ -89,3 +89,36 @@ $primary: #336633;
 	}
 
 }
+
+// most updated collections
+.all-resource-wrapper {
+	padding: 0;
+	background-color: #E8E8E8;
+
+	.top-collection-title {
+		background-color: #FFF;
+		padding: 0;
+	}
+
+	.resource-wrapper {
+		padding: 0 20px 0 20px;
+
+		.resource-title {
+			padding-top: 15px;
+			text-decoration: underline;
+			font-size: 1.5em;
+		}
+
+		.user-info {
+			padding-top: 15px;
+		}
+	}
+
+	.view-all-btn {
+		background: $primary;
+		color: #FFF;
+		border-radius: 0;
+		margin: 10px 0 20px 20px;
+		font-weight: 700;
+	}
+}

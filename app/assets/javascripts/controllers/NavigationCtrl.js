@@ -5,7 +5,6 @@ evergreen.controller('NavigationCtrl',
     $scope.init = function() {
       sectorService.getSectorAPI().then(function(response) {
           $scope.sectors = response;
-          console.log($scope.sectors);
         });
     };
 
