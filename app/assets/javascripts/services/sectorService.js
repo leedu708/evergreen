@@ -1,5 +1,6 @@
 evergreen.factory('sectorService',
-  [function() {
+  ['Restangular',
+  function(Restangular) {
 
     var sectorService = {};
 
@@ -34,6 +35,10 @@ evergreen.factory('sectorService',
 
     sectorService.getSectors = function() {
       return this.sectors;
+    };
+
+    sectorService.getSectorAPI = function() {
+      return Restangular.all('sectors').getList();
     };
 
     return sectorService;
