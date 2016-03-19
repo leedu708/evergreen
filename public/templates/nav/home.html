@@ -52,33 +52,34 @@
 
 <!-- BEGIN Top Collections -->
 <div class="row">
-	<section class="top-collection" ng-repeat="top_collection in top_collections">
-		<div class="all-resource-wrapper col-sm-8 col-sm-offset-2">
+	<div class="col-sm-10 col-sm-offset-1 top-collection" ng-repeat="top_collection in top_collections">
+		<div class='row'>
 			<div class="col-sm-12 top-collection-title">
 				<h3>{{ top_collection.title | capitalize:true }}</h3>
 			</div>
 			
-			<div class="row resource-wrapper" ng-repeat="resource in top_collection.top_three[0]">
-				<div class="resource-info col-sm-8 pull-left">
-					<div class='resource-title'>
-						<a href='{{ resource.url }}' target='_blank'>
-							{{ resource.title | capitalize:true }}
-						</a>
+			<div class='col-sm-10 col-sm-offset-1 resource-wrapper'>
+				<div ng-repeat="resource in top_collection.top_three[0]">
+					<div class="resource-info col-sm-12">
+						<div class='resource-title'>
+							<a href='{{ resource.url }}' target='_blank'>
+								{{ resource.title | capitalize:true }}
+							</a>
+							<span class='pull-right'>
+								{{ top_collection.top_three[1][top_collection.top_three[0].indexOf(resource)] }}
+							</span>
+						</div>
+						<p>{{ resource.description }}</p>
 					</div>
-					<p>{{ resource.description }}</p>
 				</div>
 
-				<div class="user-info col-sm-4 pull-left">
-					<span class='pull-right'>
-						{{ top_collection.top_three[1][top_collection.top_three[0].indexOf(resource)] }}
-					</span>
+				<div class='col-sm-12'>
+					<a ui-sref='collection({collection_id: top_collection.id})' class='btn view-all-btn'>
+						View All {{ top_collection.title | capitalize:true }} Resources
+					</a>
 				</div>
 			</div>
-
-			<a ui-sref='collection({collection_id: top_collection.id})' class='btn view-all-btn'>
-				View All {{ top_collection.title }} Resources
-			</a>
 		</div>
-	</section>
+	</div>
 </div>
 <!-- END Top Collections -->
