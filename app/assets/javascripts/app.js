@@ -39,10 +39,10 @@ var evergreen = angular.module('evergreen', ['ui.router', 'restangular', 'templa
       .state('home', {
         url: '/home',
         templateUrl: '/templates/nav/home.html',
-       	controller: 'SectorCtrl',
+       	controller: 'HomepageCtrl',
        	resolve: {
-          sectors: ['Restangular', function(Restangular) {
-            return Restangular.all('sectors').getList();
+          collections: ['Restangular', function(Restangular) {
+            return Restangular.all('collections').getList();
           }]
         }
       })

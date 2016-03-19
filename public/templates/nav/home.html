@@ -40,15 +40,12 @@
 <!-- END Email Signup -->
 
 <div class='row'>
-  <div id="all-sector-wrapper" class='col-xs-10 col-xs-offset-1'>
-   <h2>Sectors:</h2>
-   <!-- <pre>{{sectors}}</pre> -->
-   <div class="sector-wrapper col-xs-4" ng-repeat="sector in sectors">
-   	<h3>
-      <a ui-sref='sector({sector_id: sector.id})'>
-        {{sector.title | uppercase}}
-      </a>
-    </h3>
-   </div>
+  <div id="collection-cloud" class='col-xs-8 col-xs-offset-2'>
+  	<h3 class="text-center">Explore the Library</h3>
+		<ul id="collection-cloud-list" class="list-inline">
+			<li ng-repeat="collection in collections">
+				<a ui-sref="collection({collection_id: collection.id })">{{ collection.title | capitalize:true }}</a>
+			</li>
+		</ul>
   </div>
 </div>
