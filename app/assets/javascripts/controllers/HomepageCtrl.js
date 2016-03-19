@@ -6,7 +6,6 @@ evergreen.controller('HomepageCtrl',
     $scope.init = function() {
       $scope.collections = collections;
       $scope.top_collections = top_collections;
-      console.log($scope.top_collections);
     };
 
     $scope.test = "Hello";

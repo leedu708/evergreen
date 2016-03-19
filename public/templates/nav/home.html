@@ -49,3 +49,24 @@
 		</ul>
   </div>
 </div>
+
+<!-- BEGIN Top Collections -->
+<div class="row">
+	<section class="top-collection" ng-repeat="top_collection in top_collections">
+		<div class="all-resource-wrapper col-sm-12">
+			<div class="col-sm-12">
+				<h3>{{ top_collection.title | capitalize:true }}</h3>
+			</div>
+			
+			<section id="resource-wrapper" ng-repeat="resource in top_collection.top_three[0]">
+				<div class="resource-info col-sm-8 pull-left">
+					{{ resource.title | capitalize:true }}
+				</div>
+				<div class="user-info col-sm-4 pull-left">
+					{{ top_collection.top_three[1][top_collection.top_three[0].indexOf(resource)] }}
+				</div>
+			</section>
+		</div>
+	</section>
+</div>
+<!-- END Top Collections -->
