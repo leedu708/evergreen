@@ -1,6 +1,6 @@
 <ul class='nav navbar-nav'>
   <li ng-repeat='sector in sectors' ui-sref-active='active'>
-    <a ui-sref="sector({sector_id: sector.id})">{{ sector.title }}</a>
+    <a ui-sref="sector({sector_id: sector.id})">{{ sector.title | uppercase }}</a>
   </li>
   <li class='custom-flash alert-{{ $root.flash[0] }} custom-fade in' ng-if='!!$root.flash.length'>
     {{ $root.flash[1] }}
