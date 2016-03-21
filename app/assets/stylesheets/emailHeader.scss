@@ -40,11 +40,16 @@ $primary: #336633;
 
     #mailchimp-email {
       width: 100%;
+      border-radius: 0;
     }
 
     #mailchimp-submit {
       width: 100%;
       margin-left: -15px;
+    }
+
+    .btn-mailchimp {
+      font-size: 18px;
     }
   }
 }

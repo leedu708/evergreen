@@ -1,4 +1,7 @@
 <div class='container-fluid'>
+
+  <email-header></email-header>
+
   <div class='row'>
     <div class='col-md-8 col-md-offset-2'>
       <h1 class='page-header'>
@@ -42,13 +45,12 @@
         </thead>
       
         <tbody>
-          <tr ng-repeat="resource in resources | orderBy:sort:sortDescending"
-              ng-class="{'success': resource.approved}">
+          <tr ng-repeat="resource in resources | orderBy:sort:sortDescending">
             <!-- <td>{{ resource.media_type ? resource.media_type : 'N/A' }}</td> -->
             <td>{{ resource.upvote_count }} <i class='fa fa-thumbs-o-up fa-1x'></i></td>
             <td>
               <a href="{{ resource.url }}" target="_blank">
-                {{ resource.title | capitalize:true }}
+                {{ resource.title | capitalize:true }}<i class='search-fa fa fa-check-square' data-toggle="tooltip" data-placement="top" title="Admin Approved" ng-if='resource.approved'></i>
               </a>
             </td>     
             <td>{{ resource.description }}</td>

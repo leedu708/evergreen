@@ -1,0 +1,45 @@
+$primary: #336633;
+
+.login-directive {
+  margin-left: 15px;
+}
+
+.nav-login-wrapper {
+  margin: 10px 10px 0 10px;
+  min-width: 220px !important;
+
+  .form-control {
+    font-size: 16px;
+    border-radius: 0;
+    padding: 25px 20px;
+  }
+}
+
+.rmb-margin {
+  margin-bottom: 5px !important;
+}
+
+.register-btn,
+.log-in-btn {
+  margin-bottom: 10px;
+  color: #FFF;
+  font-weight: 700;
+  padding: 15px 12px;
+}
+
+.register-btn:hover,
+.log-in-btn:hover {
+  color: #FFF;
+}
+
+.log-in-btn {
+  background: $primary;
+}
+
+.register-btn {
+  background: #333366
+}
+
+.navbar-spacer {
+  margin-top: 50px;
+}
