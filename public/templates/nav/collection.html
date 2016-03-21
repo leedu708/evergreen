@@ -14,12 +14,17 @@
 			<div id='collection-email'>
 				<div class='collection-email-wrapper text-center' id='email-signup'>
 					<p class="text-center">New resources added every Monday(ish). Join 3,000 others here.</p>
-					<form id="mailchimp-form" class="form-inline">
-						<div class="form-group">
-							<input type="text" name="mailchimp-email" id="mailchimp-email" class="form-control" placeholder="Email">
+					<form id="collection-mailchimp-form">
+						<div class='col-sm-9'>
+							<div class="form-group">
+								<input type="text" name="mailchimp-email" id="mailchimp-email" class="form-control" placeholder="Email">
+							</div>
 						</div>
-						<div class="form-group">
-							<input type="submit" id="mailchimp-submit" class="btn btn-mailchimp form-control" value="Join"></input>
+
+						<div class='col-sm-3'>
+							<div class="form-group">
+								<input type="submit" id="mailchimp-submit" class="btn btn-mailchimp form-control" value="Join"></input>
+							</div>
 						</div>
 					</form>
 				</div>
@@ -46,7 +51,7 @@
 
 		<div class='col-sm-6 col-sm-offset-3 text-center'>
 			<br>
-			<p>Synthesis &mdash; <a href='{{ synthesis.url }}' target='_blank'>{{ synthesis.title }}</a></p>
+			<p><i class='fa fa-leaf'></i> Synthesis &mdash; <a href='{{ synthesis.url }}' target='_blank'>{{ synthesis.title }}</a></p>
 
 			<!-- PAGINATION -->
 			<div class='pagination-wrapper' ng-if='pagination.totalPages() > 1'>

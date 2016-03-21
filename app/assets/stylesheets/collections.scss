@@ -29,6 +29,7 @@ $primary: #336633;
     height: 200px;
 
     .collection-email-wrapper {
+      overflow: auto;
       position: relative;
       top: 50%;
       -webkit-transform: translateY(-50%);
@@ -38,6 +39,35 @@ $primary: #336633;
 
   #mailchimp-submit {
     border: 2px solid #E8E8E8;
+  }
+
+  #collection-mailchimp-form {
+    width: 100%;
+
+    #mailchimp-email {
+      width: 100%;
+    }
+
+    #mailchimp-submit {
+      width: 100%;
+      margin-left: -15px;
+    }
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  #collection-header {
+    h1 {
+      font-size: 1.5em;
+    }
+
+    p {
+      font-size: 0.65em;
+    }
+
+    #collection-mailchimp-form {
+      width: 100%;
+    }
   }
 }
 
@@ -49,6 +79,13 @@ $primary: #336633;
 .collection-title-wrapper {
   p {
     font-size: 1.7em;
+  }
+
+  .fa-leaf {
+    color: $primary;
+    background: #E8E8E8;
+    border: 1px solid #E8E8E8;
+    border-radius: 50%;
   }
 }
 

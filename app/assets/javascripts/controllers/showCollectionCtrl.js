@@ -16,8 +16,6 @@ evergreen.controller('showCollectionCtrl',
         totalPages: function() { return Math.ceil($scope.resources.length / this.perPage) },
         offset: function() { return (this.currentPage - 1) * this.perPage }
       };
-
-      console.log($scope.pagination.totalPages());
     };
 
     $scope.setResourceVars = function() {
