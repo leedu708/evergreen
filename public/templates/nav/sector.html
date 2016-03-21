@@ -1,28 +1,43 @@
 <div class='container-fluid'>
-  <div class='row'>
 
-    <!-- SECTOR TITLES -->
-    <div class='col-md-10 col-md-offset-1 text-center'>
-      <h1 class='page-header'>{{ sectorName | capitalize:true }}</h1>
-    </div>
+  <!-- HEADER -->
+  <div class="row">
+    <section class="col-sm-12" id="sector-header">
+      <div class='sector-title-wrapper col-sm-8 col-sm-offset-2'>
+        <div class='sector-name'>
+          <div class='strike'>
+            <span><h1>{{ sectorName | capitalize:true }}</h1></span>
+          </div>
+        </div>
+      </div>
+
+      <div class='col-sm-8 col-sm-offset-2 text-center'>
+        <h3>Explore only the top resources...</h3>
+      </div>
+    </section>
   </div>
+  <!-- END HEADER -->
 
-  <div class='row'>
+  <div class='row' id="sector-content">
+    <div class='col-sm-10 col-sm-offset-1'>
+      <section ng-repeat='category in categories' class="col-sm-4 category-wrapper">
+        <div class='category-title'>
+          <h2 class='page-header text-center'>
+            {{ category.title | capitalize:true }}
+          </h2>
+        </div>
 
-    <!-- CATEGORY TITLES -->
-    <div class='col-md-3 col-md-offset-2' ng-repeat='category in categories'>
-      <h2 class='text-center'>{{ category.title | capitalize:true }}</h2>
-
-      <!-- COLLECTION TITLES -->
-      <ol>
-        <li ng-repeat='collection in category.collections'>
-          <h4>
-            <a ui-sref='collection({collection_id: collection.id})'>
-              {{ collection.title | capitalize:true }}
-            </a>
-          </h4>
-        </li>
-      </ol>
+        <div class='col-sm-12 collection-wrapper'>
+          <div class='collection-info' ng-repeat='collection in category.collections'>
+            <h3>
+              <a ui-sref='collection({collection_id: collection.id})'>
+                {{ collection.title | capitalize:true }}
+              </a>
+            </h3>
+            <p>{{ collection.description | capitalize }}</p>
+            <hr ng-hide='checkLastCollection(category, collection)'>
+          </div>
+        </div>
+      </section>
     </div>
-  </div>
 </div>

@@ -7,6 +7,11 @@ evergreen.controller('showSectorCtrl',
       $scope.categories = sector.categories;
     };
 
+    $scope.checkLastCollection = function(category, collection) {
+      index = category.collections.length - 1;
+      return !!(category.collections[index] === collection)
+    };
+
     $scope.init();
 
   }]);

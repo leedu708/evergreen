@@ -1,3 +1,52 @@
 // Place all the styles related to the sectors controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$primary: #336633;
+
+#sector-header {
+  height: 200px;
+  background: $primary;
+  color: #FFF;
+
+  .sector-title-wrapper {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+  }
+
+  h3 {
+    margin-top: 40px;
+  }
+
+  h1 {
+    color: #FFF;
+    margin: 0.67em 0 0.67em 0;
+    font-weight: 700;
+    font-size: 48px;
+  }
+
+  .sector-name {
+    margin-top: -10px;
+  }
+
+}
+
+#sector-content {
+  margin-top: 50px;
+
+  .collection-wrapper {
+    background: #E8E8E8;
+    border-radius: 10px;
+
+    p {
+      margin-bottom: 20px;
+    }
+
+    hr {
+      border-top: 2px double #888
+    }
+
+  }
+
+}
