@@ -5,6 +5,7 @@ evergreen.controller('showCollectionCtrl',
     $scope.init = function() {
       $scope.collectionName = resources[0].collection.title;
       $scope.collectionDesc = resources[0].collection.description;
+      $scope.searchText = "";
       $scope.synthesis = $scope.getSynthesis();
       $scope.getUser();
 

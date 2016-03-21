@@ -1,63 +1,68 @@
-<div class='container'>
-  <div class='row'>
-    <div class='col-md-12'>
-      <h1 class='page-header'>Add A Resource</h1>
+<div class='container-fluid'>
 
-      <!-- ADD RESOURCE FORM -->
-      <div class='row'>
-        <div class='col-md-6 col-md-offset-3'>
-          <form>
-            <div class='form-group' ng-class="errorClass('collection')">
-              <label class='control-label' for='collection_id'>Collection</label>
-              <select class='form-control' id='collection_id' ng-model="addResource.collection_id">
-                <option ng-repeat="collection in collections" value="{{ collection.id }}">{{ collection.title }}</option>
-              </select>
+  <email-header></email-header>
 
-              <span class='help-block' ng-show="errorClass('collection') === 'has-error'">
-                Collection {{ errorMessages('collection') }}
-              </span>
-            </div>
-
-            <div class='form-group' ng-class="errorClass('title')">
-              <label class='control-label' for='title'>Resource Name</label>
-              <input type='text' class='form-control' id='title' ng-model="addResource.title">
-
-              <span class='help-block' ng-show="errorClass('title') === 'has-error'">
-                Name {{ errorMessages('title') }}
-              </span>
-            </div>
-
-            <div class='form-group' ng-class="errorClass('description')">
-              <label class='control-label' for='description'>Resource Description</label>
-              <textarea class='form-control' id='description' rows='3' ng-model="addResource.description"></textarea>
-
-              <span class='help-block' ng-show="errorClass('description') === 'has-error'">
-                Description {{ errorMessages('description') }}
-              </span>
-            </div>
-
-            <div class='form-group' ng-class="errorClass('url')">
-              <label class='control-label' for='url'>Resource Url</label>
-              <i>(Ex. http://www.google.com)</i>
-              <input type='text' class='form-control' id='url' ng-model="addResource.url">
-
-              <span class='help-block' ng-show="errorClass('url') === 'has-error'">
-                Url {{ errorMessages('url') }}
-              </span>
-            </div>
-
-<!--             <div class='form-group'>
-              <label for='media_type'>Media Type</label>
-              <select class='form-control' id='media_type' ng-model>
-              </select>
-            </div> -->
-
-            <button type='submit' class='btn btn-success' ng-click='createResource(addResource)'>Add Resource</button>
-          </form>
-        </div>
+  <!-- ADD RESOURCE FORM -->
+  <div class='row' id='create-resource-wrapper'>
+    <div class='col-sm-8 col-sm-offset-2 create-resource-strike'>
+      <div class='strike'>
+        <span><h1>Add A Resource</h1></span>
       </div>
-      <!-- END ADD RESOURCE FORM -->
+    </div>
 
+    <!-- Effectively 5 columns in width -->
+    <div class='col-sm-10 col-sm-offset-1'>
+      <div class='col-sm-6 col-sm-offset-3'>
+        <form>
+          <div class='form-group' ng-class="errorClass('collection')">
+            <label class='control-label' for='collection_id'>Collection</label>
+            <select class='form-control' id='collection_id' ng-model="addResource.collection_id">
+              <option ng-repeat="collection in collections" value="{{ collection.id }}">{{ collection.title }}</option>
+            </select>
+
+            <span class='help-block' ng-show="errorClass('collection') === 'has-error'">
+              Collection {{ errorMessages('collection') }}
+            </span>
+          </div>
+
+          <div class='form-group' ng-class="errorClass('title')">
+            <label class='control-label' for='title'>Resource Name</label>
+            <input type='text' class='form-control' id='title' ng-model="addResource.title">
+
+            <span class='help-block' ng-show="errorClass('title') === 'has-error'">
+              Name {{ errorMessages('title') }}
+            </span>
+          </div>
+
+          <div class='form-group' ng-class="errorClass('description')">
+            <label class='control-label' for='description'>Resource Description</label>
+            <textarea class='form-control' id='description' rows='7' ng-model="addResource.description"></textarea>
+
+            <span class='help-block' ng-show="errorClass('description') === 'has-error'">
+              Description {{ errorMessages('description') }}
+            </span>
+          </div>
+
+          <div class='form-group' ng-class="errorClass('url')">
+            <label class='control-label' for='url'>Resource Url</label>
+            &nbsp;&nbsp;<i class='example'>(Ex. http://www.google.com)</i>
+            <input type='text' class='form-control' id='url' ng-model="addResource.url">
+
+            <span class='help-block' ng-show="errorClass('url') === 'has-error'">
+              Url {{ errorMessages('url') }}
+            </span>
+          </div>
+
+    <!--             <div class='form-group'>
+            <label for='media_type'>Media Type</label>
+            <select class='form-control' id='media_type' ng-model>
+            </select>
+          </div> -->
+
+          <button type='submit' class='btn create-resource-btn' ng-click='createResource(addResource)'>Add Resource</button>
+        </form>
+      </div>
     </div>
   </div>
+  <!-- END ADD RESOURCE FORM -->
 </div>

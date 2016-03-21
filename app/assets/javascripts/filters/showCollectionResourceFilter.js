@@ -1,4 +1,4 @@
-evergreen.filter('resourceFilter', function() {
+evergreen.filter('showCollectionResourceFilter', function() {
   return function( collection, searchText ) {
 
     searchText = searchText.toLowerCase();
@@ -8,10 +8,9 @@ evergreen.filter('resourceFilter', function() {
     angular.forEach( collection, function( resource ) {
       var title = resource.title.toLowerCase();
       var description = resource.description.toLowerCase();
-      var collection_name = resource.collection_name.toLowerCase();
-      var owner = resource.owner_username.toLowerCase();
+      var owner = resource.owner.username.toLowerCase();
 
-      if (title.indexOf(searchText) > -1 || description.indexOf(searchText) > -1 || collection_name.indexOf(searchText) > -1 || owner.indexOf(searchText) > -1) {
+      if (title.indexOf(searchText) > -1 || description.indexOf(searchText) > -1  || owner.indexOf(searchText) > -1) {
         filteredCollection.push(resource);
       };
     });
