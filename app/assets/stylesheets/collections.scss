@@ -65,3 +65,15 @@ $primary: #336633;
     color: #636363;
   }
 }
+
+.pagination-wrapper {
+  height: 100%;
+
+  .current-page {
+    height: 53px;
+
+    p {
+      line-height: 53px;
+    }
+  }
+}

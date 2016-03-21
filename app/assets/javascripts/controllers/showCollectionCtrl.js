@@ -9,6 +9,15 @@ evergreen.controller('showCollectionCtrl',
       $scope.getUser();
 
       $scope.setResourceVars();
+
+      $scope.pagination = {
+        currentPage: 1,
+        perPage: 5,
+        totalPages: function() { return Math.ceil($scope.resources.length / this.perPage) },
+        offset: function() { return (this.currentPage - 1) * this.perPage }
+      };
+
+      console.log($scope.pagination.totalPages());
     };
 
     $scope.setResourceVars = function() {
@@ -17,12 +26,30 @@ evergreen.controller('showCollectionCtrl',
       $scope.resources = resourceService.getResources();
     };
 
+    $scope.pageUp = function() {
+      if ($scope.pagination.currentPage < $scope.pagination.totalPages()) {
+        $scope.pagination.currentPage++;
+      };
+    };
+
+    $scope.pageDown = function() {
+      if ($scope.pagination.currentPage > 1) {
+        $scope.pagination.currentPage--;
+      };
+    };
+
+    $scope.findPage = function(pageNum) {
+      $scope.pagination.currentPage = pageNum;
+    };
+
     $scope.getSynthesis = function() {
       var id = resources[0].collection.synthesis_id;
       return resources.filter( function(resource) {
         return resource.id == id;
       })[0];
     };
+
+    // for upvotes
 
     $scope.getUser = function() {
       userService.currentUser()
@@ -48,23 +75,6 @@ evergreen.controller('showCollectionCtrl',
 
     $scope.upvoted = function(upvoteIds) {
       return ($scope.user && upvoteIds.includes($scope.user.id));
-    };
-
-    $scope.toggleSort = function(column) {
-      if (column === $scope.sort) {
-        $scope.sortDescending ^= true;
-      } else {
-        $scope.sort = column;
-        $scope.sortDescending = false;
-      };
-    };
-
-    $scope.sortIcon = function(column) {
-      if ($scope.sort === column) {
-        return $scope.sortDescending
-          ? 'fa fa-chevron-up fa-1x'
-          : 'fa fa-chevron-down fa-1x';
-      };
     };
 
     $scope.init();

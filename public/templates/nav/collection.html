@@ -45,13 +45,34 @@
 		</div>
 
 		<div class='col-sm-6 col-sm-offset-3 text-center'>
-			<br><br>
+			<br>
 			<p>Synthesis &mdash; <a href='{{ synthesis.url }}' target='_blank'>{{ synthesis.title }}</a></p>
+
+			<!-- PAGINATION -->
+			<div class='pagination-wrapper' ng-if='pagination.totalPages() > 1'>
+				<ul class='list-inline'>
+					<li>
+						<span class='pointer' ng-click='pageDown()'>
+							<i class='fa fa-backward'></i>
+						</span>
+					</li>
+
+					<li class='current-page'>
+						<p>Page: {{ pagination.currentPage }}</p>
+					</li>
+
+					<li>
+						<span class='pointer' ng-click='pageUp()'>
+							<i class='fa fa-forward'></i>
+						</span>
+					</li>
+				</ul>
+			</div>
 		</div>
 	</div>
 
 	<!-- Resources -->
-	<div ng-repeat='resource in resources' class='row'>
+	<div ng-repeat='resource in resources | limitTo: pagination.perPage : pagination.offset()' class='row'>
 		<div class='col-sm-8 col-sm-offset-2 collection-resource-wrapper'>
 			<h3>
 				<a href='{{ resource.url }}' target='_blank'>
