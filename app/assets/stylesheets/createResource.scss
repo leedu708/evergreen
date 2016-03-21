@@ -1,5 +1,6 @@
 $primary: #336633;
 
+.update-resource-strike,
 .create-resource-strike {
   h1 {
     color: #000;
@@ -8,6 +9,7 @@ $primary: #336633;
   }
 }
 
+#update-resource-wrapper,
 #create-resource-wrapper {
   label {
     font-size: 18px;
@@ -24,7 +26,7 @@ $primary: #336633;
   .form-control {
     border-radius: 0;
     font-size: 16px;
-    border-color: $primary;
+    border: 2px solid $primary;
   }
 
   input {
@@ -39,8 +41,17 @@ $primary: #336633;
     height: 52px;
   }
 
+  .update-resource-btn,
   .create-resource-btn {
     background: $primary;
+    color: #FFF;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 14px 20px;
+  }
+
+  .delete-resource-btn {
+    background: #663333;
     color: #FFF;
     font-size: 18px;
     font-weight: 700;

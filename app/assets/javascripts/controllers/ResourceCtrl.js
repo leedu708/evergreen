@@ -11,8 +11,14 @@ evergreen.controller('ResourceCtrl',
 
     $scope.setResourceVars = function() {
       $scope.resources = resourceService.getResources();
-      $scope.owner = $scope.resources[0].owner_username;
-      $scope.owner_id = $scope.resources[0].owner_id;
+
+      if ($scope.resources.length) {
+        $scope.owner = $scope.resources[0].owner_username;
+        $scope.owner_id = $scope.resources[0].owner_id;
+      } else {
+        $scope.owner = "";
+        $scope.owner_id = "";
+      };
     };
 
     $scope.destroyResource = function(resource, userID) {

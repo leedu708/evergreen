@@ -1,18 +1,37 @@
-<div class='container-fluid'>
-  <div class='row'>
-    <div class='col-md-10 col-md-offset-1'>
+<div class='container-fluid' ng-show='resources.length'>
 
-      <h1 class='page-header'>{{ owner }}'s Resources
-        <a class='pull-right btn btn-success' ui-sref="addResource">
+  <!-- HEADER -->
+  <div class="row">
+    <section class="col-sm-12" id="sector-header">
+      <div class='sector-title-wrapper col-sm-8 col-sm-offset-2'>
+        <div class='sector-name'>
+          <div class='strike'>
+            <span><h1>{{ owner }}'s Resources</h1></span>
+          </div>
+        </div>
+      </div>
+
+      <div class='col-sm-8 col-sm-offset-2 text-center'>
+        <h3>Make your mark...</h3>
+      </div>
+    </section>
+  </div>
+  <!-- END HEADER -->
+
+  <div class='row'>
+    <div class='col-sm-10 col-sm-offset-1' id='user-index-wrapper'>
+
+      <div class='search-wrapper'>
+        <a class='pull-right btn user-index-btn' ui-sref="addResource">
           Add Resource
         </a>
-        <div class='col-md-2 pull-right resource-search-wrapper'>
+        <div class='col-sm-2 pull-right resource-search-wrapper'>
           <input type='text' class='form-control' ng-model='searchText' placeholder='Search Terms...'>
         </div>
-      </h1>
+      </div>
 
       <div class='row'>
-        <div class='col-md-12'>
+        <div class='col-sm-12'>
 
           <table class='table table-bordered table-striped text-center'>
             <thead>
@@ -44,7 +63,7 @@
             </thead>
 
             <tbody>
-              <tr ng-repeat="resource in resources | orderBy:sort:sortDescending | resourceFilter:searchText" ng-class="{'success': resource.approved}">
+              <tr ng-repeat="resource in resources | orderBy:sort:sortDescending | resourceFilter:searchText">
                 <td>{{ resource.upvote_count }} <i class='fa fa-thumbs-o-up fa-1x'></i></td>
                 <td ng-if="userAdmin()">
                   <span class='btn btn-primary btn-sm' ng-click='toggleApproval(resource)'>
@@ -53,7 +72,7 @@
                 </td>
                 <td>
                   <a ng-href="{{ resource.url }}">
-                    {{ resource.title | capitalize:true }}
+                    {{ resource.title | capitalize:true }}<i class='fa fa-check-square' data-toggle="tooltip" data-placement="top" title="Admin Approved" ng-if='resource.approved'></i>
                   </a>
                 </td>
                 <td>{{ resource.description }}</td>
@@ -81,6 +100,15 @@
         </div>
       </div>
 
+    </div>
+  </div>
+</div>
+
+<!-- NO RESOURCES -->
+<div class='container-fluid' ng-hide='resources.length'>
+  <div class='row'>
+    <div class='col-sm-8 col-sm-offset-2'>
+      <h1 class='text-center'>This user has not added any resources yet.</h1>
     </div>
   </div>
 </div>

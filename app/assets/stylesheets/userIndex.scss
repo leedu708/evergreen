@@ -1,0 +1,29 @@
+$primary: #336633;
+
+#user-index-wrapper {
+  .search-wrapper {
+    margin: 25px 0 25px 0;
+    overflow: auto;
+  }
+
+  input {
+    padding: 25px 20px;
+    font-size: 16px;
+    border-radius: 0;
+    border: 2px solid $primary;
+  }
+
+  .user-index-btn {
+    background: $primary;
+    color: #FFF;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 13.5px 20px;
+  }
+
+  .fa-check-square {
+    margin-left: 5px;
+    color: $primary;
+    background: #FFF;
+  }
+}
