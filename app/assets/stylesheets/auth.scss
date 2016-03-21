@@ -1,0 +1,24 @@
+$primary: #336633;
+
+.auth-wrapper {
+  label {
+    font-size: 18px;
+  }
+
+  .form-group {
+    margin-bottom: 25px;
+  }
+
+  .form-control {
+    padding: 25px 20px;
+    font-size: 16px;
+    border-radius: 0;
+    border: 2px solid $primary;
+  }
+
+  .log-in-btn,
+  .register-btn {
+    padding: 14px 20px;
+    font-size: 18px;
+  }
+}

@@ -34,7 +34,7 @@
 
           <div class='form-group' ng-class="errorClass('description')">
             <label class='control-label' for='description'>Resource Description</label>
-            <textarea class='form-control' id='description' rows='3' ng-model="editResource.description"></textarea>
+            <textarea class='form-control' id='description' rows='7' ng-model="editResource.description"></textarea>
 
             <span class='help-block' ng-show="errorClass('description') === 'has-error'">
               Description {{ errorMessages('description') }}

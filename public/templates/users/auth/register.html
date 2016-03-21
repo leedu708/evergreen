@@ -1,5 +1,8 @@
-<div class='container'>
-  <div class='row'>
+<div class='container-fluid'>
+
+  <email-header></email-header>
+
+  <div class='row auth-wrapper'>
     <div class='col-md-6 col-md-offset-3'>
       <h1 class='page-header'>Register</h1>
 
@@ -43,11 +46,10 @@
               </span>
             </div>
 
-            <button type='submit' class='btn btn-primary' ng-click='register(creds)'>
+            <button type='submit' class='btn register-btn' ng-click='register(creds)'>
               Sign Up!
-            </button><br><br>
+            </button>
 
-            <a ui-sref="home">Cancel</a>
           </form>
         </div>
       </div>

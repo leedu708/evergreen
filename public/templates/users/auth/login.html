@@ -1,5 +1,8 @@
-<div class='container'>
-  <div class='row'>
+<div class='container-fluid'>
+
+  <email-header></email-header>
+
+  <div class='row auth-wrapper'>
     <div class='col-md-6 col-md-offset-3'>
       <h1 class='page-header'>Login</h1>
 
@@ -25,15 +28,13 @@
               </span>
             </div>
 
-            <button type='submit' class='btn btn-success' ng-click='login(creds)'>
+            <button type='submit' class='btn log-in-btn' ng-click='login(creds)'>
               Login
             </button>
 
-            <a ui-sref="register" class='btn btn-primary'>
-              Sign Up
-            </a><br><br>
-
-            <a ui-sref="home">Cancel</a>
+            <a ui-sref="register" class='btn register-btn'>
+              Sign Up!
+            </a>
           </form>
         </div>
       </div>
