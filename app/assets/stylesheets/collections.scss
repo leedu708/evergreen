@@ -30,10 +30,38 @@ $primary: #336633;
   margin-top: 15px;
   padding-bottom: 15px;
 
-  .fa {
-    margin-left: 10px;
-    color: $primary;
-    background: #FFF;
+  .resource-icon-wrapper {
+
+    .fa {
+      color: $primary;
+      background: #FFF;
+    }
+
+    .upvote-btn,
+    .upvoted-btn {
+      border: 1px solid #000;
+      border-radius: 3px; 
+      font-size: 14px;
+      font-weight: 700;
+      position: absolute;
+      margin-left: 16px;
+      padding: 6px 12px;
+    }
+
+    .upvote-btn {
+      background: $primary;
+      color: #FFF;
+    }
+
+    .upvoted-btn {
+      background: #333366;
+      color: #FFF;
+    }
+
+    .clear-fix {
+      clear: both;
+    }
+
   }
 
   .resource-owner {

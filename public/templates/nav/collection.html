@@ -47,14 +47,25 @@
 
 	<!-- Resources -->
 	<div ng-repeat='resource in resources | limitTo: pagination.perPage : pagination.offset()' class='row'>
-		<div class='col-sm-8 col-sm-offset-2 collection-resource-wrapper'>
-			<h3>
-				<a href='{{ resource.url }}' target='_blank'>
-					{{ resource.title }}<!--
-				--></a><!--
-				--><i class='fa fa-check-square' data-toggle="tooltip" data-placement="left" title="Admin Approved" ng-if='resource.approved'></i>
-			</h3>
-			<p class='resource-owner'>by {{ resource.owner.username }} | {{ resource.created_at | date }}</p>
+		<div class='col-sm-10 col-sm-offset-1 collection-resource-wrapper'>
+			<div class='resource-icon-wrapper'>
+				<h3>
+					<a href='{{ resource.url }}' target='_blank'>
+						{{ resource.title }}
+					</a>
+
+					<span class='upvote-btn pointer' ng-click='upvoteResource(resource)' ng-if='notUpvoted(resource.upvote_ids)'>
+						Upvote
+					</span>
+
+					<span class='upvoted-btn' ng-if='upvoted(resource.upvote_ids)'>
+						Upvoted
+					</span>
+				</h3>
+			</div>
+
+			<p class='resource-owner'>by {{ resource.owner.username }} | {{ resource.created_at | date }} | <i class='fa fa-check-square' data-toggle="tooltip" data-placement="left" title="Admin Approved" ng-if='resource.approved'></i></p>
+
 			<div class='col-sm-12'>
 				<p>{{ resource.description }}</p>
 			</div>
