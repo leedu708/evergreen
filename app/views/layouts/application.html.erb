@@ -1,32 +1,35 @@
 <!DOCTYPE html>
 <html ng-app='evergreen'>
-<head>
-  <title>Evergreen</title>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title>Evergreen</title>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div class='body-container'>
+      <nav class='navbar navbar-default navbar-fixed-top' role='navigation'>
 
-<nav class='navbar navbar-default navbar-fixed-top' role='navigation'>
+        <div class='container-fluid'>
 
-  <div class='container-fluid'>
+          <a class='navbar-brand' ui-sref='home'>Ever<span class='main-green'>green</span> <i class='fa fa-tree'></i></a>
 
-    <a class='navbar-brand' ui-sref='home'>Ever<span class='main-green'>green</span> <i class='fa fa-tree'></i></a>
+          <sector-nav></sector-nav>
 
-    <sector-nav></sector-nav>
+          <nav-login></nav-login>
 
-    <nav-login></nav-login>
+          <search-form></search-form>
 
-    <search-form></search-form>
+        </div>
+      </nav>
 
-  </div>
-</nav>
+      <div class="navbar-spacer"></div>
 
-<div class="navbar-spacer"></div>
+      <div class='content-container'>
+        <%= yield %>
+      </div>
 
-
-<%= yield %>
-
-</body>
+      <footer-nav></footer-nav>
+    </div>
+  </body>
 </html>

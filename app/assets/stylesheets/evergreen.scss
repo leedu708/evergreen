@@ -8,6 +8,30 @@
   height: 400px;
 }
 
+// body setup
+html,
+body {
+  height: 100%;
+}
+
+.body-container {
+  min-height: 100%;
+  position: relative;
+}
+
+.content-container {
+  padding-bottom: 40px;
+}
+
+footer {
+  height: 40px;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  border-top: 1px solid #E8E8E8;
+}
+
 // other
 .pointer {
   cursor: pointer;
