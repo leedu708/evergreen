@@ -32,6 +32,7 @@ evergreen.controller('SectorCtrl',
         .then( function() {
           sectorService.remove(sector);
           $scope.setSectorVars();
+          $window.location.reload();
           flashService.updateFlash('Sector', 'destroy', true);
         }, flashService.updateFlash('Sector', 'destroy', false));
     };
