@@ -3,7 +3,7 @@
 [Live Preview](http://fast-shore-10637.herokuapp.com/)
 
 ###Description:
-  Evergreen is a curation platform created by Eric Jorgenson.
+  A curation platform where users can share their favorite online resources.  The application features a CMS only accessible to administrative users for controlling the various collections and site information.
 
 ###Tech Stack
 
