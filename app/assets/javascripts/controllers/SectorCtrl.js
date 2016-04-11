@@ -1,6 +1,6 @@
 evergreen.controller('SectorCtrl',
-  ['$scope', 'Restangular', 'sectors', 'sectorService', 'flashService',
-  function($scope, Restangular, sectors, sectorService, flashService) {
+  ['$scope', '$window', 'Restangular', 'sectors', 'sectorService', 'flashService',
+  function($scope, $window, Restangular, sectors, sectorService, flashService) {
 
     $scope.init = function() {
       sectorService.setSectors(sectors);
@@ -20,6 +20,7 @@ evergreen.controller('SectorCtrl',
         .then( function(response) {
           sectorService.addSector(response);
           $scope.setSectorVars();
+          $window.location.reload();
           flashService.updateFlash('Sector', 'create', true);
         }, function() {
           $scope.setSectorVars();

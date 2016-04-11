@@ -23,7 +23,7 @@ Rails.application.routes.draw do
         get 'homepage'
       end
     end
-    resources :resources, :only => [:index, :create, :update] do
+    resources :resources, :only => [:index, :create, :show, :update] do
       collection do
         get 'search'
       end
