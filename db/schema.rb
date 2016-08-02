@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160302160059) do
+ActiveRecord::Schema.define(version: 20160802202722) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "title"
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20160302160059) do
   create_table "resources", force: :cascade do |t|
     t.string   "title",                         null: false
     t.string   "url",                           null: false
-    t.text     "description",                   null: false
+    t.string   "description",   default: ""
     t.string   "media_type",    default: ""
     t.boolean  "approved",      default: false, null: false
     t.integer  "owner_id"

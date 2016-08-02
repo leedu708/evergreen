@@ -64,7 +64,7 @@
 				</h3>
 			</div>
 
-			<p class='resource-owner'>by {{ resource.owner.username }} | {{ resource.created_at | date }} | <i class='fa fa-check-square' data-toggle="tooltip" data-placement="left" title="Admin Approved" ng-if='resource.approved'></i></p>
+			<p class='resource-owner'>by {{ resource.owner.username }} | {{ resource.created_at | date }} | {{ resource.media_type }} | <i class='fa fa-check-square' data-toggle="tooltip" data-placement="left" title="Admin Approved" ng-if='resource.approved'></i></p>
 
 			<div class='col-sm-12'>
 				<p>{{ resource.description }}</p>
